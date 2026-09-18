@@ -1,4848 +1,4165 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Desa Semparuk | Portal Resmi Pemerintah Desa</title>
-
-  <meta name="description"
-        content="Portal Informasi dan Pelayanan Digital Desa Semparuk, Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat.">
-
-  <!-- =========================================================
-       GOOGLE FONT
-  ========================================================== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
-        rel="stylesheet">
-
-  <!-- =========================================================
-       FONT AWESOME
-  ========================================================== -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-  <style>
-    /* =========================================================
-       ROOT / COLOR SYSTEM
-    ========================================================== */
-
-    :root {
-      --deep-ocean: #062A4D;
-      --navy: #083B66;
-      --government: #0B5FA5;
-      --primary: #1677C8;
-      --sky: #4FA9E8;
-
-      --soft-blue: #EAF4FB;
-      --white: #FFFFFF;
-      --background: #F5F8FC;
-
-      --text: #102A43;
-      --muted: #64748B;
-
-      --border: #DCE6EF;
-      --success: #159957;
-      --warning: #D99100;
-      --danger: #D64545;
-
-      --shadow-sm: 0 5px 18px rgba(6, 42, 77, .08);
-      --shadow-md: 0 15px 40px rgba(6, 42, 77, .12);
-      --shadow-lg: 0 25px 70px rgba(6, 42, 77, .18);
-
-      --radius-sm: 10px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-
-      --transition: .3s ease;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* DARK MODE */
-    body.dark {
-      --background: #071522;
-      --white: #0D2235;
-      --text: #E8F1F8;
-      --muted: #A9BBC9;
-      --border: #1C3A50;
-      --soft-blue: #0B2941;
-
-      --shadow-sm: 0 5px 18px rgba(0,0,0,.2);
-      --shadow-md: 0 15px 40px rgba(0,0,0,.25);
-      --shadow-lg: 0 25px 70px rgba(0,0,0,.3);
-    }
+<title>Desa Semparuk — Portal Resmi Pemerintah Desa</title>
 
-    /* =========================================================
-       RESET
-    ========================================================== */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta name="description"
+content="Portal Informasi dan Pelayanan Digital Desa Semparuk, Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat.">
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    body {
-      font-family: "Inter", sans-serif;
-      background: var(--background);
-      color: var(--text);
-      line-height: 1.7;
-      transition: background .3s ease, color .3s ease;
-      overflow-x: hidden;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    body.loading {
-      overflow: hidden;
-    }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-    }
+<style>
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+/* =========================================================
+   VARIABLES
+========================================================= */
 
-    button,
-    input,
-    select,
-    textarea {
-      font: inherit;
-    }
+:root{
+    --deep-ocean:#062A4D;
+    --navy-gov:#083B66;
+    --gov-blue:#0B5FA5;
+    --primary-blue:#1677C8;
+    --sky-accent:#4FA3DE;
 
-    button {
-      border: none;
-      cursor: pointer;
-    }
+    --soft-blue:#EAF4FB;
 
-    ul {
-      list-style: none;
-    }
+    --white:#FFFFFF;
+    --bg:#F5F8FC;
 
-    .container {
-      width: min(1180px, calc(100% - 40px));
-      margin: auto;
-    }
+    --text-dark:#0E2438;
+    --text-muted:#60758A;
 
-    section {
-      padding: 100px 0;
-    }
+    --border:#DCE7F2;
 
-    /* =========================================================
-       LOADING SCREEN
-    ========================================================== */
-
-    #loader {
-      position: fixed;
-      inset: 0;
-      z-index: 99999;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--deep-ocean),
-          var(--government)
-        );
-
-      transition: opacity .5s ease, visibility .5s ease;
-    }
+    --radius-sm:8px;
+    --radius-md:14px;
+    --radius-lg:22px;
 
-    #loader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
+    --shadow-sm:0 4px 15px rgba(6,42,77,.07);
+    --shadow-md:0 15px 40px rgba(6,42,77,.12);
 
-    .loader-box {
-      text-align: center;
-      color: white;
-    }
+    --gradient-deep:
+    linear-gradient(135deg,#062A4D,#0B5FA5,#1677C8);
 
-    .loader-logo {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.6);
+    --gradient-primary:
+    linear-gradient(135deg,#1677C8,#0B5FA5);
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
 
-      margin: auto auto 20px;
+/* DARK MODE */
 
-      font-family: Poppins;
-      font-size: 25px;
-      font-weight: 800;
+[data-theme="dark"]{
+    --bg:#08192B;
+    --white:#0D2338;
+    --soft-blue:#0F2C46;
 
-      animation: pulse 1.5s infinite;
-    }
+    --text-dark:#EAF2FA;
+    --text-muted:#9FB7CC;
 
-    .loader-box p {
-      font-size: 13px;
-      opacity: .8;
-    }
+    --border:#1B3A57;
+}
 
-    @keyframes pulse {
-      0%,100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 rgba(255,255,255,0);
-      }
-
-      50% {
-        transform: scale(1.08);
-        box-shadow: 0 0 35px rgba(255,255,255,.2);
-      }
-    }
 
-    /* =========================================================
-       TOP GOVERNMENT BAR
-    ========================================================== */
-
-    .government-bar {
-      background: var(--deep-ocean);
-      color: white;
-      font-size: 12px;
-    }
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text-dark);
+    line-height:1.7;
+    overflow-x:hidden;
+    transition:.3s;
+}
 
-    .government-inner {
-      min-height: 38px;
+img{
+    max-width:100%;
+    display:block;
+}
 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+a{
+    text-decoration:none;
+    color:inherit;
+}
 
-      gap: 20px;
-    }
+button,
+input,
+textarea,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 24px;
+}
+
+section{
+    padding:90px 0;
+}
+
+@media(max-width:768px){
+    section{
+        padding:60px 0;
+    }
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5{
+    font-family:'Poppins',sans-serif;
+    color:var(--deep-ocean);
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5{
+    color:#EAF2FA;
+}
+
+.section-head{
+    max-width:650px;
+    margin:0 auto 50px;
+    text-align:center;
+}
+
+.section-head h2{
+    font-size:clamp(1.8rem,4vw,2.5rem);
+    margin-bottom:10px;
+}
+
+.section-head p{
+    color:var(--text-muted);
+}
+
+.kicker{
+    color:var(--primary-blue);
+    font-size:.8rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:8px;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
 
-    .government-left {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      font-weight: 600;
-      letter-spacing: .3px;
-    }
+    padding:13px 23px;
+
+    border-radius:10px;
+
+    font-size:.9rem;
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.btn-primary{
+    background:var(--gradient-primary);
+    color:#fff;
+
+    box-shadow:
+    0 8px 20px rgba(22,119,200,.3);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    color:#fff;
+}
 
-    .government-right {
-      display: flex;
-      gap: 20px;
-    }
+.btn-outline{
+    color:#fff;
+    border:1px solid rgba(255,255,255,.7);
+}
 
-    .government-right span {
-      display: flex;
-      gap: 7px;
-      align-items: center;
-      opacity: .9;
-    }
+.btn-outline:hover{
+    background:rgba(255,255,255,.12);
+    color:#fff;
+}
 
-    /* =========================================================
-       NAVBAR
-    ========================================================== */
+.btn-soft{
+    background:var(--soft-blue);
+    color:var(--gov-blue);
+}
 
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 9000;
+.btn-soft:hover{
+    background:var(--primary-blue);
+    color:#fff;
+}
 
-      background: rgba(255,255,255,.96);
-      border-bottom: 1px solid var(--border);
 
-      backdrop-filter: blur(15px);
-    }
+/* =========================================================
+   PAGE LOADER
+========================================================= */
 
-    body.dark .navbar {
-      background: rgba(13,34,53,.95);
-    }
+.page-loader{
+    position:fixed;
+    inset:0;
+    background:var(--deep-ocean);
 
-    .nav-inner {
-      min-height: 82px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    z-index:9999;
 
-      gap: 25px;
-    }
+    transition:.5s;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 220px;
-    }
+.page-loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
 
-    .brand-logo {
-      width: 52px;
-      height: 52px;
+.loader-logo{
+    width:65px;
+    height:65px;
 
-      border-radius: 50%;
-      overflow: hidden;
+    border-radius:16px;
 
-      border: 2px solid var(--government);
-      background: white;
+    background:#fff;
+    color:var(--deep-ocean);
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-      flex-shrink: 0;
-    }
+    font-family:'Poppins';
+    font-weight:800;
+    font-size:20px;
 
-    .brand-logo img {
-      height: 100%;
-      object-fit: contain;
-    }
+    animation:pulse 1.2s infinite;
+}
 
-    .brand-fallback {
-      font-family: Poppins;
-      color: var(--government);
-      font-weight: 800;
-      font-size: 19px;
+@keyframes pulse{
+    50%{
+        transform:scale(1.1);
     }
+}
 
-    .brand-text strong {
-      display: block;
 
-      font-family: Poppins;
-      font-size: 15px;
-      line-height: 1.2;
+/* =========================================================
+   TOP BAR
+========================================================= */
 
-      color: var(--deep-ocean);
-    }
+.topbar{
+    background:var(--deep-ocean);
+    color:#DCEAFB;
+    padding:7px 0;
+    font-size:.78rem;
+}
 
-    body.dark .brand-text strong {
-      color: white;
-    }
+.topbar .container{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+}
 
-    .brand-text small {
-      font-size: 10px;
-      color: var(--muted);
-    }
+.topbar-right{
+    display:flex;
+    gap:20px;
+}
 
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 2px;
+@media(max-width:700px){
+
+    .topbar-right{
+        display:none;
     }
 
-    .nav-menu a {
-      position: relative;
+}
 
-      padding: 30px 10px;
 
-      color: var(--text);
-      font-size: 12px;
-      font-weight: 600;
+/* =========================================================
+   NAVBAR
+========================================================= */
 
-      transition: var(--transition);
-    }
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
 
-    .nav-menu a::after {
-      content: "";
+    background:rgba(255,255,255,.94);
 
-      position: absolute;
-      bottom: 20px;
-      left: 10px;
-      right: 10px;
+    backdrop-filter:blur(12px);
 
-      height: 2px;
-      background: var(--primary);
+    border-bottom:1px solid var(--border);
 
-      transform: scaleX(0);
-      transition: var(--transition);
-    }
+    transition:.3s;
+}
 
-    .nav-menu a:hover,
-    .nav-menu a.active {
-      color: var(--primary);
-    }
+[data-theme="dark"] .navbar{
+    background:rgba(13,35,56,.95);
+}
 
-    .nav-menu a.active::after,
-    .nav-menu a:hover::after {
-      transform: scaleX(1);
-    }
+.navbar.scrolled{
+    box-shadow:var(--shadow-sm);
+}
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+.nav-inner{
+    min-height:76px;
 
-    .icon-btn {
-      width: 40px;
-      height: 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
-      border-radius: 10px;
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+.brand-mark{
+    width:46px;
+    height:46px;
 
-      background: var(--soft-blue);
-      color: var(--government);
+    border-radius:12px;
 
-      transition: var(--transition);
-    }
+    background:var(--gradient-deep);
 
-    .icon-btn:hover {
-      background: var(--government);
-      color: white;
-      transform: translateY(-2px);
-    }
+    color:#fff;
 
-    .nav-cta {
-      padding: 11px 15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-      border-radius: 10px;
+    font-family:'Poppins';
+    font-weight:800;
+}
 
-      background: var(--government);
-      color: white;
+.brand-name{
+    font-family:'Poppins';
+    font-weight:800;
+    color:var(--deep-ocean);
+}
 
-      font-size: 12px;
-      font-weight: 700;
+[data-theme="dark"] .brand-name{
+    color:#fff;
+}
 
-      transition: var(--transition);
-    }
+.brand-tag{
+    font-size:.7rem;
+    color:var(--text-muted);
+}
 
-    .nav-cta:hover {
-      background: var(--deep-ocean);
-      transform: translateY(-2px);
-    }
+.nav-menu{
+    display:flex;
+    align-items:center;
+    gap:24px;
+}
 
-    .hamburger {
-      display: none;
-    }
+.nav-menu a{
+    font-size:.86rem;
+    font-weight:600;
+    position:relative;
+}
 
-    /* =========================================================
-       HERO
-    ========================================================== */
-
-    .hero {
-      position: relative;
-      min-height: calc(100vh - 120px);
-
-      display: flex;
-      align-items: center;
-
-      overflow: hidden;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(6,42,77,.95),
-          rgba(8,59,102,.78),
-          rgba(11,95,165,.35)
-        ),
-        url("assets/bground.JPG") center/cover no-repeat;
-    }
+.nav-menu a::after{
+    content:"";
 
-    .hero::before {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          120deg,
-          transparent 0 45%,
-          rgba(255,255,255,.05) 45% 46%,
-          transparent 46% 100%
-        );
-    }
+    position:absolute;
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
+    left:0;
+    bottom:-5px;
 
-      max-width: 750px;
-      color: white;
-    }
+    width:0;
+    height:2px;
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    background:var(--primary-blue);
 
-      padding: 8px 13px;
-      margin-bottom: 25px;
+    transition:.25s;
+}
 
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 30px;
+.nav-menu a:hover::after,
+.nav-menu a.active::after{
+    width:100%;
+}
 
-      background: rgba(255,255,255,.1);
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
 
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
+.theme-toggle{
+    width:40px;
+    height:40px;
 
-      backdrop-filter: blur(10px);
+    border-radius:50%;
 
-      animation: fadeUp .8s ease both;
-    }
+    background:var(--soft-blue);
+    color:var(--gov-blue);
+}
 
-    .hero h1 {
-      font-family: Poppins;
-      font-size: clamp(38px, 6vw, 72px);
-      line-height: 1.08;
+.hamburger{
+    display:none;
 
-      margin-bottom: 25px;
+    width:30px;
 
-      animation: fadeUp .9s .1s ease both;
-    }
+    flex-direction:column;
+    gap:5px;
+}
 
-    .hero h1 span {
-      color: #A9D9FF;
-    }
+.hamburger span{
+    height:3px;
+    background:var(--deep-ocean);
+    border-radius:5px;
+}
 
-    .hero p {
-      max-width: 650px;
+@media(max-width:1000px){
 
-      font-size: 16px;
-      color: rgba(255,255,255,.87);
+    .nav-menu{
 
-      margin-bottom: 32px;
+        position:fixed;
 
-      animation: fadeUp .9s .2s ease both;
-    }
+        top:0;
+        right:-100%;
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+        width:290px;
+        height:100vh;
 
-      animation: fadeUp .9s .3s ease both;
-    }
+        padding:110px 30px 30px;
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
+        background:var(--white);
 
-      padding: 13px 20px;
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
 
-      border-radius: 10px;
+        gap:22px;
 
-      font-size: 13px;
-      font-weight: 700;
+        box-shadow:-10px 0 30px rgba(0,0,0,.15);
 
-      transition: var(--transition);
-    }
+        transition:.35s;
 
-    .btn-primary {
-      background: white;
-      color: var(--deep-ocean);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(0,0,0,.2);
+    .nav-menu.open{
+        right:0;
     }
 
-    .btn-outline {
-      border: 1px solid rgba(255,255,255,.4);
-      color: white;
-      background: rgba(255,255,255,.08);
+    .hamburger{
+        display:flex;
     }
 
-    .btn-outline:hover {
-      background: white;
-      color: var(--deep-ocean);
+    .nav-actions .btn-soft{
+        display:none;
     }
 
-    .hero-scroll {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
+}
 
-      transform: translateX(-50%);
 
-      color: rgba(255,255,255,.65);
-      font-size: 11px;
-    }
+/* =========================================================
+   HERO
+========================================================= */
 
-    .hero-scroll i {
-      display: block;
-      text-align: center;
-      margin-top: 5px;
-      animation: bounce 1.5s infinite;
-    }
+.hero{
 
-    @keyframes bounce {
-      50% {
-        transform: translateY(6px);
-      }
-    }
+    min-height:720px;
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    display:flex;
+    align-items:center;
 
-    /* =========================================================
-       QUICK ACCESS
-    ========================================================== */
-
-    .quick-wrap {
-      margin-top: -45px;
-      position: relative;
-      z-index: 10;
-    }
+    position:relative;
 
-    .quick-card {
-      background: var(--white);
-      border: 1px solid var(--border);
+    background:
 
-      border-radius: var(--radius-lg);
+    linear-gradient(
+        120deg,
+        rgba(6,42,77,.95),
+        rgba(11,95,165,.76)
+    ),
 
-      box-shadow: var(--shadow-lg);
+    url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=85")
 
-      padding: 25px;
-    }
+    center/cover;
 
-    .quick-title {
-      margin-bottom: 18px;
-    }
+    color:#fff;
 
-    .quick-title small {
-      color: var(--government);
-      font-weight: 700;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+    overflow:hidden;
 
-    .quick-title h2 {
-      font-family: Poppins;
-      font-size: 21px;
-      margin-top: 3px;
-    }
+}
 
-    .quick-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
-    }
+.hero-content{
+    max-width:760px;
+}
 
-    .quick-item {
-      padding: 17px 10px;
+.hero-badge{
 
-      border: 1px solid var(--border);
-      border-radius: 12px;
+    display:inline-flex;
 
-      text-align: center;
+    padding:8px 15px;
 
-      transition: var(--transition);
-    }
+    border:1px solid rgba(255,255,255,.3);
 
-    .quick-item i {
-      color: var(--government);
-      font-size: 20px;
-      margin-bottom: 7px;
-    }
+    border-radius:30px;
 
-    .quick-item span {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-    }
+    background:rgba(255,255,255,.1);
 
-    .quick-item:hover {
-      border-color: var(--primary);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-sm);
-    }
+    font-size:.8rem;
 
-    /* =========================================================
-       SECTION HEADER
-    ========================================================== */
-
-    .section-header {
-      max-width: 700px;
-      margin: 0 auto 50px;
-      text-align: center;
-    }
+    margin-bottom:22px;
 
-    .section-header small {
-      color: var(--government);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-size: 11px;
-      font-weight: 800;
-    }
+}
 
-    .section-header h2 {
-      font-family: Poppins;
-      font-size: clamp(28px, 4vw, 40px);
-      line-height: 1.2;
-      margin: 8px 0 12px;
-    }
+.hero h1{
 
-    .section-header p {
-      color: var(--muted);
-      font-size: 14px;
-    }
+    color:#fff;
 
-    /* =========================================================
-       STATISTICS
-    ========================================================== */
+    font-size:clamp(2.5rem,6vw,4.5rem);
 
-    .stats-section {
-      background: var(--background);
-    }
+    line-height:1.1;
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
+    font-weight:800;
 
-    .stat-card {
-      background: var(--white);
-      border: 1px solid var(--border);
+    margin-bottom:20px;
 
-      padding: 28px;
+}
 
-      border-radius: var(--radius-md);
+.hero p{
 
-      box-shadow: var(--shadow-sm);
+    color:#D7E8F7;
 
-      position: relative;
-      overflow: hidden;
+    max-width:650px;
 
-      transition: var(--transition);
-    }
+    font-size:1.05rem;
 
-    .stat-card::before {
-      content: "";
+    margin-bottom:32px;
 
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
+}
 
-      width: 4px;
+.hero-buttons{
 
-      background: var(--government);
-    }
+    display:flex;
 
-    .stat-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
+    flex-wrap:wrap;
 
-    .stat-icon {
-      width: 46px;
-      height: 46px;
+    gap:14px;
 
-      border-radius: 12px;
+}
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
 
-      background: var(--soft-blue);
-      color: var(--government);
+/* =========================================================
+   QUICK ACCESS
+========================================================= */
 
-      margin-bottom: 18px;
-    }
+.quick-access{
 
-    .stat-number {
-      font-family: Poppins;
-      font-size: 34px;
-      line-height: 1;
+    margin-top:-65px;
 
-      color: var(--deep-ocean);
-    }
+    position:relative;
 
-    body.dark .stat-number {
-      color: white;
-    }
+    z-index:5;
 
-    .stat-label {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 8px;
-    }
+}
 
-    /* =========================================================
-       PROFILE
-    ========================================================== */
+.quick-card{
 
-    .profile-section {
-      background: var(--white);
-    }
+    background:var(--white);
 
-    .profile-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+    border-radius:22px;
 
-      align-items: center;
-    }
+    box-shadow:var(--shadow-md);
 
-    .profile-image {
-      position: relative;
-    }
+    padding:30px;
 
-    .profile-image img {
-      height: 470px;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-    }
+    border:1px solid var(--border);
 
-    .image-label {
-      position: absolute;
-      left: 25px;
-      bottom: 25px;
+}
 
-      padding: 13px 16px;
+.quick-grid{
 
-      background: rgba(6,42,77,.9);
-      color: white;
+    display:grid;
 
-      border-radius: 12px;
+    grid-template-columns:repeat(6,1fr);
 
-      backdrop-filter: blur(10px);
-    }
+    gap:14px;
 
-    .image-label strong {
-      display: block;
-      font-family: Poppins;
-    }
+}
 
-    .image-label small {
-      opacity: .75;
-      font-size: 10px;
-    }
+.quick-item{
 
-    .profile-content small {
-      color: var(--government);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
+    text-align:center;
 
-    .profile-content h2 {
-      font-family: Poppins;
-      font-size: 38px;
-      line-height: 1.2;
-      margin: 8px 0 20px;
-    }
+    padding:18px 10px;
 
-    .profile-content p {
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
+    border:1px solid var(--border);
 
-    .profile-points {
-      display: grid;
-      gap: 10px;
-      margin: 25px 0;
-    }
+    border-radius:14px;
 
-    .profile-points li {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      font-size: 13px;
-      font-weight: 600;
-    }
+    transition:.25s;
 
-    .profile-points i {
-      color: var(--government);
-    }
+}
 
-    .blue-btn {
-      background: var(--government);
-      color: white;
-    }
+.quick-item:hover{
 
-    .blue-btn:hover {
-      background: var(--deep-ocean);
-      transform: translateY(-3px);
-    }
+    transform:translateY(-4px);
 
-    /* =========================================================
-       GOVERNMENT
-    ========================================================== */
+    background:var(--soft-blue);
 
-    .government-section {
-      background: var(--background);
-    }
+}
 
-    .government-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 2fr;
-      gap: 25px;
-    }
+.quick-icon{
 
-    .leader-card {
-      background:
-        linear-gradient(
-          145deg,
-          var(--deep-ocean),
-          var(--government)
-        );
+    width:45px;
+    height:45px;
 
-      color: white;
+    border-radius:12px;
 
-      padding: 30px;
+    margin:0 auto 10px;
 
-      border-radius: var(--radius-lg);
+    display:flex;
 
-      min-height: 370px;
+    align-items:center;
+    justify-content:center;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+    background:var(--soft-blue);
 
-      box-shadow: var(--shadow-md);
-    }
+    color:var(--gov-blue);
 
-    .leader-icon {
-      width: 70px;
-      height: 70px;
+}
 
-      border-radius: 50%;
+.quick-item span{
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    font-size:.78rem;
 
-      background: rgba(255,255,255,.12);
+    font-weight:700;
 
-      font-size: 30px;
+}
 
-      margin-bottom: auto;
-    }
+@media(max-width:900px){
 
-    .leader-card small {
-      opacity: .7;
+    .quick-grid{
+        grid-template-columns:repeat(3,1fr);
     }
 
-    .leader-card h3 {
-      font-family: Poppins;
-      margin-top: 5px;
-    }
+}
 
-    .gov-cards {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 15px;
+@media(max-width:500px){
+
+    .quick-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .gov-card {
-      background: var(--white);
-      border: 1px solid var(--border);
+}
 
-      border-radius: var(--radius-md);
-      padding: 25px;
 
-      transition: var(--transition);
-    }
+/* =========================================================
+   STATISTIK
+========================================================= */
 
-    .gov-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
+.stats{
+    background:var(--soft-blue);
+}
 
-    .gov-card i {
-      font-size: 24px;
-      color: var(--government);
-      margin-bottom: 18px;
-    }
+.stats-grid{
 
-    .gov-card h3 {
-      font-family: Poppins;
-      font-size: 17px;
-    }
+    display:grid;
 
-    .gov-card p {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 6px;
-    }
+    grid-template-columns:repeat(4,1fr);
 
-    /* =========================================================
-       PROGRAM
-    ========================================================== */
+    gap:20px;
 
-    .program-section {
-      background: var(--white);
-    }
+}
 
-    .program-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 16px;
-    }
+.stat-card{
 
-    .program-card {
-      position: relative;
+    background:var(--white);
 
-      background: var(--background);
+    border:1px solid var(--border);
 
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
+    border-radius:20px;
 
-      padding: 25px;
+    padding:28px 20px;
 
-      overflow: hidden;
+    text-align:center;
 
-      transition: var(--transition);
-    }
+    box-shadow:var(--shadow-sm);
 
-    .program-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary);
-    }
+}
 
-    .program-number {
-      position: absolute;
-      right: 18px;
-      top: 12px;
+.stat-icon{
 
-      font-family: Poppins;
-      font-size: 40px;
+    width:50px;
+    height:50px;
 
-      color: rgba(22,119,200,.08);
-      font-weight: 800;
-    }
+    border-radius:14px;
 
-    .program-icon {
-      width: 48px;
-      height: 48px;
+    margin:auto auto 15px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    background:var(--gradient-deep);
 
-      background: var(--soft-blue);
-      color: var(--government);
+    color:#fff;
 
-      border-radius: 12px;
+    display:flex;
 
-      margin-bottom: 18px;
-    }
+    align-items:center;
 
-    .program-card h3 {
-      font-family: Poppins;
-      font-size: 16px;
-    }
+    justify-content:center;
 
-    .program-card p {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 7px;
-    }
+}
 
-    /* =========================================================
-       DIGITAL SERVICES
-    ========================================================== */
-
-    .services-section {
-      background:
-        linear-gradient(
-          135deg,
-          var(--deep-ocean),
-          var(--navy)
-        );
-
-      color: white;
-    }
+.stat-number{
 
-    .services-section .section-header small {
-      color: #8DCEFA;
-    }
+    font-family:'Poppins';
 
-    .services-section .section-header p {
-      color: rgba(255,255,255,.68);
-    }
+    font-size:2rem;
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(5,1fr);
-      gap: 14px;
-    }
+    font-weight:800;
 
-    .service-card {
-      padding: 25px;
+}
 
-      border-radius: var(--radius-md);
+.stat-label{
 
-      border: 1px solid rgba(255,255,255,.13);
+    color:var(--text-muted);
 
-      background: rgba(255,255,255,.06);
+    font-size:.85rem;
 
-      backdrop-filter: blur(10px);
+}
 
-      transition: var(--transition);
-    }
+@media(max-width:750px){
 
-    .service-card:hover {
-      background: rgba(255,255,255,.12);
-      transform: translateY(-5px);
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .service-card i {
-      font-size: 25px;
-      color: #8DCEFA;
-      margin-bottom: 20px;
-    }
+}
 
-    .service-card h3 {
-      font-family: Poppins;
-      font-size: 15px;
-    }
 
-    .service-card p {
-      font-size: 11px;
-      color: rgba(255,255,255,.67);
-      margin-top: 8px;
-    }
+/* =========================================================
+   PROFILE
+========================================================= */
 
-    /* =========================================================
-       COMPLAINT
-    ========================================================== */
+.profile-grid{
 
-    .complaint-section {
-      background: var(--background);
-    }
+    display:grid;
 
-    .complaint-grid {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 30px;
-      align-items: start;
-    }
+    grid-template-columns:1fr 1fr;
 
-    .complaint-info {
-      background:
-        linear-gradient(
-          145deg,
-          var(--deep-ocean),
-          var(--government)
-        );
+    gap:55px;
 
-      color: white;
+    align-items:center;
 
-      padding: 35px;
+}
 
-      border-radius: var(--radius-lg);
+.profile-image{
 
-      position: sticky;
-      top: 110px;
-    }
+    width:100%;
 
-    .complaint-info i.big {
-      font-size: 42px;
-      color: #8DCEFA;
-      margin-bottom: 20px;
-    }
+    height:450px;
 
-    .complaint-info h2 {
-      font-family: Poppins;
-      font-size: 30px;
-      line-height: 1.2;
-      margin-bottom: 15px;
-    }
+    object-fit:cover;
 
-    .complaint-info p {
-      color: rgba(255,255,255,.72);
-      font-size: 13px;
-    }
+    border-radius:22px;
 
-    .complaint-list {
-      margin-top: 25px;
-      display: grid;
-      gap: 12px;
-    }
+    box-shadow:var(--shadow-md);
 
-    .complaint-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-    }
+}
 
-    .complaint-list i {
-      color: #8DCEFA;
-    }
+.profile-list{
 
-    .form-card {
-      background: var(--white);
+    display:flex;
 
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+    flex-direction:column;
 
-      padding: 35px;
+    gap:13px;
 
-      box-shadow: var(--shadow-sm);
-    }
+    margin:25px 0;
 
-    .form-card h3 {
-      font-family: Poppins;
-      margin-bottom: 5px;
-    }
+}
 
-    .form-card > p {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 25px;
-    }
+.profile-list li{
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
+    display:flex;
 
-    .form-group {
-      margin-bottom: 15px;
-    }
+    gap:10px;
 
-    .form-group.full {
-      grid-column: 1 / -1;
-    }
+}
 
-    .form-group label {
-      display: block;
+.profile-list i{
 
-      font-size: 11px;
-      font-weight: 700;
+    color:var(--primary-blue);
 
-      margin-bottom: 7px;
+    margin-top:5px;
+
+}
+
+@media(max-width:800px){
+
+    .profile-grid{
+        grid-template-columns:1fr;
     }
 
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
+}
 
-      border: 1px solid var(--border);
-      border-radius: 10px;
 
-      padding: 12px 13px;
+/* =========================================================
+   SAMBUTAN
+========================================================= */
 
-      background: var(--background);
-      color: var(--text);
+.sambutan{
 
-      outline: none;
+    background:var(--soft-blue);
 
-      transition: var(--transition);
-    }
+}
 
-    .form-group textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
+.sambutan-card{
 
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(22,119,200,.1);
-    }
+    display:grid;
 
-    .token-result {
-      display: none;
+    grid-template-columns:300px 1fr;
 
-      margin-top: 20px;
-      padding: 20px;
+    gap:35px;
 
-      border-radius: 12px;
+    align-items:center;
 
-      background: var(--soft-blue);
-      border: 1px solid #B9DDF7;
-    }
+    background:var(--white);
 
-    .token-result.show {
-      display: block;
-      animation: fadeUp .4s ease;
-    }
+    padding:30px;
 
-    .token-label {
-      font-size: 10px;
-      color: var(--government);
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
+    border-radius:22px;
 
-    .token-value {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    box-shadow:var(--shadow-sm);
 
-      margin-top: 6px;
-      gap: 10px;
-    }
+}
 
-    .token-value strong {
-      font-family: Poppins;
-      font-size: 19px;
-      letter-spacing: 1px;
-      color: var(--deep-ocean);
-    }
+.kepala-img{
 
-    .copy-token {
-      padding: 8px 12px;
+    width:100%;
 
-      border-radius: 8px;
+    height:350px;
 
-      background: var(--government);
-      color: white;
+    object-fit:cover;
 
-      font-size: 11px;
-      font-weight: 700;
-    }
+    border-radius:18px;
 
-    /* =========================================================
-       CHECK COMPLAINT
-    ========================================================== */
+}
 
-    .check-section {
-      background: var(--white);
+.sambutan-card p{
+
+    color:var(--text-muted);
+
+}
+
+@media(max-width:700px){
+
+    .sambutan-card{
+        grid-template-columns:1fr;
     }
 
-    .check-card {
-      max-width: 800px;
-      margin: auto;
+}
 
-      background:
-        linear-gradient(
-          135deg,
-          var(--deep-ocean),
-          var(--government)
-        );
 
-      color: white;
+/* =========================================================
+   PEMERINTAHAN
+========================================================= */
 
-      padding: 40px;
+.gov-section{
 
-      border-radius: var(--radius-lg);
+    background:var(--bg);
 
-      box-shadow: var(--shadow-lg);
+}
 
-      text-align: center;
-    }
+.gov-grid{
 
-    .check-card h2 {
-      font-family: Poppins;
-      font-size: 30px;
-    }
+    display:grid;
 
-    .check-card p {
-      font-size: 13px;
-      opacity: .72;
-      margin: 7px auto 25px;
-    }
+    grid-template-columns:repeat(4,1fr);
 
-    .check-form {
-      display: flex;
-      gap: 10px;
-      max-width: 600px;
-      margin: auto;
-    }
+    gap:20px;
 
-    .check-form input {
-      flex: 1;
+}
 
-      padding: 13px 15px;
+.gov-card{
 
-      border: none;
-      border-radius: 10px;
+    background:var(--white);
 
-      outline: none;
-    }
+    border:1px solid var(--border);
 
-    .check-form button {
-      padding: 13px 20px;
+    border-radius:18px;
 
-      border-radius: 10px;
+    overflow:hidden;
 
-      background: white;
-      color: var(--deep-ocean);
+    transition:.3s;
 
-      font-weight: 800;
-    }
+}
 
-    .status-result {
-      margin-top: 25px;
-      display: none;
-    }
+.gov-card:hover{
 
-    .status-result.show {
-      display: block;
-      animation: fadeUp .4s ease;
-    }
+    transform:translateY(-5px);
 
-    .status-box {
-      padding: 15px;
+    box-shadow:var(--shadow-md);
 
-      border-radius: 12px;
+}
 
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.15);
-    }
+.gov-photo{
 
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    height:160px;
 
-      padding: 7px 12px;
+    background:var(--gradient-deep);
 
-      border-radius: 30px;
+    color:#fff;
 
-      font-size: 11px;
-      font-weight: 800;
-    }
+    display:flex;
 
-    .status-menunggu {
-      background: rgba(217,145,0,.18);
-      color: #FFD36E;
-    }
+    align-items:center;
 
-    .status-diproses {
-      background: rgba(22,119,200,.25);
-      color: #9DD7FF;
-    }
+    justify-content:center;
 
-    .status-selesai {
-      background: rgba(21,153,87,.2);
-      color: #83E5B1;
-    }
+    font-size:45px;
 
-    /* =========================================================
-       GALLERY
-    ========================================================== */
+}
 
-    .gallery-section {
-      background: var(--background);
-    }
+.gov-info{
 
-    .filter-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 7px;
-      margin-bottom: 30px;
-    }
+    padding:20px;
 
-    .filter-btn {
-      padding: 8px 14px;
+}
 
-      border-radius: 30px;
+.gov-info h4{
 
-      background: var(--white);
-      color: var(--muted);
+    font-size:1rem;
 
-      border: 1px solid var(--border);
+    margin-bottom:4px;
 
-      font-size: 11px;
-      font-weight: 700;
-    }
+}
 
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: var(--government);
-      color: white;
-      border-color: var(--government);
-    }
+.gov-info span{
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 15px;
-    }
+    font-size:.8rem;
 
-    .gallery-item {
-      height: 260px;
-      position: relative;
+    color:var(--text-muted);
 
-      overflow: hidden;
-      border-radius: var(--radius-md);
+}
 
-      cursor: pointer;
+@media(max-width:900px){
+
+    .gov-grid{
+        grid-template-columns:repeat(2,1fr);
     }
+
+}
 
-    .gallery-item img {
-      height: 100%;
-      transition: .5s ease;
+@media(max-width:500px){
+
+    .gov-grid{
+        grid-template-columns:1fr;
     }
 
-    .gallery-overlay {
-      position: absolute;
-      inset: 0;
+}
 
-      display: flex;
-      align-items: flex-end;
 
-      padding: 20px;
+/* =========================================================
+   PROGRAM
+========================================================= */
 
-      background:
-        linear-gradient(
-          transparent,
-          rgba(6,42,77,.9)
-        );
+.program{
 
-      color: white;
+    background:var(--soft-blue);
 
-      opacity: 0;
-      transition: var(--transition);
-    }
+}
 
-    .gallery-item:hover img {
-      transform: scale(1.07);
-    }
+.program-grid{
 
-    .gallery-item:hover .gallery-overlay {
-      opacity: 1;
-    }
+    display:grid;
 
-    .gallery-overlay strong {
-      font-family: Poppins;
-      font-size: 14px;
-    }
+    grid-template-columns:repeat(3,1fr);
 
-    /* =========================================================
-       POTENTIAL
-    ========================================================== */
+    gap:20px;
 
-    .potential-section {
-      background: var(--white);
-    }
+}
 
-    .potential-grid {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 15px;
-    }
+.program-card{
 
-    .potential-card {
-      padding: 25px;
+    background:var(--white);
 
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
+    border-radius:18px;
 
-      transition: var(--transition);
-    }
+    padding:27px;
 
-    .potential-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary);
-    }
+    border:1px solid var(--border);
 
-    .potential-card i {
-      color: var(--government);
-      font-size: 23px;
-      margin-bottom: 15px;
-    }
+    transition:.3s;
 
-    .potential-card h3 {
-      font-family: Poppins;
-      font-size: 15px;
-    }
+}
 
-    .potential-card p {
-      color: var(--muted);
-      font-size: 11px;
-      margin-top: 5px;
-    }
+.program-card:hover{
 
-    /* =========================================================
-       NEWS
-    ========================================================== */
+    transform:translateY(-5px);
 
-    .news-section {
-      background: var(--background);
-    }
+    box-shadow:var(--shadow-md);
 
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 18px;
-    }
+}
 
-    .news-card {
-      background: var(--white);
-      border: 1px solid var(--border);
+.program-icon{
 
-      border-radius: var(--radius-md);
-      overflow: hidden;
+    width:50px;
+    height:50px;
 
-      transition: var(--transition);
-    }
+    border-radius:13px;
 
-    .news-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
+    background:var(--gradient-primary);
 
-    .news-image {
-      height: 200px;
-    }
+    color:#fff;
 
-    .news-image img {
-      height: 100%;
-    }
+    display:flex;
 
-    .news-content {
-      padding: 22px;
-    }
+    align-items:center;
 
-    .news-meta {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-
-      color: var(--muted);
-      font-size: 10px;
-      margin-bottom: 8px;
-    }
+    justify-content:center;
 
-    .news-category {
-      color: var(--government);
-      font-weight: 800;
-    }
+    margin-bottom:18px;
 
-    .news-content h3 {
-      font-family: Poppins;
-      font-size: 16px;
-      line-height: 1.4;
-    }
+}
 
-    .news-content p {
-      color: var(--muted);
-      font-size: 11px;
-      margin: 8px 0 15px;
-    }
+.program-card p{
 
-    .news-link {
-      color: var(--government);
-      font-size: 11px;
-      font-weight: 800;
-    }
+    color:var(--text-muted);
 
-    /* =========================================================
-       LOCATION
-    ========================================================== */
+    font-size:.86rem;
 
-    .location-section {
-      background: var(--white);
-    }
+}
 
-    .location-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
+@media(max-width:800px){
+
+    .program-grid{
+        grid-template-columns:1fr;
     }
 
-    .map-box {
-      min-height: 430px;
+}
 
-      border-radius: var(--radius-lg);
-      overflow: hidden;
 
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-md);
-    }
+/* =========================================================
+   LAYANAN
+========================================================= */
 
-    .map-box iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 430px;
-      border: 0;
-    }
+.services{
 
-    .location-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+    background:var(--deep-ocean);
 
-    .location-info small {
-      color: var(--government);
-      font-weight: 800;
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
+}
 
-    .location-info h2 {
-      font-family: Poppins;
-      font-size: 35px;
-      line-height: 1.2;
-      margin: 8px 0 15px;
-    }
+.services h2{
+    color:#fff;
+}
 
-    .location-info > p {
-      color: var(--muted);
-      font-size: 13px;
-    }
+.services .section-head p{
+    color:#BFD8F2;
+}
 
-    .contact-items {
-      display: grid;
-      gap: 14px;
-      margin-top: 25px;
-    }
+.service-grid{
 
-    .contact-item {
-      display: flex;
-      gap: 13px;
-      align-items: flex-start;
-    }
+    display:grid;
 
-    .contact-icon {
-      width: 40px;
-      height: 40px;
+    grid-template-columns:repeat(4,1fr);
 
-      flex-shrink: 0;
+    gap:18px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+}
 
-      border-radius: 10px;
+.service-card{
 
-      background: var(--soft-blue);
-      color: var(--government);
-    }
+    text-align:center;
 
-    .contact-item strong {
-      display: block;
-      font-size: 12px;
-    }
+    padding:25px 18px;
 
-    .contact-item span {
-      color: var(--muted);
-      font-size: 11px;
-    }
+    border-radius:18px;
 
-    /* =========================================================
-       CONTACT
-    ========================================================== */
+    background:rgba(255,255,255,.07);
 
-    .contact-section {
-      background: var(--background);
-    }
+    border:1px solid rgba(255,255,255,.15);
 
-    .contact-banner {
-      background:
-        linear-gradient(
-          135deg,
-          var(--deep-ocean),
-          var(--government)
-        );
+    color:#fff;
 
-      border-radius: var(--radius-lg);
+    transition:.3s;
 
-      padding: 45px;
+}
 
-      color: white;
+.service-card:hover{
 
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    transform:translateY(-5px);
 
-      gap: 30px;
-    }
+    background:rgba(255,255,255,.13);
 
-    .contact-banner h2 {
-      font-family: Poppins;
-      font-size: 30px;
-    }
+}
 
-    .contact-banner p {
-      color: rgba(255,255,255,.7);
-      font-size: 13px;
-      margin-top: 5px;
-    }
+.service-icon{
 
-    .contact-banner .btn {
-      background: white;
-      color: var(--deep-ocean);
-      flex-shrink: 0;
-    }
+    width:52px;
+    height:52px;
 
-    /* =========================================================
-       FOOTER
-    ========================================================== */
+    margin:auto auto 14px;
 
-    footer {
-      background: var(--deep-ocean);
-      color: white;
+    border-radius:50%;
 
-      padding-top: 70px;
-    }
+    background:rgba(255,255,255,.12);
 
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 40px;
-    }
+    display:flex;
 
-    .footer-brand {
-      max-width: 320px;
-    }
+    align-items:center;
 
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 15px;
-    }
+    justify-content:center;
 
-    .footer-logo-icon {
-      width: 50px;
-      height: 50px;
+    color:#8FCCFA;
 
-      border-radius: 50%;
+}
 
-      background: white;
-      color: var(--government);
+.service-card h4{
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    color:#fff;
 
-      font-family: Poppins;
-      font-weight: 800;
-    }
+    font-size:.9rem;
 
-    .footer-logo strong {
-      font-family: Poppins;
-      font-size: 16px;
-    }
+}
 
-    .footer-brand p {
-      color: rgba(255,255,255,.6);
-      font-size: 12px;
-    }
+.service-card p{
 
-    .footer-column h3 {
-      font-family: Poppins;
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
+    color:#BFD8F2;
 
-    .footer-column ul {
-      display: grid;
-      gap: 9px;
-    }
+    font-size:.76rem;
 
-    .footer-column a {
-      color: rgba(255,255,255,.62);
-      font-size: 11px;
-      transition: var(--transition);
-    }
+}
+
+@media(max-width:850px){
 
-    .footer-column a:hover {
-      color: white;
-      padding-left: 4px;
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .footer-bottom {
-      margin-top: 55px;
+}
 
-      border-top: 1px solid rgba(255,255,255,.1);
 
-      padding: 20px 0;
+/* =========================================================
+   PENGADUAN
+========================================================= */
 
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
+.complaint-grid{
 
-      color: rgba(255,255,255,.45);
-      font-size: 10px;
-    }
+    display:grid;
 
-    /* =========================================================
-       LIGHTBOX
-    ========================================================== */
+    grid-template-columns:1.2fr 1fr;
 
-    .lightbox {
-      position: fixed;
-      inset: 0;
+    gap:25px;
 
-      background: rgba(0,0,0,.88);
+}
 
-      z-index: 99998;
+.form-card{
 
-      display: none;
-      align-items: center;
-      justify-content: center;
+    background:var(--white);
 
-      padding: 30px;
-    }
+    padding:30px;
 
-    .lightbox.show {
-      display: flex;
-    }
+    border-radius:20px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.form-group{
+
+    margin-bottom:17px;
+
+}
+
+.form-group label{
+
+    display:block;
+
+    font-size:.82rem;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+
+}
+
+.form-control{
+
+    width:100%;
+
+    padding:12px 14px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:var(--bg);
+
+    color:var(--text-dark);
+
+}
+
+.form-control:focus{
+
+    outline:none;
+
+    border-color:var(--primary-blue);
 
-    .lightbox img {
-      max-width: 1000px;
-      max-height: 80vh;
+}
 
-      width: auto;
+textarea.form-control{
 
-      border-radius: 12px;
+    min-height:130px;
+
+    resize:vertical;
+
+}
+
+@media(max-width:800px){
+
+    .complaint-grid{
+        grid-template-columns:1fr;
     }
+
+}
+
+
+/* =========================================================
+   GALERI
+========================================================= */
+
+.gallery{
+
+    background:var(--soft-blue);
+
+}
+
+.gallery-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:15px;
+
+}
 
-    .lightbox-close {
-      position: absolute;
-      right: 25px;
-      top: 20px;
+.gallery-item{
 
-      width: 45px;
-      height: 45px;
+    height:230px;
 
-      border-radius: 50%;
+    border-radius:15px;
 
-      background: rgba(255,255,255,.1);
-      color: white;
+    overflow:hidden;
 
-      font-size: 20px;
+    cursor:pointer;
+
+}
+
+.gallery-item img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.4s;
+
+}
+
+.gallery-item:hover img{
+
+    transform:scale(1.08);
+
+}
+
+@media(max-width:800px){
+
+    .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
     }
+
+}
+
+
+/* =========================================================
+   POTENSI
+========================================================= */
+
+.potensi-grid{
 
-    /* =========================================================
-       TOAST
-    ========================================================== */
+    display:grid;
 
-    #toast {
-      position: fixed;
+    grid-template-columns:repeat(4,1fr);
 
-      right: 20px;
-      bottom: 20px;
+    gap:18px;
 
-      z-index: 100000;
+}
 
-      background: var(--deep-ocean);
-      color: white;
+.potensi-card{
 
-      padding: 13px 17px;
+    background:var(--white);
 
-      border-radius: 10px;
+    border:1px solid var(--border);
 
-      box-shadow: var(--shadow-lg);
+    padding:25px;
 
-      font-size: 12px;
-      font-weight: 600;
+    text-align:center;
 
-      transform: translateY(100px);
-      opacity: 0;
+    border-radius:18px;
 
-      transition: .4s ease;
+    transition:.3s;
+
+}
+
+.potensi-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.potensi-icon{
+
+    width:55px;
+    height:55px;
+
+    margin:auto auto 14px;
+
+    border-radius:50%;
+
+    background:var(--soft-blue);
+
+    color:var(--gov-blue);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.potensi-card h4{
+
+    font-size:.95rem;
+
+}
+
+@media(max-width:800px){
+
+    .potensi-grid{
+        grid-template-columns:repeat(2,1fr);
     }
+
+}
+
+
+/* =========================================================
+   BERITA
+========================================================= */
+
+.news-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:22px;
+
+}
+
+.news-card{
+
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
 
-    #toast.show {
-      transform: translateY(0);
-      opacity: 1;
+    overflow:hidden;
+
+    transition:.3s;
+
+}
+
+.news-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.news-img{
+
+    height:200px;
+
+    width:100%;
+
+    object-fit:cover;
+
+}
+
+.news-body{
+
+    padding:22px;
+
+}
+
+.news-meta{
+
+    font-size:.75rem;
+
+    color:var(--text-muted);
+
+    margin-bottom:8px;
+
+}
+
+.news-body h4{
+
+    font-size:1rem;
+
+}
+
+.news-body p{
+
+    color:var(--text-muted);
+
+    font-size:.82rem;
+
+}
+
+.news-body a{
+
+    color:var(--primary-blue);
+
+    font-weight:700;
+
+    font-size:.82rem;
+
+}
+
+@media(max-width:800px){
+
+    .news-grid{
+        grid-template-columns:1fr;
     }
+
+}
+
+
+/* =========================================================
+   TRANSPARANSI
+========================================================= */
+
+.transparansi{
+
+    background:var(--soft-blue);
+
+}
+
+.trans-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:15px;
+
+}
+
+.trans-card{
+
+    background:var(--white);
+
+    padding:25px 15px;
 
-    /* =========================================================
-       BACK TO TOP
-    ========================================================== */
+    text-align:center;
 
-    #backTop {
-      position: fixed;
+    border-radius:18px;
 
-      right: 20px;
-      bottom: 80px;
+    border:1px solid var(--border);
 
-      width: 42px;
-      height: 42px;
+}
 
-      border-radius: 50%;
+.trans-card i{
 
-      background: var(--government);
-      color: white;
+    font-size:25px;
 
-      box-shadow: var(--shadow-md);
+    color:var(--primary-blue);
 
-      z-index: 5000;
+    margin-bottom:12px;
 
-      opacity: 0;
-      visibility: hidden;
+}
 
-      transition: var(--transition);
+.trans-card h4{
+
+    font-size:.88rem;
+
+}
+
+@media(max-width:850px){
+
+    .trans-grid{
+        grid-template-columns:repeat(2,1fr);
     }
+
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1.5fr;
+
+    gap:25px;
+
+}
+
+.contact-info{
+
+    background:var(--white);
+
+    border:1px solid var(--border);
+
+    padding:30px;
 
-    #backTop.show {
-      opacity: 1;
-      visibility: visible;
+    border-radius:20px;
+
+}
+
+.contact-row{
+
+    display:flex;
+
+    gap:14px;
+
+    margin-bottom:20px;
+
+}
+
+.contact-row i{
+
+    color:var(--primary-blue);
+
+    margin-top:5px;
+
+}
+
+.contact-row span{
+
+    color:var(--text-muted);
+
+    font-size:.85rem;
+
+}
+
+.map{
+
+    min-height:380px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+
+}
+
+.map iframe{
+
+    width:100%;
+
+    height:100%;
+
+    min-height:380px;
+
+    border:0;
+
+}
+
+@media(max-width:800px){
+
+    .location-grid{
+        grid-template-columns:1fr;
     }
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    background:var(--deep-ocean);
+
+    color:#BFD8F2;
+
+    padding-top:60px;
+
+}
+
+.footer-grid{
+
+    display:grid;
+
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
+
+    gap:30px;
+
+    padding-bottom:45px;
+
+}
+
+footer h4,
+footer h5{
+
+    color:#fff;
+
+}
+
+footer h5{
+
+    font-size:.9rem;
+
+    margin-bottom:15px;
+
+}
+
+footer li{
+
+    margin-bottom:9px;
+
+}
+
+footer li a{
+
+    color:#BFD8F2;
+
+    font-size:.82rem;
+
+}
+
+footer li a:hover{
+
+    color:#fff;
+
+}
+
+.footer-bottom{
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    padding:20px 0;
+
+    display:flex;
 
-    /* =========================================================
-       SCROLL REVEAL
-    ========================================================== */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: .8s ease;
+    justify-content:space-between;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    font-size:.78rem;
+
+}
+
+.social{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.social a{
+
+    width:36px;
+
+    height:36px;
+
+    background:rgba(255,255,255,.1);
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+@media(max-width:800px){
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+}
+
+@media(max-width:500px){
+
+    .footer-grid{
+        grid-template-columns:1fr;
     }
 
-    /* =========================================================
-       RESPONSIVE
-    ========================================================== */
+}
 
-    @media (max-width: 1100px) {
 
-      .nav-menu a {
-        padding-left: 7px;
-        padding-right: 7px;
-      }
+/* =========================================================
+   REVEAL
+========================================================= */
 
-      .quick-grid {
-        grid-template-columns: repeat(3,1fr);
-      }
+.reveal{
 
-      .services-grid {
-        grid-template-columns: repeat(3,1fr);
-      }
+    opacity:0;
 
-      .potential-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
-    }
+    transform:translateY(25px);
+
+    transition:.7s;
+
+}
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:none;
+
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-top{
 
-    @media (max-width: 900px) {
+    position:fixed;
 
-      section {
-        padding: 75px 0;
-      }
+    right:25px;
 
-      .government-right {
-        display: none;
-      }
+    bottom:25px;
 
-      .hamburger {
-        display: flex;
-      }
+    width:48px;
+    height:48px;
 
-      .nav-menu {
-        position: absolute;
+    border-radius:50%;
 
-        left: 20px;
-        right: 20px;
-        top: calc(100% + 8px);
+    background:var(--primary-blue);
 
-        background: var(--white);
+    color:#fff;
 
-        border: 1px solid var(--border);
-        border-radius: 15px;
+    display:flex;
 
-        padding: 10px;
+    align-items:center;
 
-        box-shadow: var(--shadow-lg);
+    justify-content:center;
 
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-      }
+    opacity:0;
 
-      .nav-menu.open {
-        display: flex;
-      }
+    pointer-events:none;
 
-      .nav-menu a {
-        padding: 12px;
-      }
+    transition:.3s;
 
-      .nav-menu a::after {
-        display: none;
-      }
+    z-index:900;
 
-      .nav-cta {
-        display: none;
-      }
+}
 
-      .stats-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
+.back-top.show{
 
-      .profile-grid,
-      .government-grid,
-      .complaint-grid,
-      .location-grid {
-        grid-template-columns: 1fr;
-      }
+    opacity:1;
 
-      .complaint-info {
-        position: static;
-      }
+    pointer-events:auto;
 
-      .program-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
+}
 
-      .news-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
 
-      .footer-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.9);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:2000;
+
+}
+
+.lightbox.show{
+
+    display:flex;
+
+}
+
+.lightbox img{
+
+    max-width:90%;
+
+    max-height:85%;
+
+    border-radius:12px;
+
+}
+
+.lightbox-close{
+
+    position:absolute;
+
+    top:20px;
+
+    right:25px;
+
+    color:#fff;
+
+    font-size:30px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:600px){
+
+    .container{
+        padding:0 18px;
     }
 
-    @media (max-width: 600px) {
-
-      .container {
-        width: min(100% - 28px, 1180px);
-      }
-
-      .government-left {
-        font-size: 10px;
-      }
-
-      .brand {
-        min-width: auto;
-      }
-
-      .brand-text small {
-        display: none;
-      }
-
-      .brand-logo {
-        width: 45px;
-        height: 45px;
-      }
-
-      .hero {
-        min-height: 720px;
-      }
-
-      .hero h1 {
-        font-size: 39px;
-      }
-
-      .hero p {
-        font-size: 13px;
-      }
-
-      .quick-wrap {
-        margin-top: -30px;
-      }
-
-      .quick-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
-
-      .stats-grid,
-      .program-grid,
-      .news-grid,
-      .gallery-grid,
-      .potential-grid,
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-image img {
-        height: 320px;
-      }
-
-      .gov-cards {
-        grid-template-columns: 1fr;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .form-group.full {
-        grid-column: auto;
-      }
-
-      .form-card,
-      .complaint-info,
-      .check-card {
-        padding: 25px;
-      }
-
-      .check-form {
-        flex-direction: column;
-      }
-
-      .gallery-item {
-        height: 230px;
-      }
-
-      .contact-banner {
-        padding: 30px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero-buttons .btn {
-        width: 100%;
-      }
+    .hero{
+        min-height:650px;
     }
-  </style>
+
+    .hero h1{
+        font-size:2.6rem;
+    }
+
+}
+
+</style>
 </head>
 
-<body class="loading">
 
-<!-- =========================================================
-     LOADING
-========================================================== -->
+<body>
 
-<div id="loader">
-  <div class="loader-box">
+<!-- =====================================================
+     LOADER
+===================================================== -->
+
+<div class="page-loader" id="pageLoader">
     <div class="loader-logo">DS</div>
-    <p>Memuat Portal Desa Semparuk...</p>
-  </div>
 </div>
 
 
-<!-- =========================================================
-     TOP GOVERNMENT BAR
-========================================================== -->
+<!-- =====================================================
+     TOPBAR
+===================================================== -->
 
-<div class="government-bar">
+<div class="topbar">
 
-  <div class="container government-inner">
+    <div class="container">
 
-    <div class="government-left">
-      <i class="fa-solid fa-landmark"></i>
-      <span>PEMERINTAH DESA SEMPARUK</span>
+        <div>
+            <strong>PEMERINTAH DESA SEMPARUK</strong>
+            <span>
+                Kecamatan Semparuk • Kabupaten Sambas • Kalimantan Barat
+            </span>
+        </div>
+
+        <div class="topbar-right">
+
+            <span>
+                <i class="fa-solid fa-location-dot"></i>
+                Semparuk, Sambas
+            </span>
+
+            <span>
+                <i class="fa-solid fa-envelope"></i>
+                [Email Desa]
+            </span>
+
+            <span>
+                <i class="fa-solid fa-phone"></i>
+                [Nomor Telepon]
+            </span>
+
+        </div>
+
     </div>
-
-    <div class="government-right">
-
-      <span>
-        <i class="fa-solid fa-location-dot"></i>
-        Kecamatan Semparuk • Kabupaten Sambas • Kalimantan Barat
-      </span>
-
-      <span>
-        <i class="fa-solid fa-envelope"></i>
-        desa.semparuk@example.go.id
-      </span>
-
-    </div>
-
-  </div>
 
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      NAVBAR
-========================================================== -->
+===================================================== -->
 
-<header class="navbar">
+<nav class="navbar" id="navbar">
 
-  <div class="container nav-inner">
+<div class="container nav-inner">
 
     <a href="#beranda" class="brand">
 
-      <div class="brand-logo">
+        <div class="brand-mark">
+            DS
+        </div>
 
-        <!-- GANTI DENGAN LOGO RESMI DESA -->
-        <img
-          src="assets/logo-desa.png"
-          alt="Logo Desa Semparuk"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
-        >
+        <div>
 
-        <span class="brand-fallback" style="display:none;">
-          DS
-        </span>
+            <div class="brand-name">
+                DESA SEMPARUK
+            </div>
 
-      </div>
+            <div class="brand-tag">
+                Pemerintah Desa Semparuk
+            </div>
 
-      <div class="brand-text">
-
-        <strong>DESA SEMPARUK</strong>
-
-        <small>
-          Pemerintah Desa Semparuk
-        </small>
-
-      </div>
+        </div>
 
     </a>
 
 
-    <nav class="nav-menu" id="navMenu">
+    <ul class="nav-menu" id="navMenu">
 
-      <a href="#beranda" class="active">Beranda</a>
-      <a href="#profil">Profil</a>
-      <a href="#pemerintahan">Pemerintahan</a>
-      <a href="#program">Program</a>
-      <a href="#layanan">Layanan</a>
-      <a href="#galeri">Galeri</a>
-      <a href="#berita">Berita</a>
-      <a href="#pengaduan">Pengaduan</a>
-      <a href="#kontak">Kontak</a>
+        <li>
+            <a href="#beranda" class="active">
+                Beranda
+            </a>
+        </li>
 
-    </nav>
+        <li>
+            <a href="#profil">
+                Profil
+            </a>
+        </li>
+
+        <li>
+            <a href="#pemerintahan">
+                Pemerintahan
+            </a>
+        </li>
+
+        <li>
+            <a href="#program">
+                Program
+            </a>
+        </li>
+
+        <li>
+            <a href="#layanan">
+                Layanan
+            </a>
+        </li>
+
+        <li>
+            <a href="#galeri">
+                Galeri
+            </a>
+        </li>
+
+        <li>
+            <a href="#berita">
+                Berita
+            </a>
+        </li>
+
+        <li>
+            <a href="#pengaduan">
+                Pengaduan
+            </a>
+        </li>
+
+        <li>
+            <a href="#kontak">
+                Kontak
+            </a>
+        </li>
+
+    </ul>
 
 
     <div class="nav-actions">
 
-      <button
-        class="icon-btn"
-        id="darkModeBtn"
-        aria-label="Mode gelap">
-        <i class="fa-solid fa-moon"></i>
-      </button>
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Mode gelap">
 
-      <a
-        href="#layanan"
-        class="nav-cta">
-        Layanan Desa
-      </a>
+            <i class="fa-solid fa-moon"></i>
 
-      <button
-        class="icon-btn hamburger"
-        id="hamburger"
-        aria-label="Menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+        </button>
+
+        <a
+            href="#layanan"
+            class="btn btn-soft">
+
+            Layanan Desa
+
+        </a>
+
+        <button
+            class="hamburger"
+            id="hamburger"
+            aria-label="Menu">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
 
     </div>
 
-  </div>
+</div>
 
-</header>
+</nav>
 
 
-<!-- =========================================================
+<!-- =====================================================
      HERO
-========================================================== -->
-
-<main>
+===================================================== -->
 
 <section class="hero" id="beranda">
 
-  <div class="container">
+<div class="container">
 
-    <div class="hero-content">
+<div class="hero-content reveal">
 
-      <div class="hero-badge">
-        <i class="fa-solid fa-shield-halved"></i>
-        WEBSITE RESMI DESA
-      </div>
+    <div class="hero-badge">
 
-      <h1>
-        Selamat Datang di
-        <span>Desa Semparuk</span>
-      </h1>
+        <i class="fa-solid fa-landmark"></i>
 
-      <p>
-        Portal Informasi dan Pelayanan Digital Desa Semparuk,
-        Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat.
-      </p>
-
-      <div class="hero-buttons">
-
-        <a
-          href="#profil"
-          class="btn btn-primary">
-          <i class="fa-solid fa-arrow-right"></i>
-          Jelajahi Desa
-        </a>
-
-        <a
-          href="#layanan"
-          class="btn btn-outline">
-          <i class="fa-solid fa-grid-2"></i>
-          Layanan Desa
-        </a>
-
-      </div>
+        Website Resmi Pemerintah Desa
 
     </div>
 
-  </div>
 
-  <div class="hero-scroll">
-    Gulir untuk menjelajahi
-    <i class="fa-solid fa-chevron-down"></i>
-  </div>
+    <h1>
+
+        Selamat Datang<br>
+        di Desa Semparuk
+
+    </h1>
+
+
+    <p>
+
+        Kecamatan Semparuk, Kabupaten Sambas,
+        Kalimantan Barat.
+
+        <br>
+
+        <strong>
+            Membangun Desa, Melayani Masyarakat,
+            Menuju Semparuk yang Maju dan Sejahtera.
+        </strong>
+
+    </p>
+
+
+    <div class="hero-buttons">
+
+        <a
+            href="#profil"
+            class="btn btn-primary">
+
+            Jelajahi Desa
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+
+        <a
+            href="#layanan"
+            class="btn btn-outline">
+
+            Layanan Desa
+
+        </a>
+
+    </div>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =====================================================
      QUICK ACCESS
-========================================================== -->
+===================================================== -->
 
-<div class="quick-wrap">
+<section class="quick-access">
 
-  <div class="container">
+<div class="container">
 
-    <div class="quick-card reveal">
+<div class="quick-card reveal">
 
-      <div class="quick-title">
+<h3>
+    Akses Cepat
+</h3>
 
-        <small>Akses Cepat</small>
 
-        <h2>
-          Layanan Digital Desa
-        </h2>
+<div class="quick-grid">
 
-      </div>
+<a href="#profil" class="quick-item">
 
-      <div class="quick-grid">
+<div class="quick-icon">
+<i class="fa-solid fa-building"></i>
+</div>
 
-        <a href="#layanan" class="quick-item">
-          <i class="fa-solid fa-file-signature"></i>
-          <span>Administrasi Desa</span>
-        </a>
+<span>Profil Desa</span>
 
-        <a href="#profil" class="quick-item">
-          <i class="fa-solid fa-circle-info"></i>
-          <span>Informasi Desa</span>
-        </a>
+</a>
 
-        <a href="#pengaduan" class="quick-item">
-          <i class="fa-solid fa-comments"></i>
-          <span>Pengaduan</span>
-        </a>
 
-        <a href="#cek-pengaduan" class="quick-item">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <span>Cek Pengaduan</span>
-        </a>
+<a href="#pemerintahan" class="quick-item">
 
-        <a href="#berita" class="quick-item">
-          <i class="fa-solid fa-newspaper"></i>
-          <span>Berita Desa</span>
-        </a>
+<div class="quick-icon">
+<i class="fa-solid fa-users"></i>
+</div>
 
-        <a href="#kontak" class="quick-item">
-          <i class="fa-solid fa-phone"></i>
-          <span>Kontak Desa</span>
-        </a>
+<span>Pemerintahan</span>
 
-      </div>
+</a>
 
-    </div>
 
-  </div>
+<a href="#layanan" class="quick-item">
+
+<div class="quick-icon">
+<i class="fa-solid fa-file-lines"></i>
+</div>
+
+<span>Layanan</span>
+
+</a>
+
+
+<a href="#berita" class="quick-item">
+
+<div class="quick-icon">
+<i class="fa-solid fa-newspaper"></i>
+</div>
+
+<span>Berita</span>
+
+</a>
+
+
+<a href="#galeri" class="quick-item">
+
+<div class="quick-icon">
+<i class="fa-solid fa-images"></i>
+</div>
+
+<span>Galeri</span>
+
+</a>
+
+
+<a href="#kontak" class="quick-item">
+
+<div class="quick-icon">
+<i class="fa-solid fa-phone"></i>
+</div>
+
+<span>Kontak</span>
+
+</a>
 
 </div>
 
+</div>
 
-<!-- =========================================================
+</div>
+
+</section>
+
+
+<!-- =====================================================
      STATISTIK
-========================================================== -->
+===================================================== -->
 
-<section class="stats-section">
+<section class="stats">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-header reveal">
+<div class="section-head reveal">
 
-      <small>Data Desa</small>
+<div class="kicker">
+Data Desa
+</div>
 
-      <h2>
-        Desa Semparuk Dalam Data
-      </h2>
+<h2>
+Statistik Desa Semparuk
+</h2>
 
-      <p>
-        Gambaran singkat data dan potensi Desa Semparuk.
-      </p>
+<p>
+Data berikut merupakan data contoh dan
+dapat diganti dengan data resmi desa.
+</p>
 
-    </div>
-
-    <div class="stats-grid">
-
-      <div class="stat-card reveal">
-
-        <div class="stat-icon">
-          <i class="fa-solid fa-users"></i>
-        </div>
-
-        <div
-          class="stat-number"
-          data-target="30267"
-          data-format="number">
-          0
-        </div>
-
-        <div class="stat-label">
-          Jiwa
-        </div>
-
-      </div>
+</div>
 
 
-      <div class="stat-card reveal">
+<div class="stats-grid">
 
-        <div class="stat-icon">
-          <i class="fa-solid fa-house"></i>
-        </div>
+<div class="stat-card reveal">
 
-        <div
-          class="stat-number"
-          data-target="9573"
-          data-format="number">
-          0
-        </div>
+<div class="stat-icon">
+<i class="fa-solid fa-users"></i>
+</div>
 
-        <div class="stat-label">
-          Rumah Tangga
-        </div>
+<div
+class="stat-number"
+data-count="2500">
+0
+</div>
 
-      </div>
+<div class="stat-label">
+Total Penduduk
+</div>
 
-
-      <div class="stat-card reveal">
-
-        <div class="stat-icon">
-          <i class="fa-solid fa-map-location-dot"></i>
-        </div>
-
-        <div
-          class="stat-number"
-          data-target="21">
-          0
-        </div>
-
-        <div class="stat-label">
-          Dusun
-        </div>
-
-      </div>
+</div>
 
 
-      <div class="stat-card reveal">
+<div class="stat-card reveal">
 
-        <div class="stat-icon">
-          <i class="fa-solid fa-diagram-project"></i>
-        </div>
+<div class="stat-icon">
+<i class="fa-solid fa-person"></i>
+</div>
 
-        <div
-          class="stat-number"
-          data-target="9">
-          0
-        </div>
+<div
+class="stat-number"
+data-count="1280">
+0
+</div>
 
-        <div class="stat-label">
-          Program Unggulan
-        </div>
+<div class="stat-label">
+Laki-laki
+</div>
 
-      </div>
+</div>
 
-    </div>
 
-  </div>
+<div class="stat-card reveal">
+
+<div class="stat-icon">
+<i class="fa-solid fa-person-dress"></i>
+</div>
+
+<div
+class="stat-number"
+data-count="1220">
+0
+</div>
+
+<div class="stat-label">
+Perempuan
+</div>
+
+</div>
+
+
+<div class="stat-card reveal">
+
+<div class="stat-icon">
+<i class="fa-solid fa-house"></i>
+</div>
+
+<div
+class="stat-number"
+data-count="700">
+0
+</div>
+
+<div class="stat-label">
+Kepala Keluarga
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =====================================================
      PROFIL
-========================================================== -->
+===================================================== -->
 
-<section class="profile-section" id="profil">
+<section id="profil">
 
-  <div class="container profile-grid">
+<div class="container">
 
-    <div class="profile-image reveal">
+<div class="profile-grid">
 
-      <img
-        src="assets/bground.JPG"
-        alt="Desa Semparuk"
-        onerror="this.src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80'"
-      >
+<div class="reveal">
 
-      <div class="image-label">
+<img
+class="profile-image"
+src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85"
+alt="Suasana Desa Semparuk">
 
-        <strong>Desa Semparuk</strong>
-
-        <small>
-          Kecamatan Semparuk • Kabupaten Sambas
-        </small>
-
-      </div>
-
-    </div>
+</div>
 
 
-    <div class="profile-content reveal">
+<div class="profile-text reveal">
 
-      <small>Tentang Desa</small>
+<div class="kicker">
+Tentang Desa
+</div>
 
-      <h2>
-        Profil Desa Semparuk
-      </h2>
+<h2>
+Desa Semparuk
+</h2>
 
-      <p>
-        Desa Semparuk merupakan bagian dari Kecamatan Semparuk,
-        Kabupaten Sambas, Kalimantan Barat.
-      </p>
+<p>
 
-      <p>
-        Website ini menjadi media informasi, pelayanan,
-        dan komunikasi digital antara pemerintah desa
-        dengan masyarakat.
-      </p>
+Desa Semparuk merupakan bagian dari
+Kecamatan Semparuk, Kabupaten Sambas,
+Kalimantan Barat.
 
-      <ul class="profile-points">
+Website ini menjadi media informasi,
+komunikasi dan pelayanan digital bagi
+masyarakat Desa Semparuk.
 
-        <li>
-          <i class="fa-solid fa-circle-check"></i>
-          Informasi pemerintahan desa
-        </li>
+</p>
 
-        <li>
-          <i class="fa-solid fa-circle-check"></i>
-          Pelayanan masyarakat secara digital
-        </li>
 
-        <li>
-          <i class="fa-solid fa-circle-check"></i>
-          Media komunikasi dan transparansi desa
-        </li>
+<ul class="profile-list">
 
-      </ul>
+<li>
+<i class="fa-solid fa-circle-check"></i>
+Informasi pemerintahan desa
+</li>
 
-      <a href="#pemerintahan" class="btn blue-btn">
-        Selengkapnya
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
+<li>
+<i class="fa-solid fa-circle-check"></i>
+Pelayanan administrasi masyarakat
+</li>
 
-    </div>
+<li>
+<i class="fa-solid fa-circle-check"></i>
+Informasi pembangunan desa
+</li>
 
-  </div>
+<li>
+<i class="fa-solid fa-circle-check"></i>
+Transparansi dan informasi publik
+</li>
+
+</ul>
+
+
+<a
+href="#pemerintahan"
+class="btn btn-primary">
+
+Lihat Pemerintahan Desa
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</a>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =====================================================
+     SAMBUTAN
+===================================================== -->
+
+<section class="sambutan">
+
+<div class="container">
+
+<div class="sambutan-card reveal">
+
+<div>
+
+<img
+class="kepala-img"
+src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=80"
+alt="Kepala Desa Semparuk">
+
+</div>
+
+
+<div>
+
+<div class="kicker">
+Sambutan
+</div>
+
+<h2>
+Kepala Desa Semparuk
+</h2>
+
+<p>
+
+Assalamu'alaikum Warahmatullahi
+Wabarakatuh.
+
+</p>
+
+<p>
+
+Selamat datang di website resmi
+Pemerintah Desa Semparuk.
+
+Website ini diharapkan dapat menjadi
+sarana informasi, komunikasi dan
+pelayanan yang mudah diakses oleh
+seluruh masyarakat.
+
+</p>
+
+<p>
+
+Mari bersama-sama membangun Desa
+Semparuk menjadi desa yang maju,
+mandiri, transparan dan sejahtera.
+
+</p>
+
+<p>
+<strong>
+[Nama Kepala Desa]
+</strong>
+
+<br>
+
+Kepala Desa Semparuk
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
      PEMERINTAHAN
-========================================================== -->
+===================================================== -->
 
-<section class="government-section" id="pemerintahan">
+<section
+class="gov-section"
+id="pemerintahan">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-header reveal">
+<div class="section-head reveal">
 
-      <small>Pemerintahan</small>
+<div class="kicker">
+Pemerintahan
+</div>
 
-      <h2>
-        Pemerintahan Desa
-      </h2>
+<h2>
+Struktur Pemerintahan Desa
+</h2>
 
-      <p>
-        Struktur dan unsur penyelenggaraan Pemerintah Desa Semparuk.
-      </p>
+<p>
+Data perangkat desa masih menggunakan
+placeholder dan dapat diganti.
+</p>
 
-    </div>
-
-
-    <div class="government-grid">
-
-      <div class="leader-card reveal">
-
-        <div class="leader-icon">
-          <i class="fa-solid fa-user-tie"></i>
-        </div>
-
-        <small>Kepala Desa</small>
-
-        <h3>
-          Pemerintah Desa Semparuk
-        </h3>
-
-        <p>
-          Informasi kepala desa dapat ditambahkan
-          sesuai data resmi pemerintah desa.
-        </p>
-
-      </div>
+</div>
 
 
-      <div class="gov-cards">
+<div class="gov-grid">
 
-        <div class="gov-card reveal">
-          <i class="fa-solid fa-users-gear"></i>
+<script>
 
-          <h3>
-            Perangkat Desa
-          </h3>
+const perangkat = [
 
-          <p>
-            Informasi perangkat dan aparatur desa.
-          </p>
-        </div>
+["Kepala Desa","[Nama Kepala Desa]"],
 
+["Sekretaris Desa","[Nama Sekretaris Desa]"],
 
-        <div class="gov-card reveal">
-          <i class="fa-solid fa-building-columns"></i>
+["Kaur Pemerintahan","[Nama Perangkat Desa]"],
 
-          <h3>
-            BPD
-          </h3>
+["Kaur Keuangan","[Nama Perangkat Desa]"],
 
-          <p>
-            Badan Permusyawaratan Desa.
-          </p>
-        </div>
+["Kaur Umum","[Nama Perangkat Desa]"],
 
+["Kasi Pelayanan","[Nama Perangkat Desa]"],
 
-        <div class="gov-card reveal">
-          <i class="fa-solid fa-map-location-dot"></i>
+["Kasi Kesejahteraan","[Nama Perangkat Desa]"],
 
-          <h3>
-            Kepala Dusun
-          </h3>
+["Kepala Dusun","[Nama Kepala Dusun]"]
 
-          <p>
-            Informasi wilayah dan kepala dusun.
-          </p>
-        </div>
+];
 
+perangkat.forEach(p => {
 
-        <div class="gov-card reveal">
-          <i class="fa-solid fa-sitemap"></i>
+document.write(`
 
-          <h3>
-            Struktur Pemerintahan
-          </h3>
+<div class="gov-card reveal">
 
-          <p>
-            Struktur organisasi Pemerintah Desa.
-          </p>
-        </div>
+<div class="gov-photo">
 
-      </div>
+<i class="fa-solid fa-user-tie"></i>
 
-    </div>
+</div>
 
-  </div>
+<div class="gov-info">
+
+<h4>${p[1]}</h4>
+
+<span>${p[0]}</span>
+
+</div>
+
+</div>
+
+`);
+
+});
+
+</script>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =========================================================
-     PROGRAM UNGGULAN
-========================================================== -->
+<!-- =====================================================
+     PROGRAM
+===================================================== -->
 
-<section class="program-section" id="program">
+<section
+class="program"
+id="program">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-header reveal">
+<div class="section-head reveal">
 
-      <small>Prioritas Desa</small>
+<div class="kicker">
+Program Desa
+</div>
 
-      <h2>
-        Program Unggulan Desa Semparuk
-      </h2>
+<h2>
+Program dan Pembangunan Desa
+</h2>
 
-      <p>
-        Program pembangunan dan pemberdayaan yang mendukung
-        kemajuan masyarakat desa.
-      </p>
+<p>
+Informasi program desa dapat diperbarui
+sesuai kegiatan pemerintah desa.
+</p>
 
-    </div>
-
-
-    <div class="program-grid">
-
-      <div class="program-card reveal">
-        <span class="program-number">01</span>
-        <div class="program-icon">
-          <i class="fa-solid fa-graduation-cap"></i>
-        </div>
-        <h3>Peningkatan Pendidikan</h3>
-        <p>
-          Mendukung akses dan kualitas pendidikan masyarakat.
-        </p>
-      </div>
+</div>
 
 
-      <div class="program-card reveal">
-        <span class="program-number">02</span>
-        <div class="program-icon">
-          <i class="fa-solid fa-store"></i>
-        </div>
-        <h3>Pemberdayaan UMKM</h3>
-        <p>
-          Mendorong pertumbuhan usaha masyarakat desa.
-        </p>
-      </div>
+<div class="program-grid">
+
+<div class="program-card reveal">
+
+<div class="program-icon">
+<i class="fa-solid fa-road"></i>
+</div>
+
+<h4>
+Pembangunan Infrastruktur
+</h4>
+
+<p>
+Program pembangunan jalan,
+drainase dan fasilitas umum desa.
+</p>
+
+</div>
 
 
-      <div class="program-card reveal">
-        <span class="program-number">03</span>
-        <div class="program-icon">
-          <i class="fa-solid fa-road"></i>
-        </div>
-        <h3>Infrastruktur</h3>
-        <p>
-          Mendukung pembangunan infrastruktur desa.
-        </p>
-      </div>
+<div class="program-card reveal">
+
+<div class="program-icon">
+<i class="fa-solid fa-seedling"></i>
+</div>
+
+<h4>
+Ketahanan Pangan
+</h4>
+
+<p>
+Pengembangan sektor pertanian
+dan ketahanan pangan masyarakat.
+</p>
+
+</div>
 
 
-      <div class="program-card reveal">
-        <span class="program-number">04</span>
-        <div class="program-icon">
-          <i class="fa-solid fa-leaf"></i>
-        </div>
-        <h3>Lingkungan Bersih</h3>
-        <p>
-          Membangun lingkungan yang bersih dan nyaman.
-        </p>
-      </div>
+<div class="program-card reveal">
+
+<div class="program-icon">
+<i class="fa-solid fa-store"></i>
+</div>
+
+<h4>
+Pengembangan UMKM
+</h4>
+
+<p>
+Pemberdayaan usaha masyarakat
+dan produk lokal desa.
+</p>
+
+</div>
 
 
-      <div class="program-card reveal">
-        <span class="program-number">05</span>
-        <div class="program-icon">
-          <i class="fa-solid fa-laptop"></i>
-        </div>
-        <h3>Pelayanan Digital</h3>
-        <p>
-          Meningkatkan kemudahan layanan melalui teknologi.
-        </p>
-      </div>
+<div class="program-card reveal">
+
+<div class="program-icon">
+<i class="fa-solid fa-people-group"></i>
+</div>
+
+<h4>
+Pemberdayaan Masyarakat
+</h4>
+
+<p>
+Mendorong partisipasi masyarakat
+dalam pembangunan desa.
+</p>
+
+</div>
 
 
-      <div class="program-card reveal">
-        <span class="program-number">06</span>
-        <div class="program-icon">
-          <i class="fa-solid fa-people-group"></i>
-        </div>
-        <h3>Pemberdayaan Pemuda</h3>
-        <p>
-          Membuka ruang kreativitas dan kontribusi pemuda.
-        </p>
-      </div>
+<div class="program-card reveal">
+
+<div class="program-icon">
+<i class="fa-solid fa-graduation-cap"></i>
+</div>
+
+<h4>
+Pendidikan
+</h4>
+
+<p>
+Mendukung peningkatan kualitas
+pendidikan masyarakat desa.
+</p>
+
+</div>
 
 
-      <div class="program-card reveal">
-        <span class="program-number">07</span>
-        <div class="program-icon">
-          <i class="fa-solid fa-chart-line"></i>
-        </div>
-        <h3>Pengembangan Ekonomi</h3>
-        <p>
-          Mendorong peningkatan ekonomi masyarakat.
-        </p>
-      </div>
+<div class="program-card reveal">
 
+<div class="program-icon">
+<i class="fa-solid fa-heart-pulse"></i>
+</div>
 
-      <div class="program-card reveal">
-        <span class="program-number">08</span>
-        <div class="program-icon">
-          <i class="fa-solid fa-hand-holding-heart"></i>
-        </div>
-        <h3>Kegiatan Sosial</h3>
-        <p>
-          Memperkuat kepedulian dan solidaritas masyarakat.
-        </p>
-      </div>
+<h4>
+Kesehatan Masyarakat
+</h4>
 
+<p>
+Mendukung pelayanan dan kegiatan
+kesehatan masyarakat.
+</p>
 
-      <div class="program-card reveal">
-        <span class="program-number">09</span>
-        <div class="program-icon">
-          <i class="fa-solid fa-camera"></i>
-        </div>
-        <h3>Desa Ramah Wisata</h3>
-        <p>
-          Mengembangkan potensi wisata dan budaya desa.
-        </p>
-      </div>
+</div>
 
-    </div>
+</div>
 
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     LAYANAN DIGITAL
-========================================================== -->
-
-<section class="services-section" id="layanan">
-
-  <div class="container">
-
-    <div class="section-header reveal">
-
-      <small>Layanan Online</small>
-
-      <h2>
-        Layanan Digital Desa
-      </h2>
-
-      <p>
-        Dapatkan akses informasi dan pelayanan desa
-        dengan lebih mudah.
-      </p>
-
-    </div>
-
-
-    <div class="services-grid">
-
-      <a href="#pengaduan" class="service-card reveal">
-        <i class="fa-solid fa-file-signature"></i>
-        <h3>Administrasi Desa</h3>
-        <p>
-          Pengurusan informasi dan administrasi masyarakat.
-        </p>
-      </a>
-
-
-      <a href="#profil" class="service-card reveal">
-        <i class="fa-solid fa-circle-info"></i>
-        <h3>Informasi Desa</h3>
-        <p>
-          Informasi mengenai Desa Semparuk.
-        </p>
-      </a>
-
-
-      <a href="#pengaduan" class="service-card reveal">
-        <i class="fa-solid fa-comments"></i>
-        <h3>Pengaduan Masyarakat</h3>
-        <p>
-          Sampaikan aspirasi dan pengaduan kepada pemerintah desa.
-        </p>
-      </a>
-
-
-      <a href="#cek-pengaduan" class="service-card reveal">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <h3>Cek Pengaduan</h3>
-        <p>
-          Pantau perkembangan pengaduan menggunakan token.
-        </p>
-      </a>
-
-
-      <a href="#berita" class="service-card reveal">
-        <i class="fa-solid fa-newspaper"></i>
-        <h3>Berita Desa</h3>
-        <p>
-          Informasi dan kegiatan terbaru desa.
-        </p>
-      </a>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =====================================================
+     LAYANAN
+===================================================== -->
+
+<section
+class="services"
+id="layanan">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<div class="kicker" style="color:#8FCCFA">
+Pelayanan Publik
+</div>
+
+<h2>
+Layanan Desa
+</h2>
+
+<p>
+Pilih layanan yang ingin kamu ajukan.
+</p>
+
+</div>
+
+
+<div class="service-grid">
+
+<script>
+
+const layanan = [
+
+["fa-location-dot","Surat Domisili"],
+
+["fa-file-lines","Surat Pengantar"],
+
+["fa-briefcase","Surat Keterangan Usaha"],
+
+["fa-hand-holding-heart","Surat Tidak Mampu"],
+
+["fa-baby","Surat Kelahiran"],
+
+["fa-file-circle-xmark","Surat Kematian"],
+
+["fa-id-card","Administrasi Kependudukan"],
+
+["fa-comments","Pengaduan Masyarakat"]
+
+];
+
+layanan.forEach(x=>{
+
+document.write(`
+
+<div class="service-card reveal">
+
+<div class="service-icon">
+
+<i class="fa-solid ${x[0]}"></i>
+
+</div>
+
+<h4>${x[1]}</h4>
+
+<p>
+Informasi persyaratan dan pengajuan
+layanan desa.
+</p>
+
+<button
+class="btn btn-primary service-btn"
+data-service="${x[1]}">
+
+Ajukan
+
+</button>
+
+</div>
+
+`);
+
+});
+
+</script>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
      PENGADUAN
-========================================================== -->
+===================================================== -->
 
-<section class="complaint-section" id="pengaduan">
+<section id="pengaduan">
 
-  <div class="container complaint-grid">
+<div class="container">
 
-    <div class="complaint-info reveal">
+<div class="section-head reveal">
 
-      <i class="fa-solid fa-headset big"></i>
+<div class="kicker">
+Pengaduan
+</div>
 
-      <h2>
-        Pengaduan Desa
-      </h2>
+<h2>
+Sampaikan Aspirasi dan Pengaduan
+</h2>
 
-      <p>
-        Sampaikan aspirasi, keluhan, dan laporan Anda
-        kepada Pemerintah Desa Semparuk.
-      </p>
-
-      <ul class="complaint-list">
-
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Pengaduan mudah dan cepat
-        </li>
-
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Mendapatkan token pengaduan
-        </li>
-
-        <li>
-          <i class="fa-solid fa-check"></i>
-          Status dapat dipantau
-        </li>
-
-      </ul>
-
-    </div>
-
-
-    <div class="form-card reveal">
-
-      <h3>
-        Form Pengaduan Masyarakat
-      </h3>
-
-      <p>
-        Lengkapi data berikut dengan informasi yang benar.
-      </p>
-
-
-      <form id="complaintForm">
-
-        <div class="form-grid">
-
-          <div class="form-group">
-
-            <label for="nama">
-              Nama
-            </label>
-
-            <input
-              id="nama"
-              name="nama"
-              type="text"
-              placeholder="Masukkan nama"
-              required>
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="email">
-              Email
-            </label>
-
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="nama@email.com"
-              required>
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="kategori">
-              Kategori Pengaduan
-            </label>
-
-            <select
-              id="kategori"
-              name="kategori"
-              required>
-
-              <option value="">
-                Pilih kategori
-              </option>
-
-              <option>Infrastruktur</option>
-              <option>Pelayanan</option>
-              <option>Lingkungan</option>
-              <option>Sosial</option>
-              <option>Administrasi</option>
-              <option>Lainnya</option>
-
-            </select>
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="judul">
-              Judul Aduan
-            </label>
-
-            <input
-              id="judul"
-              name="judul"
-              type="text"
-              placeholder="Judul pengaduan"
-              required>
-
-          </div>
-
-
-          <div class="form-group full">
-
-            <label for="isi">
-              Isi Aduan
-            </label>
-
-            <textarea
-              id="isi"
-              name="isi"
-              placeholder="Tuliskan pengaduan Anda..."
-              required></textarea>
-
-          </div>
-
-        </div>
-
-
-        <button
-          type="submit"
-          class="btn blue-btn">
-
-          <i class="fa-solid fa-paper-plane"></i>
-
-          Kirim Pengaduan
-
-        </button>
-
-      </form>
-
-
-      <div
-        class="token-result"
-        id="tokenResult">
-
-        <div class="token-label">
-          TOKEN PENGADUAN
-        </div>
-
-        <div class="token-value">
-
-          <strong id="tokenValue">
-            -
-          </strong>
-
-          <button
-            class="copy-token"
-            id="copyToken">
-
-            <i class="fa-solid fa-copy"></i>
-            Salin
-
-          </button>
-
-        </div>
-
-        <p style="font-size:11px;color:var(--muted);margin-top:8px;">
-          Catat token pengaduan Anda untuk memantau
-          status laporan.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     CEK PENGADUAN
-========================================================== -->
-
-<section class="check-section" id="cek-pengaduan">
-
-  <div class="container">
-
-    <div class="check-card reveal">
-
-      <h2>
-        Cek Status Pengaduan
-      </h2>
-
-      <p>
-        Masukkan token pengaduan yang Anda terima
-        setelah mengirim laporan.
-      </p>
-
-
-      <form
-        class="check-form"
-        id="checkForm">
-
-        <input
-          id="checkToken"
-          type="text"
-          placeholder="Contoh: DSM-2026-ABC123"
-          required>
-
-        <button type="submit">
-          Cek Status
-        </button>
-
-      </form>
-
-
-      <div
-        class="status-result"
-        id="statusResult">
-
-        <div class="status-box">
-
-          <div id="statusContent"></div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     GALERI
-========================================================== -->
-
-<section class="gallery-section" id="galeri">
-
-  <div class="container">
-
-    <div class="section-header reveal">
-
-      <small>Dokumentasi</small>
-
-      <h2>
-        Galeri Desa Semparuk
-      </h2>
-
-      <p>
-        Potret kegiatan dan kehidupan masyarakat Desa Semparuk.
-      </p>
-
-    </div>
-
-
-    <div class="filter-buttons">
-
-      <button class="filter-btn active" data-filter="all">
-        Semua
-      </button>
-
-      <button class="filter-btn" data-filter="kegiatan">
-        Kegiatan Desa
-      </button>
-
-      <button class="filter-btn" data-filter="infrastruktur">
-        Infrastruktur
-      </button>
-
-      <button class="filter-btn" data-filter="masyarakat">
-        Masyarakat
-      </button>
-
-      <button class="filter-btn" data-filter="lingkungan">
-        Lingkungan
-      </button>
-
-      <button class="filter-btn" data-filter="budaya">
-        Budaya
-      </button>
-
-      <button class="filter-btn" data-filter="wisata">
-        Wisata
-      </button>
-
-    </div>
-
-
-    <div class="gallery-grid">
-
-      <div
-        class="gallery-item reveal"
-        data-category="kegiatan">
-
-        <img
-          src="assets/gallery-1.jpg"
-          alt="Kegiatan Desa"
-          onerror="this.src='https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80'">
-
-        <div class="gallery-overlay">
-          <strong>Kegiatan Desa</strong>
-        </div>
-
-      </div>
-
-
-      <div
-        class="gallery-item reveal"
-        data-category="infrastruktur">
-
-        <img
-          src="assets/gallery-2.jpg"
-          alt="Infrastruktur Desa"
-          onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80'">
-
-        <div class="gallery-overlay">
-          <strong>Infrastruktur</strong>
-        </div>
-
-      </div>
-
-
-      <div
-        class="gallery-item reveal"
-        data-category="masyarakat">
-
-        <img
-          src="assets/gallery-3.jpg"
-          alt="Masyarakat Desa"
-          onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80'">
-
-        <div class="gallery-overlay">
-          <strong>Masyarakat</strong>
-        </div>
-
-      </div>
-
-
-      <div
-        class="gallery-item reveal"
-        data-category="lingkungan">
-
-        <img
-          src="assets/gallery-4.jpg"
-          alt="Lingkungan Desa"
-          onerror="this.src='https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80'">
-
-        <div class="gallery-overlay">
-          <strong>Lingkungan</strong>
-        </div>
-
-      </div>
-
-
-      <div
-        class="gallery-item reveal"
-        data-category="budaya">
-
-        <img
-          src="assets/gallery-5.jpg"
-          alt="Budaya Desa"
-          onerror="this.src='https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=900&q=80'">
-
-        <div class="gallery-overlay">
-          <strong>Budaya</strong>
-        </div>
-
-      </div>
-
-
-      <div
-        class="gallery-item reveal"
-        data-category="wisata">
-
-        <img
-          src="assets/gallery-6.jpg"
-          alt="Wisata Desa"
-          onerror="this.src='https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80'">
-
-        <div class="gallery-overlay">
-          <strong>Wisata</strong>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     POTENSI DESA
-========================================================== -->
-
-<section class="potential-section">
-
-  <div class="container">
-
-    <div class="section-header reveal">
-
-      <small>Potensi Lokal</small>
-
-      <h2>
-        Potensi Desa Semparuk
-      </h2>
-
-      <p>
-        Berbagai potensi yang dapat dikembangkan
-        untuk kemajuan masyarakat.
-      </p>
-
-    </div>
-
-
-    <div class="potential-grid">
-
-      <div class="potential-card reveal">
-        <i class="fa-solid fa-graduation-cap"></i>
-        <h3>Pendidikan</h3>
-        <p>
-          Potensi pengembangan sumber daya manusia.
-        </p>
-      </div>
-
-
-      <div class="potential-card reveal">
-        <i class="fa-solid fa-store"></i>
-        <h3>UMKM</h3>
-        <p>
-          Usaha masyarakat sebagai penggerak ekonomi.
-        </p>
-      </div>
-
-
-      <div class="potential-card reveal">
-        <i class="fa-solid fa-seedling"></i>
-        <h3>Pertanian</h3>
-        <p>
-          Pengembangan sektor pertanian masyarakat.
-        </p>
-      </div>
-
-
-      <div class="potential-card reveal">
-        <i class="fa-solid fa-chart-line"></i>
-        <h3>Ekonomi Masyarakat</h3>
-        <p>
-          Penguatan ekonomi lokal dan produktivitas.
-        </p>
-      </div>
-
-
-      <div class="potential-card reveal">
-        <i class="fa-solid fa-leaf"></i>
-        <h3>Lingkungan</h3>
-        <p>
-          Potensi lingkungan yang berkelanjutan.
-        </p>
-      </div>
-
-
-      <div class="potential-card reveal">
-        <i class="fa-solid fa-camera"></i>
-        <h3>Wisata</h3>
-        <p>
-          Potensi wisata dan daya tarik lokal.
-        </p>
-      </div>
-
-
-      <div class="potential-card reveal">
-        <i class="fa-solid fa-people-group"></i>
-        <h3>Pemuda & Komunitas</h3>
-        <p>
-          Peran pemuda dalam pembangunan desa.
-        </p>
-      </div>
-
-
-      <div class="potential-card reveal">
-        <i class="fa-solid fa-handshake"></i>
-        <h3>Kolaborasi</h3>
-        <p>
-          Kerja sama masyarakat dan pemerintah desa.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     BERITA
-========================================================== -->
-
-<section class="news-section" id="berita">
-
-  <div class="container">
-
-    <div class="section-header reveal">
-
-      <small>Informasi Terkini</small>
-
-      <h2>
-        Berita & Informasi Desa
-      </h2>
-
-      <p>
-        Informasi kegiatan dan perkembangan Desa Semparuk.
-      </p>
-
-    </div>
-
-
-    <div class="filter-buttons news-filter">
-
-      <button class="filter-btn active" data-news="all">
-        Semua
-      </button>
-
-      <button class="filter-btn" data-news="pemerintahan">
-        Pemerintahan
-      </button>
-
-      <button class="filter-btn" data-news="kegiatan">
-        Kegiatan
-      </button>
-
-      <button class="filter-btn" data-news="pembangunan">
-        Pembangunan
-      </button>
-
-    </div>
-
-
-    <div class="news-grid">
-
-      <article
-        class="news-card reveal"
-        data-news-category="pemerintahan">
-
-        <div class="news-image">
-
-          <img
-            src="assets/news-1.jpg"
-            alt="Berita Pemerintahan"
-            onerror="this.src='https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80'">
-
-        </div>
-
-        <div class="news-content">
-
-          <div class="news-meta">
-
-            <span class="news-category">
-              Pemerintahan
-            </span>
-
-            <span>
-              • 2026
-            </span>
-
-          </div>
-
-          <h3>
-            Informasi Pemerintahan Desa Semparuk
-          </h3>
-
-          <p>
-            Informasi dan agenda Pemerintah Desa Semparuk
-            untuk masyarakat.
-          </p>
-
-          <a href="#" class="news-link">
-            Baca Selengkapnya →
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <article
-        class="news-card reveal"
-        data-news-category="kegiatan">
-
-        <div class="news-image">
-
-          <img
-            src="assets/news-2.jpg"
-            alt="Kegiatan Desa"
-            onerror="this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=900&q=80'">
-
-        </div>
-
-        <div class="news-content">
-
-          <div class="news-meta">
-
-            <span class="news-category">
-              Kegiatan
-            </span>
-
-            <span>
-              • 2026
-            </span>
-
-          </div>
-
-          <h3>
-            Kegiatan Masyarakat Desa
-          </h3>
-
-          <p>
-            Dokumentasi kegiatan dan aktivitas masyarakat desa.
-          </p>
-
-          <a href="#" class="news-link">
-            Baca Selengkapnya →
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <article
-        class="news-card reveal"
-        data-news-category="pembangunan">
-
-        <div class="news-image">
-
-          <img
-            src="assets/news-3.jpg"
-            alt="Pembangunan Desa"
-            onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80'">
-
-        </div>
-
-        <div class="news-content">
-
-          <div class="news-meta">
-
-            <span class="news-category">
-              Pembangunan
-            </span>
-
-            <span>
-              • 2026
-            </span>
-
-          </div>
-
-          <h3>
-            Perkembangan Pembangunan Desa
-          </h3>
-
-          <p>
-            Informasi perkembangan pembangunan
-            dan infrastruktur desa.
-          </p>
-
-          <a href="#" class="news-link">
-            Baca Selengkapnya →
-          </a>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     LOCATION
-========================================================== -->
-
-<section class="location-section" id="lokasi">
-
-  <div class="container location-grid">
-
-    <div class="map-box reveal">
-
-      <!--
-        PETA:
-        Jika ingin lebih akurat, ganti query pada URL
-        dengan lokasi koordinat resmi kantor desa.
-      -->
-
-      <iframe
-        src="https://www.google.com/maps?q=Desa%20Semparuk%2C%20Kabupaten%20Sambas%2C%20Kalimantan%20Barat&output=embed"
-        loading="lazy">
-      </iframe>
-
-    </div>
-
-
-    <div class="location-info reveal">
-
-      <small>Lokasi & Kontak</small>
-
-      <h2>
-        Lokasi Desa Semparuk
-      </h2>
-
-      <p>
-        Temukan lokasi dan informasi kontak Pemerintah Desa Semparuk.
-      </p>
-
-
-      <div class="contact-items">
-
-        <div class="contact-item">
-
-          <div class="contact-icon">
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
-
-          <div>
-
-            <strong>Alamat</strong>
-
-            <span>
-              Jalan Masjid Lorong Berdikari,
-              RT.40/RW.7, Kabupaten Sambas,
-              Semparuk, Kalimantan Barat, 79457.
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="contact-item">
-
-          <div class="contact-icon">
-            <i class="fa-solid fa-envelope"></i>
-          </div>
-
-          <div>
-
-            <strong>Email</strong>
-
-            <span>
-              desa.semparuk@example.go.id
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <div class="contact-item">
-
-          <div class="contact-icon">
-            <i class="fa-solid fa-phone"></i>
-          </div>
-
-          <div>
-
-            <strong>Telepon</strong>
-
-            <span>
-              Nomor resmi dapat ditambahkan.
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     CONTACT
-========================================================== -->
-
-<section class="contact-section" id="kontak">
-
-  <div class="container">
-
-    <div class="contact-banner reveal">
-
-      <div>
-
-        <h2>
-          Hubungi Pemerintah Desa Semparuk
-        </h2>
-
-        <p>
-          Kami hadir untuk memberikan informasi dan pelayanan
-          kepada masyarakat Desa Semparuk.
-        </p>
-
-      </div>
-
-      <a href="mailto:desa.semparuk@example.go.id"
-         class="btn">
-
-        <i class="fa-solid fa-envelope"></i>
-
-        Hubungi Kami
-
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<!-- =========================================================
-     FOOTER
-========================================================== -->
-
-<footer>
-
-  <div class="container">
-
-    <div class="footer-grid">
-
-      <div class="footer-brand">
-
-        <div class="footer-logo">
-
-          <div class="footer-logo-icon">
-            DS
-          </div>
-
-          <strong>
-            DESA SEMPARUK
-          </strong>
-
-        </div>
-
-        <p>
-          Bersama Membangun Desa,
-          Menuju Desa Digital.
-        </p>
-
-      </div>
-
-
-      <div class="footer-column">
-
-        <h3>Navigasi</h3>
-
-        <ul>
-
-          <li>
-            <a href="#beranda">Beranda</a>
-          </li>
-
-          <li>
-            <a href="#profil">Profil</a>
-          </li>
-
-          <li>
-            <a href="#program">Program</a>
-          </li>
-
-          <li>
-            <a href="#layanan">Layanan</a>
-          </li>
-
-          <li>
-            <a href="#berita">Berita</a>
-          </li>
-
-        </ul>
-
-      </div>
-
-
-      <div class="footer-column">
-
-        <h3>Layanan</h3>
-
-        <ul>
-
-          <li>
-            <a href="#pengaduan">
-              Administrasi
-            </a>
-          </li>
-
-          <li>
-            <a href="#pengaduan">
-              Pengaduan
-            </a>
-          </li>
-
-          <li>
-            <a href="#cek-pengaduan">
-              Cek Pengaduan
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-
-
-      <div class="footer-column">
-
-        <h3>Informasi</h3>
-
-        <ul>
-
-          <li>
-            <a href="#kontak">
-              Kontak
-            </a>
-          </li>
-
-          <li>
-            <a href="#lokasi">
-              Lokasi
-            </a>
-          </li>
-
-          <li>
-            <a href="#galeri">
-              Galeri
-            </a>
-          </li>
-
-        </ul>
-
-      </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-      <span>
-        © 2026 Pemerintah Desa Semparuk.
-        All Rights Reserved.
-      </span>
-
-      <span>
-        Kecamatan Semparuk • Kabupaten Sambas • Kalimantan Barat
-      </span>
-
-    </div>
-
-  </div>
-
-</footer>
-
-
-<!-- =========================================================
-     LIGHTBOX
-========================================================== -->
-
-<div class="lightbox" id="lightbox">
-
-  <button
-    class="lightbox-close"
-    id="lightboxClose">
-
-    <i class="fa-solid fa-xmark"></i>
-
-  </button>
-
-  <img
-    id="lightboxImage"
-    src=""
-    alt="Galeri Desa">
+<p>
+Sampaikan laporan atau aspirasi kepada
+Pemerintah Desa Semparuk.
+</p>
 
 </div>
 
 
-<!-- =========================================================
-     TOAST
-========================================================== -->
+<div class="complaint-grid">
 
-<div id="toast">
-  Berhasil!
+<div class="form-card reveal">
+
+<h3>
+Form Pengaduan
+</h3>
+
+<br>
+
+<form id="complaintForm">
+
+<div class="form-group">
+
+<label>
+Nama
+</label>
+
+<input
+class="form-control"
+required
+placeholder="Nama lengkap">
+
 </div>
 
 
-<!-- =========================================================
-     BACK TO TOP
-========================================================== -->
+<div class="form-group">
 
-<button id="backTop">
+<label>
+Nomor HP
+</label>
 
-  <i class="fa-solid fa-arrow-up"></i>
+<input
+class="form-control"
+required
+placeholder="08xxxxxxxxxx">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Kategori
+</label>
+
+<select class="form-control" required>
+
+<option value="">
+Pilih kategori
+</option>
+
+<option>
+Infrastruktur
+</option>
+
+<option>
+Pelayanan
+</option>
+
+<option>
+Lingkungan
+</option>
+
+<option>
+Administrasi
+</option>
+
+<option>
+Lainnya
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Isi Pengaduan
+</label>
+
+<textarea
+class="form-control"
+required
+placeholder="Tuliskan pengaduan atau aspirasi..."></textarea>
+
+</div>
+
+
+<button
+class="btn btn-primary"
+type="submit">
+
+Kirim Pengaduan
+
+<i class="fa-solid fa-paper-plane"></i>
+
+</button>
+
+</form>
+
+</div>
+
+
+<div class="form-card reveal">
+
+<h3>
+Cek Status Pengaduan
+</h3>
+
+<p style="color:var(--text-muted);margin:10px 0 20px">
+
+Masukkan nomor tiket pengaduan
+untuk melihat status laporan.
+
+</p>
+
+
+<div class="form-group">
+
+<input
+id="ticket"
+class="form-control"
+placeholder="Contoh: DSP-2026-001">
+
+</div>
+
+
+<button
+class="btn btn-primary"
+id="checkTicket">
+
+Cek Status
 
 </button>
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================== -->
+<div
+id="statusResult"
+style="margin-top:25px;display:none">
+
+<strong>
+Status:
+</strong>
+
+<span style="color:#1677C8">
+Sedang Diproses
+</span>
+
+<p style="color:var(--text-muted);font-size:.85rem;margin-top:8px">
+
+Data contoh. Hubungkan ke database
+untuk status pengaduan sebenarnya.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     GALERI
+===================================================== -->
+
+<section
+class="gallery"
+id="galeri">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+Dokumentasi
+</div>
+
+<h2>
+Galeri Desa
+</h2>
+
+<p>
+Dokumentasi kegiatan Desa Semparuk.
+</p>
+
+</div>
+
+
+<div class="gallery-grid">
 
 <script>
 
-  /* =========================================================
-     HELPER
-  ========================================================== */
+const foto = [
 
-  const $ = selector => document.querySelector(selector);
-  const $$ = selector => document.querySelectorAll(selector);
+"photo-1500534623283-312aade485b7",
+
+"photo-1497366754035-f200968a6e72",
+
+"photo-1529156069898-49953e39b3ac",
+
+"photo-1509099836639-18ba02c3a9b9",
+
+"photo-1469571486292-0ba58a3f068b",
+
+"photo-1522202176988-66273c2fd55f"
+
+];
+
+foto.forEach((f,i)=>{
+
+document.write(`
+
+<div class="gallery-item reveal">
+
+<img
+src="https://images.unsplash.com/${f}?auto=format&fit=crop&w=700&q=80"
+alt="Galeri Desa Semparuk"
+class="gallery-img">
+
+</div>
+
+`);
+
+});
+
+</script>
+
+</div>
+
+</div>
+
+</section>
 
 
-  /* =========================================================
-     LOADING SCREEN
-  ========================================================== */
+<!-- =====================================================
+     POTENSI
+===================================================== -->
 
-  window.addEventListener("load", () => {
+<section>
 
-    setTimeout(() => {
+<div class="container">
 
-      $("#loader").classList.add("hide");
+<div class="section-head reveal">
 
-      document.body.classList.remove("loading");
+<div class="kicker">
+Potensi Desa
+</div>
 
-    }, 700);
+<h2>
+Potensi Desa Semparuk
+</h2>
 
-  });
+<p>
+Potensi lokal yang dapat dikembangkan
+untuk kesejahteraan masyarakat.
+</p>
+
+</div>
 
 
-  /* =========================================================
-     MOBILE NAVBAR
-  ========================================================== */
+<div class="potensi-grid">
 
-  const hamburger = $("#hamburger");
-  const navMenu = $("#navMenu");
+<div class="potensi-card reveal">
 
-  hamburger.addEventListener("click", () => {
+<div class="potensi-icon">
+<i class="fa-solid fa-wheat-awn"></i>
+</div>
+
+<h4>Pertanian</h4>
+
+</div>
+
+
+<div class="potensi-card reveal">
+
+<div class="potensi-icon">
+<i class="fa-solid fa-tree"></i>
+</div>
+
+<h4>Perkebunan</h4>
+
+</div>
+
+
+<div class="potensi-card reveal">
+
+<div class="potensi-icon">
+<i class="fa-solid fa-cow"></i>
+</div>
+
+<h4>Peternakan</h4>
+
+</div>
+
+
+<div class="potensi-card reveal">
+
+<div class="potensi-icon">
+<i class="fa-solid fa-store"></i>
+</div>
+
+<h4>UMKM</h4>
+
+</div>
+
+
+<div class="potensi-card reveal">
+
+<div class="potensi-icon">
+<i class="fa-solid fa-fish"></i>
+</div>
+
+<h4>Perikanan</h4>
+
+</div>
+
+
+<div class="potensi-card reveal">
+
+<div class="potensi-icon">
+<i class="fa-solid fa-mountain-sun"></i>
+</div>
+
+<h4>Wisata</h4>
+
+</div>
+
+
+<div class="potensi-card reveal">
+
+<div class="potensi-icon">
+<i class="fa-solid fa-box-open"></i>
+</div>
+
+<h4>Produk Lokal</h4>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     BERITA
+===================================================== -->
+
+<section
+id="berita"
+class="stats">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+Informasi
+</div>
+
+<h2>
+Berita Desa
+</h2>
+
+<p>
+Informasi dan kegiatan terbaru Desa Semparuk.
+</p>
+
+</div>
+
+
+<div class="news-grid">
+
+
+<div class="news-card reveal">
+
+<img
+class="news-img"
+src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80"
+alt="Berita">
+
+<div class="news-body">
+
+<div class="news-meta">
+18 September 2026 • Pemerintahan
+</div>
+
+<h4>
+Kegiatan Pemerintah Desa Semparuk
+</h4>
+
+<p>
+Ringkasan berita dummy yang dapat
+diganti dengan berita resmi desa.
+</p>
+
+<a href="#">
+Baca Selengkapnya →
+</a>
+
+</div>
+
+</div>
+
+
+<div class="news-card reveal">
+
+<img
+class="news-img"
+src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80"
+alt="Berita">
+
+<div class="news-body">
+
+<div class="news-meta">
+18 September 2026 • Masyarakat
+</div>
+
+<h4>
+Gotong Royong Masyarakat
+</h4>
+
+<p>
+Dokumentasi kegiatan masyarakat
+Desa Semparuk.
+</p>
+
+<a href="#">
+Baca Selengkapnya →
+</a>
+
+</div>
+
+</div>
+
+
+<div class="news-card reveal">
+
+<img
+class="news-img"
+src="https://images.unsplash.com/photo-1509099836639-18ba02c3a9b9?auto=format&fit=crop&w=800&q=80"
+alt="Berita">
+
+<div class="news-body">
+
+<div class="news-meta">
+18 September 2026 • Pembangunan
+</div>
+
+<h4>
+Pembangunan Infrastruktur Desa
+</h4>
+
+<p>
+Informasi pembangunan dan fasilitas
+umum desa.
+</p>
+
+<a href="#">
+Baca Selengkapnya →
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     TRANSPARANSI
+===================================================== -->
+
+<section
+class="transparansi">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+Transparansi
+</div>
+
+<h2>
+Transparansi Desa
+</h2>
+
+<p>
+Informasi keuangan dan pembangunan desa.
+</p>
+
+</div>
+
+
+<div class="trans-grid">
+
+<div class="trans-card reveal">
+
+<i class="fa-solid fa-file-invoice-dollar"></i>
+
+<h4>
+APBDes
+</h4>
+
+</div>
+
+
+<div class="trans-card reveal">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<h4>
+Realisasi APBDes
+</h4>
+
+</div>
+
+
+<div class="trans-card reveal">
+
+<i class="fa-solid fa-coins"></i>
+
+<h4>
+Dana Desa
+</h4>
+
+</div>
+
+
+<div class="trans-card reveal">
+
+<i class="fa-solid fa-road"></i>
+
+<h4>
+Pembangunan Desa
+</h4>
+
+</div>
+
+
+<div class="trans-card reveal">
+
+<i class="fa-solid fa-folder-open"></i>
+
+<h4>
+Laporan Desa
+</h4>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     KONTAK + MAP
+===================================================== -->
+
+<section id="kontak">
+
+<div class="container">
+
+<div class="section-head reveal">
+
+<div class="kicker">
+Hubungi Kami
+</div>
+
+<h2>
+Kantor Desa Semparuk
+</h2>
+
+<p>
+Silakan hubungi Pemerintah Desa Semparuk
+untuk informasi lebih lanjut.
+</p>
+
+</div>
+
+
+<div class="location-grid">
+
+
+<div class="contact-info reveal">
+
+<div class="contact-row">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<span>
+<strong>Alamat</strong><br>
+[Alamat Kantor Desa Semparuk]
+</span>
+
+</div>
+
+
+<div class="contact-row">
+
+<i class="fa-solid fa-phone"></i>
+
+<span>
+<strong>Telepon</strong><br>
+[Nomor Telepon Desa]
+</span>
+
+</div>
+
+
+<div class="contact-row">
+
+<i class="fa-solid fa-envelope"></i>
+
+<span>
+<strong>Email</strong><br>
+[Email Desa]
+</span>
+
+</div>
+
+
+<div class="contact-row">
+
+<i class="fa-solid fa-clock"></i>
+
+<span>
+<strong>Jam Pelayanan</strong><br>
+Senin–Jumat, [Jam Pelayanan]
+</span>
+
+</div>
+
+</div>
+
+
+<div class="map reveal">
+
+<iframe
+src="https://www.openstreetmap.org/export/embed.html?bbox=109.0%2C1.0%2C109.5%2C1.5&layer=mapnik"
+loading="lazy">
+
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+
+<div>
+
+<div class="brand">
+
+<div class="brand-mark">
+DS
+</div>
+
+<div>
+
+<div class="brand-name" style="color:white">
+DESA SEMPARUK
+</div>
+
+<div class="brand-tag" style="color:#BFD8F2">
+Pemerintah Desa Semparuk
+</div>
+
+</div>
+
+</div>
+
+<br>
+
+<p style="font-size:.84rem">
+
+Membangun Desa, Melayani Masyarakat,
+Menuju Semparuk yang Maju dan Sejahtera.
+
+</p>
+
+</div>
+
+
+<div>
+
+<h5>
+Navigasi
+</h5>
+
+<ul>
+
+<li>
+<a href="#beranda">Beranda</a>
+</li>
+
+<li>
+<a href="#profil">Profil</a>
+</li>
+
+<li>
+<a href="#pemerintahan">Pemerintahan</a>
+</li>
+
+<li>
+<a href="#berita">Berita</a>
+</li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h5>
+Layanan
+</h5>
+
+<ul>
+
+<li>
+<a href="#layanan">Administrasi</a>
+</li>
+
+<li>
+<a href="#pengaduan">Pengaduan</a>
+</li>
+
+<li>
+<a href="#layanan">Pelayanan Desa</a>
+</li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h5>
+Informasi
+</h5>
+
+<ul>
+
+<li>
+<a href="#kontak">Kontak</a>
+</li>
+
+<li>
+<a href="#galeri">Galeri</a>
+</li>
+
+<li>
+<a href="#program">Program Desa</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>
+
+© 2026 Pemerintah Desa Semparuk.
+All Rights Reserved.
+
+</span>
+
+
+<div class="social">
+
+<a href="#">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="#">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="#">
+<i class="fa-brands fa-youtube"></i>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<!-- =====================================================
+     LIGHTBOX
+===================================================== -->
+
+<div
+class="lightbox"
+id="lightbox">
+
+<div
+class="lightbox-close"
+id="lightboxClose">
+
+<i class="fa-solid fa-xmark"></i>
+
+</div>
+
+<img
+id="lightboxImg"
+src=""
+alt="Foto Desa">
+
+</div>
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<button
+class="back-top"
+id="backTop">
+
+<i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+/* ==============================================
+   PAGE LOADER
+============================================== */
+
+window.addEventListener("load",function(){
+
+    setTimeout(function(){
+
+        document
+        .getElementById("pageLoader")
+        .classList.add("hide");
+
+    },500);
+
+});
+
+
+/* ==============================================
+   NAVBAR SCROLL
+============================================== */
+
+const navbar =
+document.getElementById("navbar");
+
+window.addEventListener("scroll",function(){
+
+    navbar.classList.toggle(
+        "scrolled",
+        window.scrollY > 30
+    );
+
+});
+
+
+/* ==============================================
+   MOBILE MENU
+============================================== */
+
+const hamburger =
+document.getElementById("hamburger");
+
+const navMenu =
+document.getElementById("navMenu");
+
+
+hamburger.addEventListener("click",function(){
 
     navMenu.classList.toggle("open");
 
-    const icon = hamburger.querySelector("i");
-
-    icon.classList.toggle("fa-bars");
-    icon.classList.toggle("fa-xmark");
-
-  });
+});
 
 
-  $$(".nav-menu a").forEach(link => {
+document
+.querySelectorAll(".nav-menu a")
+.forEach(function(link){
 
-    link.addEventListener("click", () => {
+    link.addEventListener("click",function(){
 
-      navMenu.classList.remove("open");
-
-      const icon = hamburger.querySelector("i");
-
-      icon.classList.add("fa-bars");
-      icon.classList.remove("fa-xmark");
+        navMenu.classList.remove("open");
 
     });
 
-  });
+});
 
 
-  /* =========================================================
-     DARK MODE
-  ========================================================== */
+/* ==============================================
+   DARK MODE
+============================================== */
 
-  const darkModeBtn = $("#darkModeBtn");
-
-  const savedTheme = localStorage.getItem("desaTheme");
-
-  if (savedTheme === "dark") {
-
-    document.body.classList.add("dark");
-
-    darkModeBtn.innerHTML =
-      '<i class="fa-solid fa-sun"></i>';
-
-  }
+const themeToggle =
+document.getElementById("themeToggle");
 
 
-  darkModeBtn.addEventListener("click", () => {
+themeToggle.addEventListener("click",function(){
 
-    document.body.classList.toggle("dark");
+    const current =
+    document.body.getAttribute("data-theme");
 
-    const isDark =
-      document.body.classList.contains("dark");
+    if(current === "dark"){
 
-    localStorage.setItem(
-      "desaTheme",
-      isDark ? "dark" : "light"
+        document.body.removeAttribute("data-theme");
+
+        themeToggle.innerHTML =
+        '<i class="fa-solid fa-moon"></i>';
+
+        localStorage.setItem(
+            "theme",
+            "light"
+        );
+
+    }else{
+
+        document.body.setAttribute(
+            "data-theme",
+            "dark"
+        );
+
+        themeToggle.innerHTML =
+        '<i class="fa-solid fa-sun"></i>';
+
+        localStorage.setItem(
+            "theme",
+            "dark"
+        );
+
+    }
+
+});
+
+
+if(localStorage.getItem("theme")==="dark"){
+
+    document.body.setAttribute(
+        "data-theme",
+        "dark"
     );
 
-    darkModeBtn.innerHTML = isDark
-      ? '<i class="fa-solid fa-sun"></i>'
-      : '<i class="fa-solid fa-moon"></i>';
+    themeToggle.innerHTML =
+    '<i class="fa-solid fa-sun"></i>';
 
-  });
+}
 
 
-  /* =========================================================
-     ACTIVE NAVIGATION
-  ========================================================== */
+/* ==============================================
+   REVEAL ANIMATION
+============================================== */
 
-  const sections = $$("main section[id]");
-  const navLinks = $$(".nav-menu a");
+const observer =
+new IntersectionObserver(
 
-  const observerNav = new IntersectionObserver(
-    entries => {
+entries=>{
 
-      entries.forEach(entry => {
+    entries.forEach(entry=>{
 
-        if (entry.isIntersecting) {
+        if(entry.isIntersecting){
 
-          navLinks.forEach(link => {
-
-            link.classList.remove("active");
-
-            if (
-              link.getAttribute("href") ===
-              "#" + entry.target.id
-            ) {
-
-              link.classList.add("active");
-
-            }
-
-          });
+            entry.target
+            .classList
+            .add("show");
 
         }
 
-      });
+    });
 
-    },
-    {
-      threshold: .25
-    }
-  );
+},
 
+{
+    threshold:.12
+}
 
-  sections.forEach(section => {
-    observerNav.observe(section);
-  });
+);
 
 
-  /* =========================================================
-     SCROLL REVEAL
-  ========================================================== */
-
-  const revealObserver =
-    new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("active");
-
-            revealObserver.unobserve(entry.target);
-
-          }
-
-        });
-
-      },
-      {
-        threshold: .12
-      }
-    );
+document
+.querySelectorAll(".reveal")
+.forEach(el=>observer.observe(el));
 
 
-  $$(".reveal").forEach(element => {
+/* ==============================================
+   COUNTER
+============================================== */
 
-    revealObserver.observe(element);
+const counters =
+document.querySelectorAll("[data-count]");
 
-  });
 
+const counterObserver =
+new IntersectionObserver(
 
-  /* =========================================================
-     COUNTER
-  ========================================================== */
+entries=>{
 
-  let counterStarted = false;
+    entries.forEach(entry=>{
 
-  const statsSection = $(".stats-section");
+        if(entry.isIntersecting){
 
-  const counterObserver =
-    new IntersectionObserver(
-      entries => {
-
-        if (
-          entries[0].isIntersecting &&
-          !counterStarted
-        ) {
-
-          counterStarted = true;
-
-          $$(".stat-number").forEach(counter => {
+            const element =
+            entry.target;
 
             const target =
-              Number(counter.dataset.target);
+            Number(element.dataset.count);
 
             let current = 0;
 
-            const duration = 1500;
+            const increment =
+            Math.ceil(target / 60);
 
-            const step =
-              target / (duration / 16);
+            const timer =
+            setInterval(function(){
 
-            const update = () => {
+                current += increment;
 
-              current += step;
+                if(current >= target){
 
-              if (current >= target) {
+                    current = target;
 
-                current = target;
+                    clearInterval(timer);
 
-              }
+                }
 
-              counter.textContent =
-                counter.dataset.format === "number"
-                  ? Math.floor(current).toLocaleString("id-ID")
-                  : Math.floor(current);
+                element.textContent =
+                current.toLocaleString("id-ID");
 
-              if (current < target) {
+            },25);
 
-                requestAnimationFrame(update);
-
-              }
-
-            };
-
-            update();
-
-          });
+            counterObserver.unobserve(element);
 
         }
 
-      },
-      {
-        threshold: .4
-      }
+    });
+
+},
+
+{
+    threshold:.7
+}
+
+);
+
+
+counters.forEach(
+    counter=>counterObserver.observe(counter)
+);
+
+
+/* ==============================================
+   BACK TO TOP
+============================================== */
+
+const backTop =
+document.getElementById("backTop");
+
+
+window.addEventListener("scroll",function(){
+
+    backTop.classList.toggle(
+        "show",
+        window.scrollY > 500
     );
 
-
-  counterObserver.observe(statsSection);
-
-
-  /* =========================================================
-     TOAST
-  ========================================================== */
-
-  let toastTimer;
-
-  function showToast(message) {
-
-    const toast = $("#toast");
-
-    toast.textContent = message;
-
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(() => {
-
-      toast.classList.remove("show");
-
-    }, 3000);
-
-  }
+});
 
 
-  /* =========================================================
-     GENERATE UNIQUE TOKEN
-  ========================================================== */
+backTop.addEventListener("click",function(){
 
-  function generateToken() {
+    window.scrollTo({
 
-    const date =
-      new Date().getFullYear();
+        top:0,
 
-    const random =
-      Math.random()
-        .toString(36)
-        .substring(2, 8)
-        .toUpperCase();
+        behavior:"smooth"
 
-    return `DSM-${date}-${random}`;
+    });
 
-  }
+});
 
 
-  /* =========================================================
-     COMPLAINT FORM
-  ========================================================== */
+/* ==============================================
+   SERVICE BUTTON
+============================================== */
 
-  const complaintForm =
-    $("#complaintForm");
+document
+.querySelectorAll(".service-btn")
+.forEach(function(button){
 
-  complaintForm.addEventListener(
-    "submit",
-    event => {
+    button.addEventListener("click",function(){
 
-      event.preventDefault();
+        const service =
+        button.dataset.service;
 
-      const formData =
-        new FormData(complaintForm);
+        alert(
+            "Layanan: " +
+            service +
+            "\\n\\nFitur pengajuan dapat dihubungkan ke database."
+        );
 
-      const nama =
-        formData.get("nama").trim();
+    });
 
-      const email =
-        formData.get("email").trim();
-
-      const kategori =
-        formData.get("kategori");
-
-      const judul =
-        formData.get("judul").trim();
-
-      const isi =
-        formData.get("isi").trim();
+});
 
 
-      if (
-        !nama ||
-        !email ||
-        !kategori ||
-        !judul ||
-        !isi
-      ) {
+/* ==============================================
+   PENGADUAN
+============================================== */
 
-        showToast(
-          "Mohon lengkapi semua data."
+const complaintForm =
+document.getElementById("complaintForm");
+
+
+complaintForm.addEventListener(
+"submit",
+function(e){
+
+    e.preventDefault();
+
+    alert(
+        "Pengaduan berhasil divalidasi.\\n\\n" +
+        "Hubungkan form ini dengan PHP/MySQL " +
+        "agar data tersimpan ke database."
+    );
+
+    complaintForm.reset();
+
+});
+
+
+/* ==============================================
+   CEK TIKET
+============================================== */
+
+document
+.getElementById("checkTicket")
+.addEventListener("click",function(){
+
+    const ticket =
+    document
+    .getElementById("ticket")
+    .value
+    .trim();
+
+    if(ticket === ""){
+
+        alert(
+            "Silakan masukkan nomor tiket."
         );
 
         return;
 
-      }
-
-
-      const token =
-        generateToken();
-
-
-      const complaint = {
-
-        token,
-
-        nama,
-
-        email,
-
-        kategori,
-
-        judul,
-
-        isi,
-
-        status: "Menunggu",
-
-        createdAt:
-          new Date().toISOString()
-
-      };
-
-
-      const complaints =
-        JSON.parse(
-          localStorage.getItem(
-            "desaSemparukComplaints"
-          ) || "[]"
-        );
-
-
-      complaints.push(complaint);
-
-
-      localStorage.setItem(
-        "desaSemparukComplaints",
-        JSON.stringify(complaints)
-      );
-
-
-      $("#tokenValue").textContent =
-        token;
-
-      $("#tokenResult")
-        .classList.add("show");
-
-
-      complaintForm.reset();
-
-
-      showToast(
-        "Pengaduan berhasil dikirim."
-      );
-
-
-      $("#tokenResult")
-        .scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-
     }
-  );
 
+    document
+    .getElementById("statusResult")
+    .style.display="block";
 
-  /* =========================================================
-     COPY TOKEN
-  ========================================================== */
+});
 
-  $("#copyToken").addEventListener(
-    "click",
-    async () => {
 
-      const token =
-        $("#tokenValue").textContent;
+/* ==============================================
+   LIGHTBOX
+============================================== */
 
-      if (!token || token === "-") return;
+const lightbox =
+document.getElementById("lightbox");
 
-      try {
+const lightboxImg =
+document.getElementById("lightboxImg");
 
-        await navigator.clipboard.writeText(token);
 
-        showToast(
-          "Token berhasil disalin."
-        );
+document
+.querySelectorAll(".gallery-img")
+.forEach(function(image){
 
-      } catch {
+    image.addEventListener("click",function(){
 
-        showToast(
-          "Token: " + token
-        );
-
-      }
-
-    }
-  );
-
-
-  /* =========================================================
-     CHECK COMPLAINT
-  ========================================================== */
-
-  $("#checkForm").addEventListener(
-    "submit",
-    event => {
-
-      event.preventDefault();
-
-      const token =
-        $("#checkToken")
-          .value
-          .trim()
-          .toUpperCase();
-
-
-      const complaints =
-        JSON.parse(
-          localStorage.getItem(
-            "desaSemparukComplaints"
-          ) || "[]"
-        );
-
-
-      const complaint =
-        complaints.find(
-          item =>
-            item.token.toUpperCase() === token
-        );
-
-
-      const result =
-        $("#statusResult");
-
-      const content =
-        $("#statusContent");
-
-
-      if (!complaint) {
-
-        result.classList.add("show");
-
-        content.innerHTML = `
-          <div style="color:#FFD1D1;">
-            <i class="fa-solid fa-circle-xmark"></i>
-            Token pengaduan tidak ditemukan.
-          </div>
-        `;
-
-        return;
-
-      }
-
-
-      let statusClass =
-        "status-menunggu";
-
-      let icon =
-        "fa-clock";
-
-
-      if (complaint.status === "Diproses") {
-
-        statusClass =
-          "status-diproses";
-
-        icon =
-          "fa-spinner";
-
-      }
-
-
-      if (complaint.status === "Selesai") {
-
-        statusClass =
-          "status-selesai";
-
-        icon =
-          "fa-circle-check";
-
-      }
-
-
-      content.innerHTML = `
-
-        <div>
-
-          <span class="status-badge ${statusClass}">
-
-            <i class="fa-solid ${icon}"></i>
-
-            ${complaint.status}
-
-          </span>
-
-        </div>
-
-        <div style="
-          margin-top:12px;
-          font-size:12px;
-          opacity:.8;
-        ">
-
-          <strong>
-            ${escapeHTML(complaint.judul)}
-          </strong>
-
-          <br>
-
-          Kategori:
-          ${escapeHTML(complaint.kategori)}
-
-        </div>
-
-      `;
-
-
-      result.classList.add("show");
-
-    }
-  );
-
-
-  /* =========================================================
-     HTML ESCAPE
-  ========================================================== */
-
-  function escapeHTML(value) {
-
-    return String(value)
-
-      .replaceAll("&", "&amp;")
-
-      .replaceAll("<", "&lt;")
-
-      .replaceAll(">", "&gt;")
-
-      .replaceAll('"', "&quot;")
-
-      .replaceAll("'", "&#039;");
-
-  }
-
-
-  /* =========================================================
-     GALLERY FILTER
-  ========================================================== */
-
-  const galleryButtons =
-    $$(".filter-btn[data-filter]");
-
-  const galleryItems =
-    $$(".gallery-item");
-
-
-  galleryButtons.forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        galleryButtons.forEach(btn =>
-          btn.classList.remove("active")
-        );
-
-        button.classList.add("active");
-
-
-        const filter =
-          button.dataset.filter;
-
-
-        galleryItems.forEach(item => {
-
-          if (
-            filter === "all" ||
-            item.dataset.category === filter
-          ) {
-
-            item.style.display = "block";
-
-          } else {
-
-            item.style.display = "none";
-
-          }
-
-        });
-
-      }
-    );
-
-  });
-
-
-  /* =========================================================
-     NEWS FILTER
-  ========================================================== */
-
-  const newsButtons =
-    $$(".news-filter .filter-btn");
-
-  const newsCards =
-    $$(".news-card");
-
-
-  newsButtons.forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        newsButtons.forEach(btn =>
-          btn.classList.remove("active")
-        );
-
-        button.classList.add("active");
-
-
-        const filter =
-          button.dataset.news;
-
-
-        newsCards.forEach(card => {
-
-          if (
-            filter === "all" ||
-            card.dataset.newsCategory === filter
-          ) {
-
-            card.style.display = "block";
-
-          } else {
-
-            card.style.display = "none";
-
-          }
-
-        });
-
-      }
-    );
-
-  });
-
-
-  /* =========================================================
-     LIGHTBOX
-  ========================================================== */
-
-  const lightbox =
-    $("#lightbox");
-
-  const lightboxImage =
-    $("#lightboxImage");
-
-
-  galleryItems.forEach(item => {
-
-    item.addEventListener(
-      "click",
-      () => {
-
-        const image =
-          item.querySelector("img");
-
-        lightboxImage.src =
-          image.src;
+        lightboxImg.src =
+        image.src;
 
         lightbox.classList.add("show");
 
-      }
-    );
+    });
 
-  });
-
-
-  $("#lightboxClose").addEventListener(
-    "click",
-    () => {
-
-      lightbox.classList.remove("show");
-
-    }
-  );
+});
 
 
-  lightbox.addEventListener(
-    "click",
-    event => {
+document
+.getElementById("lightboxClose")
+.addEventListener("click",function(){
 
-      if (event.target === lightbox) {
+    lightbox.classList.remove("show");
+
+});
+
+
+lightbox.addEventListener("click",function(e){
+
+    if(e.target === lightbox){
 
         lightbox.classList.remove("show");
 
-      }
-
     }
-  );
+
+});
 
 
-  document.addEventListener(
-    "keydown",
-    event => {
+/* ==============================================
+   ACTIVE NAV
+============================================== */
 
-      if (event.key === "Escape") {
+const sections =
+document.querySelectorAll("section[id]");
 
-        lightbox.classList.remove("show");
-
-      }
-
-    }
-  );
+const navLinks =
+document.querySelectorAll(".nav-menu a");
 
 
-  /* =========================================================
-     BACK TO TOP
-  ========================================================== */
+window.addEventListener("scroll",function(){
 
-  const backTop =
-    $("#backTop");
+    let current="";
 
+    sections.forEach(function(section){
 
-  window.addEventListener(
-    "scroll",
-    () => {
+        const top =
+        section.offsetTop - 150;
 
-      if (window.scrollY > 500) {
+        if(window.scrollY >= top){
 
-        backTop.classList.add("show");
+            current =
+            section.getAttribute("id");
 
-      } else {
+        }
 
-        backTop.classList.remove("show");
-
-      }
-
-    }
-  );
+    });
 
 
-  backTop.addEventListener(
-    "click",
-    () => {
+    navLinks.forEach(function(link){
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+        link.classList.remove("active");
 
-    }
-  );
+        if(
+            link.getAttribute("href")
+            === "#" + current
+        ){
 
+            link.classList.add("active");
 
-  /* =========================================================
-     PARALLAX HERO
-  ========================================================== */
+        }
 
-  const hero =
-    $(".hero");
+    });
 
-
-  window.addEventListener(
-    "scroll",
-    () => {
-
-      const scroll =
-        window.scrollY;
-
-      if (scroll < window.innerHeight) {
-
-        hero.style.backgroundPosition =
-          `center ${scroll * .15}px`;
-
-      }
-
-    }
-  );
+});
 
 </script>
 
