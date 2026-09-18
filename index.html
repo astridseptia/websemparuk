@@ -1,53 +1,25 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>
-        Desa Semparuk — Portal Resmi Pemerintah Desa
-    </title>
+    <title>Desa Semparuk — Portal Resmi Pemerintah Desa</title>
 
     <meta name="description"
           content="Portal Informasi dan Pelayanan Digital Desa Semparuk, Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat.">
 
-    <!-- =====================================================
-         GOOGLE FONT
-    ====================================================== -->
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet">
 
-
-    <!-- =====================================================
-         FONT AWESOME
-    ====================================================== -->
-
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-
     <style>
-
-        /* =====================================================
-           ROOT
-           PALET DESA MODERN & TERPERCAYA
-           HIJAU TUA FORMAL
-        ====================================================== */
-
         :root {
-
             --deep-ocean: #12372A;
             --navy: #1B4D3E;
             --blue: #2D6A4F;
@@ -56,27 +28,16 @@
 
             --white: #ffffff;
             --soft: #F5F8F5;
-
             --text: #263B32;
             --muted: #6B7C73;
-
             --border: #DCE8E0;
 
-            --shadow-sm:
-                0 5px 20px rgba(18, 55, 42, .07);
-
-            --shadow:
-                0 15px 45px rgba(18, 55, 42, .11);
+            --shadow: 0 12px 35px rgba(18, 55, 42, 0.10);
+            --shadow-hover: 0 18px 45px rgba(18, 55, 42, 0.16);
 
             --radius: 18px;
-
             --transition: .3s ease;
         }
-
-
-        /* =====================================================
-           RESET
-        ====================================================== */
 
         * {
             margin: 0;
@@ -89,36 +50,30 @@
         }
 
         body {
-
             font-family: "Inter", sans-serif;
-
-            background: var(--white);
-
             color: var(--text);
-
+            background: var(--white);
             line-height: 1.7;
-
             overflow-x: hidden;
         }
 
         body.dark {
-
-            --white: #0d1b15;
-            --soft: #111f18;
-
-            --text: #e8f0eb;
-            --muted: #aebdb4;
-
-            --border: #263c31;
-        }
-
-        body.no-scroll {
-            overflow: hidden;
+            --white: #10221A;
+            --soft: #142B21;
+            --text: #EDF6F0;
+            --muted: #AABBB1;
+            --border: #29463A;
+            --light-blue: #18382B;
+            --shadow: 0 12px 35px rgba(0, 0, 0, .25);
         }
 
         a {
-            color: inherit;
             text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
         }
 
         button,
@@ -128,972 +83,421 @@
             font-family: inherit;
         }
 
-        button {
-            cursor: pointer;
-        }
-
-        img {
-            width: 100%;
-            display: block;
-        }
-
-        section {
-            scroll-margin-top: 90px;
-        }
-
-
-        /* =====================================================
-           UTILITY
-        ====================================================== */
-
         .container {
-
             width: min(1180px, 92%);
-
             margin: auto;
         }
 
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-header {
-
-            max-width: 720px;
-
-            margin: 0 auto 55px;
-
-            text-align: center;
-        }
-
-        .section-label {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 8px;
-
-            padding: 7px 13px;
-
-            color: var(--blue);
-
-            background: var(--light-blue);
-
-            border-radius: 50px;
-
-            font-size: 12px;
-
-            font-weight: 800;
-
-            letter-spacing: .8px;
-
-            text-transform: uppercase;
-        }
-
-        .section-title {
-
-            margin-top: 15px;
-
-            color: var(--deep-ocean);
-
-            font-size: clamp(30px, 4vw, 44px);
-
-            line-height: 1.2;
-
-            font-weight: 800;
-
-            letter-spacing: -1px;
-        }
-
-        body.dark .section-title {
-            color: #ffffff;
-        }
-
-        .section-description {
-
-            margin-top: 15px;
-
-            color: var(--muted);
-
-            font-size: 15px;
-        }
-
-
-        /* =====================================================
+        /* =========================
            TOPBAR
-        ====================================================== */
+        ========================= */
 
         .topbar {
-
             background: var(--deep-ocean);
-
-            color: white;
-
+            color: #fff;
             font-size: 13px;
+            padding: 9px 0;
         }
 
-        .topbar-inner {
-
-            min-height: 42px;
-
+        .topbar-content {
             display: flex;
-
             justify-content: space-between;
-
             align-items: center;
-
-            gap: 15px;
-        }
-
-        .topbar-left,
-        .topbar-right {
-
-            display: flex;
-
-            align-items: center;
-
             gap: 20px;
         }
 
-        .topbar-item {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 7px;
-
+        .topbar span {
             opacity: .95;
         }
 
-        .topbar-item i {
-            color: #78B89A;
-        }
-
-
-        /* =====================================================
+        /* =========================
            NAVBAR
-        ====================================================== */
+        ========================= */
 
         .navbar {
-
             position: sticky;
-
             top: 0;
-
-            z-index: 9999;
-
-            width: 100%;
-
-            background: rgba(255, 255, 255, .97);
-
-            border-bottom: 1px solid var(--border);
-
-            transition: .35s ease;
+            z-index: 1000;
+            background: rgba(255,255,255,.96);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid transparent;
+            transition: var(--transition);
         }
 
         body.dark .navbar {
-            background: rgba(13, 27, 21, .97);
+            background: rgba(16,34,26,.96);
         }
 
         .navbar.scrolled {
-
-            box-shadow:
-                0 10px 35px rgba(18, 55, 42, .12);
-
-            backdrop-filter: blur(15px);
+            border-bottom-color: var(--border);
+            box-shadow: 0 8px 25px rgba(18,55,42,.08);
         }
 
         .nav-container {
-
-            width: min(1380px, 94%);
-
-            min-height: 78px;
-
-            margin: auto;
-
+            min-height: 76px;
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
-            gap: 18px;
+            gap: 20px;
         }
 
-
-        /* =====================================================
-           LOGO
-        ====================================================== */
-
         .nav-logo {
-
             display: flex;
-
             align-items: center;
-
             gap: 12px;
-
-            color: var(--deep-ocean);
-
             flex-shrink: 0;
         }
 
         .logo-box {
-
             width: 50px;
             height: 50px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             border-radius: 15px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    var(--deep-ocean),
-                    var(--primary)
-                );
-
-            color: white;
-
-            font-size: 18px;
-
-            font-weight: 800;
-
-            box-shadow:
-                0 8px 22px rgba(58, 125, 93, .25);
-
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 8px 22px rgba(58,125,93,.25);
             transition: .35s ease;
+        }
+
+        .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .nav-logo:hover .logo-box {
-
-            transform:
-                rotate(-5deg)
-                scale(1.06);
+            transform: rotate(-5deg) scale(1.06);
         }
 
         .logo-text {
-
             display: flex;
-
             flex-direction: column;
-
-            line-height: 1.1;
+            line-height: 1.2;
         }
 
         .logo-text strong {
-
-            font-size: 16px;
-
-            font-weight: 800;
-
+            font-size: 15px;
+            color: var(--deep-ocean);
             letter-spacing: .3px;
         }
 
-        .logo-text small {
-
-            margin-top: 5px;
-
-            color: var(--muted);
-
-            font-size: 10px;
+        body.dark .logo-text strong {
+            color: #fff;
         }
 
-
-        /* =====================================================
-           NAV MENU
-        ====================================================== */
+        .logo-text small {
+            color: var(--muted);
+            font-size: 10px;
+            margin-top: 4px;
+        }
 
         .nav-menu {
-
             display: flex;
-
             align-items: center;
-
-            justify-content: center;
-
-            gap: 2px;
-
-            flex: 1;
+            gap: 4px;
         }
 
-        .nav-link {
-
-            position: relative;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 6px;
-
-            padding: 11px 10px;
-
-            color: #40584d;
-
-            border-radius: 9px;
-
+        .nav-menu a {
+            padding: 10px 11px;
             font-size: 12px;
-
-            font-weight: 700;
-
-            white-space: nowrap;
-
-            transition: .25s ease;
-        }
-
-        body.dark .nav-link {
-            color: #c9d7cf;
-        }
-
-        .nav-link i {
-
-            color: var(--primary);
-
-            font-size: 11px;
-        }
-
-        .nav-link:hover {
-
-            color: var(--deep-ocean);
-
-            background: var(--light-blue);
-
-            transform: translateY(-2px);
-        }
-
-        .nav-link.active {
-
-            color: var(--deep-ocean);
-
-            background: var(--light-blue);
-        }
-
-        .nav-link.active::after {
-
-            content: "";
-
-            position: absolute;
-
-            left: 14px;
-
-            right: 14px;
-
-            bottom: 2px;
-
-            height: 2px;
-
-            background: var(--primary);
-
+            font-weight: 600;
+            color: var(--muted);
             border-radius: 10px;
+            transition: var(--transition);
         }
 
-
-        /* =====================================================
-           HAPUS TOMBOL LAYANAN TAMBAHAN
-        ====================================================== */
-
-        .nav-service {
-            display: none !important;
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--primary);
+            background: var(--light-blue);
         }
 
-
-        /* =====================================================
-           DARK MODE BUTTON
-        ====================================================== */
+        .nav-close {
+            display: none;
+        }
 
         .dark-toggle {
-
-            width: 38px;
-
-            height: 38px;
-
-            flex-shrink: 0;
-
+            width: 40px;
+            height: 40px;
             border: 1px solid var(--border);
-
-            border-radius: 10px;
-
+            border-radius: 50%;
             background: var(--white);
-
             color: var(--text);
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            transition: .25s ease;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
         .dark-toggle:hover {
-
-            background: var(--light-blue);
-
-            color: var(--primary);
+            background: var(--primary);
+            color: #fff;
+            transform: rotate(15deg);
         }
 
-
-        /* =====================================================
-           HAMBURGER
-        ====================================================== */
-
         .nav-toggle {
-
             display: none;
-
-            width: 45px;
-
-            height: 45px;
-
             border: none;
-
-            border-radius: 12px;
-
-            background: var(--light-blue);
-
-            align-items: center;
-
-            justify-content: center;
-
-            flex-direction: column;
-
-            gap: 5px;
+            background: transparent;
+            cursor: pointer;
         }
 
         .nav-toggle span {
-
-            width: 21px;
-
-            height: 2px;
-
+            display: block;
+            width: 26px;
+            height: 3px;
+            margin: 5px 0;
+            border-radius: 5px;
             background: var(--deep-ocean);
-
-            border-radius: 10px;
-
-            transition: .3s ease;
         }
 
-
-        /* =====================================================
-           CLOSE MOBILE
-        ====================================================== */
-
-        .nav-close {
-
-            display: none;
-
-            position: absolute;
-
-            top: 22px;
-
-            right: 22px;
-
-            width: 42px;
-
-            height: 42px;
-
-            border: none;
-
-            border-radius: 12px;
-
-            background: var(--light-blue);
-
-            color: var(--deep-ocean);
-
-            font-size: 20px;
+        body.dark .nav-toggle span {
+            background: #fff;
         }
-
-
-        /* =====================================================
-           OVERLAY
-        ====================================================== */
 
         .nav-overlay {
-
-            position: fixed;
-
-            inset: 0;
-
-            background: rgba(18, 55, 42, .52);
-
-            backdrop-filter: blur(4px);
-
-            z-index: 9997;
-
-            opacity: 0;
-
-            visibility: hidden;
-
-            transition: .35s ease;
+            display: none;
         }
 
-        .nav-overlay.active {
-
-            opacity: 1;
-
-            visibility: visible;
-        }
-
-
-        /* =====================================================
+        /* =========================
            HERO
-        ====================================================== */
+        ========================= */
 
         .hero {
-
-            position: relative;
-
-            min-height: calc(100vh - 120px);
-
+            min-height: 650px;
             display: flex;
-
             align-items: center;
-
-            overflow: hidden;
-
+            position: relative;
             background:
-
-                linear-gradient(
-                    110deg,
-                    rgba(18, 55, 42, .96),
-                    rgba(18, 55, 42, .78),
-                    rgba(18, 55, 42, .42)
-                ),
-
+                linear-gradient(rgba(18,55,42,.72), rgba(27,77,62,.78)),
                 url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2000&q=85")
-
                 center/cover;
-        }
-
-        .hero::before {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background:
-
-                radial-gradient(
-                    circle at 75% 35%,
-                    rgba(58, 125, 93, .28),
-                    transparent 30%
-                );
+            color: #fff;
         }
 
         .hero-content {
-
-            position: relative;
-
-            z-index: 2;
-
-            max-width: 720px;
-
-            color: white;
+            max-width: 760px;
+            padding: 100px 0;
         }
 
         .hero-badge {
-
             display: inline-flex;
-
             align-items: center;
-
-            gap: 9px;
-
+            gap: 8px;
             padding: 8px 14px;
-
             border: 1px solid rgba(255,255,255,.25);
-
-            border-radius: 50px;
-
-            background: rgba(255,255,255,.10);
-
+            background: rgba(255,255,255,.12);
             backdrop-filter: blur(8px);
-
+            border-radius: 50px;
             font-size: 12px;
-
             font-weight: 700;
-
-            animation:
-                fadeUp .8s ease both;
-        }
-
-        .hero-badge i {
-            color: #86C7A6;
+            letter-spacing: .5px;
+            margin-bottom: 20px;
         }
 
         .hero h1 {
-
-            margin-top: 22px;
-
-            font-size: clamp(42px, 7vw, 78px);
-
-            line-height: 1.02;
-
-            letter-spacing: -3px;
-
-            font-weight: 800;
-
-            animation:
-                fadeUp .9s .1s ease both;
-        }
-
-        .hero h1 span {
-            color: #8FD0AD;
+            font-size: clamp(38px, 6vw, 70px);
+            line-height: 1.08;
+            margin-bottom: 22px;
+            letter-spacing: -2px;
         }
 
         .hero p {
-
-            max-width: 680px;
-
-            margin-top: 24px;
-
-            color: rgba(255,255,255,.85);
-
-            font-size: 16px;
-
-            animation:
-                fadeUp .9s .2s ease both;
+            max-width: 700px;
+            font-size: 17px;
+            color: rgba(255,255,255,.9);
+            margin-bottom: 30px;
         }
 
         .hero-buttons {
-
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 12px;
-
-            margin-top: 32px;
-
-            animation:
-                fadeUp .9s .3s ease both;
         }
 
-
-        /* =====================================================
-           BUTTON
-        ====================================================== */
-
         .btn {
-
             display: inline-flex;
-
             align-items: center;
-
             justify-content: center;
-
-            gap: 10px;
-
-            padding: 13px 21px;
-
-            border: none;
-
+            gap: 9px;
+            padding: 12px 20px;
             border-radius: 11px;
-
+            border: none;
+            cursor: pointer;
             font-size: 13px;
-
-            font-weight: 800;
-
-            transition: .3s ease;
+            font-weight: 700;
+            transition: var(--transition);
         }
 
         .btn-primary {
-
             background: var(--primary);
-
-            color: white;
-
-            box-shadow:
-                0 10px 25px rgba(58,125,93,.30);
+            color: #fff;
         }
 
         .btn-primary:hover {
-
-            transform:
-                translateY(-3px);
-
-            box-shadow:
-                0 13px 30px rgba(58,125,93,.35);
+            background: var(--deep-ocean);
+            transform: translateY(-2px);
         }
 
-        .btn-outline {
-
-            color: white;
-
-            border:
-                1px solid rgba(255,255,255,.35);
-
-            background:
-                rgba(255,255,255,.10);
-
-            backdrop-filter: blur(8px);
-        }
-
-        .btn-outline:hover {
-
-            background: white;
-
+        .btn-white {
+            background: #fff;
             color: var(--deep-ocean);
         }
 
-
-        /* =====================================================
-           HERO SHAPES
-        ====================================================== */
-
-        .hero-shape {
-
-            position: absolute;
-
-            border-radius: 50%;
-
-            background:
-                rgba(255,255,255,.06);
-
-            animation:
-                float 7s ease-in-out infinite;
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,.15);
         }
 
-        .shape-one {
-
-            width: 180px;
-
-            height: 180px;
-
-            right: 7%;
-
-            top: 15%;
+        .btn-outline {
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
         }
 
-        .shape-two {
-
-            width: 90px;
-
-            height: 90px;
-
-            right: 25%;
-
-            bottom: 17%;
-
-            animation-delay: 1s;
+        .btn-outline:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
         }
 
+        /* =========================
+           SECTION
+        ========================= */
 
-        /* =====================================================
+        section {
+            padding: 90px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 45px;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1.2;
+            margin-bottom: 13px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
            QUICK ACCESS
-        ====================================================== */
+        ========================= */
 
-        .quick-section {
-
-            margin-top: -50px;
-
+        .quick-access {
+            margin-top: -45px;
             position: relative;
-
-            z-index: 10;
+            z-index: 5;
         }
 
         .quick-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(6, 1fr);
-
-            gap: 10px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 13px;
         }
 
         .quick-card {
-
-            min-height: 105px;
-
-            padding: 16px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
+            padding: 23px 15px;
             background: var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 15px;
-
-            box-shadow: var(--shadow-sm);
-
-            transition: .3s ease;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
         }
 
         .quick-card:hover {
-
-            transform:
-                translateY(-8px);
-
-            box-shadow: var(--shadow);
-
-            border-color: #C8DED0;
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-hover);
         }
 
         .quick-icon {
-
-            width: 40px;
-
-            height: 40px;
-
+            width: 48px;
+            height: 48px;
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
-            margin-bottom: 8px;
-
-            border-radius: 11px;
-
-            color: var(--blue);
-
+            margin: auto auto 12px;
             background: var(--light-blue);
+            color: var(--primary);
+            border-radius: 14px;
+            font-size: 18px;
         }
 
-        .quick-card span {
-
-            font-size: 11px;
-
-            font-weight: 700;
+        .quick-card strong {
+            display: block;
+            font-size: 12px;
         }
 
-
-        /* =====================================================
-           STATISTICS
-        ====================================================== */
+        /* =========================
+           STATS
+        ========================= */
 
         .stats {
-
-            padding: 75px 0;
-
             background: var(--soft);
         }
 
         .stats-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 18px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
 
         .stat-card {
-
-            position: relative;
-
-            padding: 30px;
-
             background: var(--white);
-
-            border:
-                1px solid var(--border);
-
+            border: 1px solid var(--border);
             border-radius: var(--radius);
-
-            overflow: hidden;
-
-            transition: .3s ease;
-        }
-
-        .stat-card::before {
-
-            content: "";
-
-            position: absolute;
-
-            width: 100px;
-
-            height: 100px;
-
-            right: -40px;
-
-            top: -40px;
-
-            background: var(--light-blue);
-
-            border-radius: 50%;
-        }
-
-        .stat-card:hover {
-
-            transform:
-                translateY(-6px);
-
+            padding: 30px 20px;
+            text-align: center;
             box-shadow: var(--shadow);
         }
 
         .stat-icon {
-
-            color: var(--blue);
-
-            font-size: 22px;
+            color: var(--primary);
+            font-size: 25px;
+            margin-bottom: 10px;
         }
 
         .stat-number {
-
-            margin-top: 12px;
-
-            color: var(--deep-ocean);
-
             font-size: 34px;
-
             font-weight: 800;
+            color: var(--deep-ocean);
         }
 
         body.dark .stat-number {
-            color: white;
+            color: #fff;
         }
 
         .stat-label {
-
-            color: var(--muted);
-
             font-size: 13px;
-
-            font-weight: 600;
+            color: var(--muted);
         }
 
-
-        /* =====================================================
+        /* =========================
            PROFIL
-        ====================================================== */
+        ========================= */
 
         .profile-grid {
-
             display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            align-items: center;
-
+            grid-template-columns: .95fr 1.05fr;
             gap: 60px;
+            align-items: center;
         }
 
         .profile-image {
@@ -1101,475 +505,248 @@
         }
 
         .profile-image img {
-
-            height: 450px;
-
+            width: 100%;
+            height: 500px;
             object-fit: cover;
-
-            border-radius: 24px;
-
-            box-shadow: var(--shadow);
+            border-radius: 28px;
+            box-shadow: var(--shadow-hover);
         }
 
         .profile-badge {
-
             position: absolute;
-
-            right: -20px;
-
             bottom: 25px;
-
-            padding: 18px 22px;
-
-            background: var(--white);
-
-            border-radius: 15px;
-
-            box-shadow: var(--shadow);
-
+            left: 25px;
+            background: rgba(255,255,255,.94);
             color: var(--deep-ocean);
-
+            padding: 13px 18px;
+            border-radius: 13px;
+            box-shadow: var(--shadow);
+            font-size: 12px;
             font-weight: 800;
         }
 
-        .profile-content h3 {
-
-            color: var(--deep-ocean);
-
-            font-size: 30px;
-
-            line-height: 1.25;
+        .profile-content .section-label {
+            text-align: left;
         }
 
-        body.dark .profile-content h3 {
-            color: white;
+        .profile-content h2 {
+            font-size: clamp(30px,4vw,44px);
+            line-height: 1.2;
+            margin-bottom: 18px;
         }
 
         .profile-content p {
-
-            margin-top: 18px;
-
             color: var(--muted);
-
-            font-size: 15px;
-        }
-
-        .check-list {
-
-            list-style: none;
-
-            margin-top: 25px;
-        }
-
-        .check-list li {
-
-            display: flex;
-
-            gap: 10px;
-
-            margin-bottom: 12px;
-
-            color: var(--text);
-
+            margin-bottom: 15px;
             font-size: 14px;
         }
 
-        .check-list i {
-
-            color: var(--primary);
-
-            margin-top: 5px;
+        .check-list {
+            list-style: none;
+            margin: 25px 0;
         }
 
+        .check-list li {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 11px;
+            font-size: 13px;
+            font-weight: 600;
+        }
 
-        /* =====================================================
-           PEMERINTAHAN
-        ====================================================== */
+        .check-list i {
+            color: var(--primary);
+        }
+
+        /* =========================
+           GOVERNMENT
+        ========================= */
 
         .government {
             background: var(--soft);
         }
 
         .government-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 18px;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
         }
 
-        .official-card {
-
-            padding: 28px 20px;
-
-            text-align: center;
-
+        .government-card {
             background: var(--white);
-
-            border:
-                1px solid var(--border);
-
+            border: 1px solid var(--border);
             border-radius: var(--radius);
-
-            transition: .3s ease;
+            padding: 30px 20px;
+            text-align: center;
+            transition: var(--transition);
         }
 
-        .official-card:hover {
-
-            transform:
-                translateY(-7px);
-
+        .government-card:hover {
+            transform: translateY(-5px);
             box-shadow: var(--shadow);
         }
 
-        .official-icon {
-
-            width: 70px;
-
-            height: 70px;
-
-            margin: auto;
-
+        .government-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 17px;
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
-            border-radius: 50%;
-
-            color: var(--blue);
-
             background: var(--light-blue);
-
+            color: var(--primary);
+            border-radius: 18px;
             font-size: 25px;
         }
 
-        .official-card h3 {
-
-            margin-top: 17px;
-
-            color: var(--deep-ocean);
-
+        .government-card h3 {
             font-size: 16px;
+            margin-bottom: 7px;
         }
 
-        body.dark .official-card h3 {
-            color: white;
-        }
-
-        .official-card p {
-
-            margin-top: 5px;
-
-            color: var(--muted);
-
+        .government-card p {
             font-size: 12px;
+            color: var(--muted);
         }
 
-
-        /* =====================================================
+        /* =========================
            PROGRAM
-        ====================================================== */
+        ========================= */
 
         .program-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3,1fr);
             gap: 18px;
         }
 
         .program-card {
-
-            position: relative;
-
-            padding: 27px;
-
-            background: var(--white);
-
-            border:
-                1px solid var(--border);
-
+            border: 1px solid var(--border);
             border-radius: var(--radius);
-
-            overflow: hidden;
-
-            transition: .3s ease;
+            padding: 25px;
+            background: var(--white);
+            transition: var(--transition);
         }
 
         .program-card:hover {
-
-            transform:
-                translateY(-7px);
-
+            transform: translateY(-5px);
             box-shadow: var(--shadow);
-
-            border-color: #C8DED0;
         }
 
         .program-number {
-
-            position: absolute;
-
-            right: 20px;
-
-            top: 15px;
-
-            color: #E6EEE9;
-
-            font-size: 50px;
-
+            font-size: 12px;
             font-weight: 800;
-        }
-
-        .program-icon {
-
-            width: 48px;
-
-            height: 48px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 13px;
-
-            color: var(--blue);
-
-            background: var(--light-blue);
-
-            font-size: 19px;
+            color: var(--primary);
+            margin-bottom: 14px;
         }
 
         .program-card h3 {
-
-            position: relative;
-
-            margin-top: 20px;
-
-            color: var(--deep-ocean);
-
             font-size: 17px;
-        }
-
-        body.dark .program-card h3 {
-            color: white;
+            margin-bottom: 7px;
         }
 
         .program-card p {
-
-            margin-top: 8px;
-
             color: var(--muted);
-
-            font-size: 13px;
-        }
-
-
-        /* =====================================================
-           LAYANAN DIGITAL
-        ====================================================== */
-
-        .services {
-
-            position: relative;
-
-            overflow: hidden;
-
-            background: var(--deep-ocean);
-
-            color: white;
-        }
-
-        .services .section-title {
-            color: white;
-        }
-
-        .services .section-description {
-
-            color:
-                rgba(255,255,255,.68);
-        }
-
-        .service-grid {
-
-            position: relative;
-
-            z-index: 2;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(5, 1fr);
-
-            gap: 14px;
-        }
-
-        .service-card {
-
-            padding: 27px 20px;
-
-            color: white;
-
-            background:
-                rgba(255,255,255,.07);
-
-            border:
-                1px solid rgba(255,255,255,.12);
-
-            border-radius: 17px;
-
-            transition: .3s ease;
-        }
-
-        .service-card:hover {
-
-            transform:
-                translateY(-8px);
-
-            background:
-                rgba(255,255,255,.12);
-
-            border-color:
-                rgba(255,255,255,.25);
-        }
-
-        .service-card i {
-
-            font-size: 25px;
-
-            color: #86C7A6;
-        }
-
-        .service-card h3 {
-
-            margin-top: 17px;
-
-            font-size: 15px;
-        }
-
-        .service-card p {
-
-            margin-top: 7px;
-
-            color:
-                rgba(255,255,255,.63);
-
             font-size: 12px;
         }
 
+        /* =========================
+           SERVICES
+        ========================= */
 
-        /* =====================================================
-           PENGADUAN
-        ====================================================== */
-
-        .complaint {
+        .services {
             background: var(--soft);
         }
 
-        .complaint-grid {
-
+        .service-grid {
             display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 15px;
+        }
 
-            grid-template-columns:
-                .8fr 1.2fr;
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 27px 18px;
+            text-align: center;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
 
-            gap: 35px;
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
 
+        .service-card i {
+            font-size: 27px;
+            color: var(--primary);
+            margin-bottom: 13px;
+        }
+
+        .service-card h3 {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .service-card p {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        /* =========================
+           COMPLAINT
+        ========================= */
+
+        .complaint-grid {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 30px;
             align-items: start;
         }
 
         .complaint-info {
-
-            padding: 32px;
-
-            color: white;
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    var(--deep-ocean),
-                    var(--blue)
-                );
-
-            border-radius: 22px;
-
-            box-shadow: var(--shadow);
+            background: linear-gradient(145deg,var(--deep-ocean),var(--primary));
+            color: #fff;
+            padding: 35px;
+            border-radius: 24px;
         }
 
-        .complaint-info h3 {
-            font-size: 25px;
+        .complaint-info h2 {
+            font-size: 31px;
+            line-height: 1.2;
+            margin-bottom: 15px;
         }
 
         .complaint-info p {
-
-            margin-top: 12px;
-
-            color:
-                rgba(255,255,255,.72);
-
+            color: rgba(255,255,255,.8);
             font-size: 13px;
+            margin-bottom: 20px;
         }
 
-        .complaint-info ul {
-
+        .complaint-points {
             list-style: none;
-
-            margin-top: 25px;
         }
 
-        .complaint-info li {
-
+        .complaint-points li {
             display: flex;
-
             gap: 10px;
-
             margin: 13px 0;
-
             font-size: 13px;
         }
 
-        .complaint-info li i {
-
-            color: #9AD7B7;
-
-            margin-top: 4px;
-        }
-
-
-        /* =====================================================
-           FORM
-        ====================================================== */
-
-        .form-card {
-
-            padding: 32px;
-
+        .complaint-form,
+        .check-box {
             background: var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 22px;
-
-            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: var(--shadow);
         }
 
         .form-grid {
-
             display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
+            grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
 
@@ -1581,3110 +758,1615 @@
             grid-column: 1 / -1;
         }
 
-        .form-label {
-
+        .form-group label {
             display: block;
-
-            margin-bottom: 7px;
-
-            color: var(--text);
-
             font-size: 12px;
-
             font-weight: 700;
+            margin-bottom: 7px;
         }
 
         .form-control {
-
             width: 100%;
-
-            padding: 12px 14px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 10px;
-
-            outline: none;
-
+            border: 1px solid var(--border);
             background: var(--soft);
-
             color: var(--text);
-
+            border-radius: 10px;
+            padding: 12px 13px;
+            outline: none;
             font-size: 13px;
-
-            transition: .25s ease;
+            transition: var(--transition);
         }
 
         .form-control:focus {
-
-            border-color:
-                var(--primary);
-
-            box-shadow:
-                0 0 0 3px
-                rgba(58,125,93,.10);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(58,125,93,.1);
         }
 
         textarea.form-control {
-
             min-height: 130px;
-
             resize: vertical;
         }
 
-
-        /* =====================================================
-           CHECK STATUS
-        ====================================================== */
-
-        .check-box {
-
+        .check-section {
             margin-top: 25px;
-
-            padding: 25px;
-
-            border:
-                1px dashed #B8D3C2;
-
-            border-radius: 15px;
-
-            background: var(--light-blue);
         }
 
-        .check-box h4 {
-
-            color: var(--deep-ocean);
-
-            font-size: 16px;
+        .check-section h3 {
+            font-size: 18px;
+            margin-bottom: 14px;
         }
 
-        .check-form {
-
+        .check-row {
             display: flex;
-
             gap: 10px;
-
-            margin-top: 13px;
         }
 
+        .check-row .form-control {
+            flex: 1;
+        }
 
-        /* =====================================================
-           GALERI
-        ====================================================== */
+        #checkResult {
+            margin-top: 15px;
+        }
+
+        .result-box {
+            padding: 15px;
+            background: var(--light-blue);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            font-size: 13px;
+        }
+
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .gallery {
+            background: var(--soft);
+        }
 
         .filter-buttons {
-
             display: flex;
-
-            flex-wrap: wrap;
-
             justify-content: center;
-
+            flex-wrap: wrap;
             gap: 8px;
-
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .filter-btn {
-
-            padding: 9px 15px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 50px;
-
+            border: 1px solid var(--border);
             background: var(--white);
-
             color: var(--muted);
-
-            font-size: 12px;
-
+            padding: 9px 14px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 11px;
             font-weight: 700;
-
-            transition: .25s ease;
+            transition: var(--transition);
         }
 
-        .filter-btn.active,
-        .filter-btn:hover {
-
-            color: white;
-
+        .filter-btn:hover,
+        .filter-btn.active {
             background: var(--primary);
-
+            color: #fff;
             border-color: var(--primary);
         }
 
         .gallery-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 15px;
+            grid-template-columns: repeat(3,1fr);
+            gap: 18px;
         }
 
         .gallery-item {
-
-            position: relative;
-
-            height: 250px;
-
+            height: 260px;
             overflow: hidden;
-
-            border-radius: 17px;
-
+            border-radius: 18px;
             cursor: pointer;
-
-            transition: .35s ease;
+            position: relative;
         }
 
         .gallery-item img {
-
+            width: 100%;
             height: 100%;
-
             object-fit: cover;
-
             transition: .5s ease;
         }
 
         .gallery-item:hover img {
-
-            transform:
-                scale(1.08);
+            transform: scale(1.07);
         }
 
-        .gallery-overlay {
-
+        .gallery-caption {
             position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 30px 15px 15px;
+            background: linear-gradient(transparent,rgba(0,0,0,.7));
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+        }
 
+        /* =========================
+           LIGHTBOX
+        ========================= */
+
+        .lightbox {
+            position: fixed;
             inset: 0;
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,.9);
+            padding: 30px;
+        }
 
+        .lightbox.show {
             display: flex;
-
-            align-items: flex-end;
-
-            padding: 20px;
-
-            background:
-
-                linear-gradient(
-                    transparent 40%,
-                    rgba(0,0,0,.7)
-                );
-
-            color: white;
         }
 
-        .gallery-overlay strong {
-            font-size: 14px;
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 12px;
         }
 
-
-        /* =====================================================
-           BERITA
-        ====================================================== */
-
-        .news {
-            background: var(--soft);
+        .lightbox-close {
+            position: absolute;
+            right: 25px;
+            top: 20px;
+            color: #fff;
+            font-size: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
         }
+
+        /* =========================
+           NEWS
+        ========================= */
 
         .news-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3,1fr);
             gap: 20px;
         }
 
         .news-card {
-
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
             overflow: hidden;
-
             background: var(--white);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 18px;
-
-            transition: .3s ease;
+            transition: var(--transition);
         }
 
         .news-card:hover {
-
-            transform:
-                translateY(-7px);
-
+            transform: translateY(-5px);
             box-shadow: var(--shadow);
         }
 
         .news-image {
-
             height: 210px;
-
             overflow: hidden;
         }
 
         .news-image img {
-
+            width: 100%;
             height: 100%;
-
             object-fit: cover;
-
             transition: .5s ease;
         }
 
-        .news-card:hover
-        .news-image img {
-
-            transform:
-                scale(1.06);
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
         }
 
         .news-content {
-            padding: 22px;
+            padding: 20px;
         }
 
-        .news-meta {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            color: var(--muted);
-
-            font-size: 10px;
-        }
-
-        .news-category {
-
+        .news-date {
+            font-size: 11px;
             color: var(--primary);
-
-            font-weight: 800;
+            font-weight: 700;
+            margin-bottom: 7px;
         }
 
         .news-content h3 {
-
-            margin-top: 12px;
-
-            color: var(--deep-ocean);
-
-            font-size: 17px;
-
+            font-size: 16px;
             line-height: 1.4;
-        }
-
-        body.dark .news-content h3 {
-            color: white;
+            margin-bottom: 8px;
         }
 
         .news-content p {
-
-            margin-top: 8px;
-
-            color: var(--muted);
-
             font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 14px;
         }
 
         .read-more {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 7px;
-
-            margin-top: 15px;
-
             color: var(--primary);
-
             font-size: 12px;
-
             font-weight: 800;
         }
 
+        /* =========================
+           CONTACT
+        ========================= */
 
-        /* =====================================================
-           LOKASI
-        ====================================================== */
+        .contact {
+            background: var(--soft);
+        }
 
-        .location-grid {
-
+        .contact-grid {
             display: grid;
-
-            grid-template-columns:
-                1.3fr .7fr;
-
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
         }
 
-        .map {
-
-            min-height: 400px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 20px;
-
+        .map-box {
+            min-height: 430px;
+            border-radius: 24px;
             overflow: hidden;
-
             background:
-
-                linear-gradient(
-                    135deg,
-                    #E0EEE5,
-                    #F5F8F5
-                );
-
-            border:
-                1px solid var(--border);
-        }
-
-        .map-inner {
-
-            text-align: center;
-
-            color: var(--deep-ocean);
-        }
-
-        .map-inner i {
-
-            font-size: 50px;
-
-            color: var(--primary);
-        }
-
-        .map-inner h3 {
-            margin-top: 15px;
-        }
-
-        .location-card {
-
-            padding: 30px;
-
-            background: var(--deep-ocean);
-
-            color: white;
-
-            border-radius: 20px;
-        }
-
-        .location-card h3 {
-            font-size: 22px;
-        }
-
-        .location-card p {
-
-            margin-top: 15px;
-
-            color:
-                rgba(255,255,255,.72);
-
-            font-size: 13px;
-        }
-
-        .contact-list {
-
-            list-style: none;
-
-            margin-top: 25px;
-        }
-
-        .contact-list li {
-
+                linear-gradient(rgba(18,55,42,.68),rgba(27,77,62,.75)),
+                url("https://images.unsplash.com/photo-1524666041070-9c8769033b5a?auto=format&fit=crop&w=1200&q=80")
+                center/cover;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 30px;
+        }
 
-            gap: 12px;
+        .map-content i {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
 
+        .map-content h3 {
+            margin-bottom: 8px;
+        }
+
+        .map-content p {
+            font-size: 12px;
+            opacity: .85;
             margin-bottom: 17px;
+        }
 
+        .contact-info {
+            display: grid;
+            gap: 13px;
+        }
+
+        .contact-card {
+            display: flex;
+            gap: 15px;
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            background: var(--white);
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-blue);
+            color: var(--primary);
+            border-radius: 12px;
+        }
+
+        .contact-card h4 {
             font-size: 13px;
+            margin-bottom: 4px;
         }
 
-        .contact-list i {
-
-            color: #86C7A6;
-
-            width: 18px;
+        .contact-card p {
+            font-size: 12px;
+            color: var(--muted);
         }
 
-
-        /* =====================================================
+        /* =========================
            FOOTER
-        ====================================================== */
+        ========================= */
 
         footer {
-
-            padding: 65px 0 25px;
-
-            background: #0B241A;
-
-            color: white;
+            background: var(--deep-ocean);
+            color: #fff;
+            padding: 60px 0 25px;
         }
 
         .footer-grid {
-
             display: grid;
-
-            grid-template-columns:
-                1.4fr 1fr 1fr 1fr;
-
-            gap: 35px;
-        }
-
-        .footer-brand {
-            max-width: 330px;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 45px;
+            padding-bottom: 40px;
         }
 
         .footer-logo {
-
             display: flex;
-
             align-items: center;
-
             gap: 12px;
+            margin-bottom: 17px;
         }
 
         .footer-logo .logo-box {
-
             width: 48px;
-
             height: 48px;
         }
 
         .footer-brand p {
-
-            margin-top: 18px;
-
-            color:
-                rgba(255,255,255,.62);
-
-            font-size: 13px;
+            color: rgba(255,255,255,.65);
+            font-size: 12px;
+            max-width: 320px;
         }
 
         .footer-column h4 {
-
-            margin-bottom: 17px;
-
             font-size: 14px;
+            margin-bottom: 17px;
         }
 
         .footer-column a {
-
             display: block;
-
-            margin-bottom: 9px;
-
-            color:
-                rgba(255,255,255,.62);
-
+            color: rgba(255,255,255,.65);
             font-size: 12px;
-
-            transition: .25s ease;
+            margin-bottom: 8px;
+            transition: var(--transition);
         }
 
         .footer-column a:hover {
-
-            color: white;
-
-            transform:
-                translateX(3px);
+            color: #fff;
+            transform: translateX(3px);
         }
 
         .footer-bottom {
-
+            padding-top: 22px;
+            border-top: 1px solid rgba(255,255,255,.12);
             display: flex;
-
             justify-content: space-between;
-
             gap: 15px;
-
-            margin-top: 45px;
-
-            padding-top: 20px;
-
-            border-top:
-                1px solid rgba(255,255,255,.10);
-
-            color:
-                rgba(255,255,255,.48);
-
+            color: rgba(255,255,255,.55);
             font-size: 11px;
         }
 
-
-        /* =====================================================
+        /* =========================
            TOAST
-        ====================================================== */
+        ========================= */
 
         .toast {
-
             position: fixed;
-
             right: 20px;
-
             bottom: 20px;
-
-            z-index: 10001;
-
-            max-width: 330px;
-
+            z-index: 3000;
+            max-width: 350px;
             padding: 15px 18px;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-            color: white;
-
-            background: var(--deep-ocean);
-
-            border:
-                1px solid rgba(255,255,255,.15);
-
             border-radius: 13px;
-
-            box-shadow: var(--shadow);
-
-            transform:
-                translateY(120px);
-
+            background: var(--deep-ocean);
+            color: #fff;
+            box-shadow: var(--shadow-hover);
+            transform: translateY(130px);
             opacity: 0;
-
-            transition: .4s ease;
+            transition: .35s ease;
+            font-size: 12px;
         }
 
         .toast.show {
-
-            transform:
-                translateY(0);
-
+            transform: translateY(0);
             opacity: 1;
         }
 
-        .toast i {
-            color: #86C7A6;
-        }
-
-
-        /* =====================================================
-           LIGHTBOX
-        ====================================================== */
-
-        .lightbox {
-
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 10000;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 20px;
-
-            background:
-                rgba(0,0,0,.88);
-
-            opacity: 0;
-
-            visibility: hidden;
-
-            transition: .3s ease;
-        }
-
-        .lightbox.active {
-
-            opacity: 1;
-
-            visibility: visible;
-        }
-
-        .lightbox img {
-
-            max-width: 900px;
-
-            max-height: 85vh;
-
-            object-fit: contain;
-
-            border-radius: 10px;
-        }
-
-        .lightbox-close {
-
-            position: absolute;
-
-            top: 25px;
-
-            right: 25px;
-
-            width: 45px;
-
-            height: 45px;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background: white;
-
-            color: var(--deep-ocean);
-
-            font-size: 20px;
-        }
-
-
-        /* =====================================================
+        /* =========================
            BACK TO TOP
-        ====================================================== */
+        ========================= */
 
-        .back-top {
-
+        #backTop {
             position: fixed;
-
             right: 20px;
-
-            bottom: 85px;
-
-            z-index: 9000;
-
+            bottom: 20px;
+            z-index: 900;
             width: 43px;
-
             height: 43px;
-
             border: none;
-
-            border-radius: 12px;
-
+            border-radius: 50%;
             background: var(--primary);
-
-            color: white;
-
-            box-shadow: var(--shadow);
-
+            color: #fff;
+            cursor: pointer;
             opacity: 0;
-
             visibility: hidden;
-
-            transform:
-                translateY(10px);
-
-            transition: .3s ease;
+            transform: translateY(10px);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
 
-        .back-top.show {
-
+        #backTop.show {
             opacity: 1;
-
             visibility: visible;
-
-            transform:
-                translateY(0);
+            transform: translateY(0);
         }
 
-
-        /* =====================================================
-           SCROLL REVEAL
-        ====================================================== */
+        /* =========================
+           REVEAL
+        ========================= */
 
         .reveal {
-
             opacity: 0;
-
-            transform:
-                translateY(35px);
-
-            transition:
-                opacity .7s ease,
-                transform .7s ease;
+            transform: translateY(25px);
+            transition: .7s ease;
         }
 
-        .reveal.show {
-
+        .reveal.visible {
             opacity: 1;
-
-            transform:
-                translateY(0);
+            transform: translateY(0);
         }
 
+        /* =========================
+           RESPONSIVE
+        ========================= */
 
-        /* =====================================================
-           ANIMATION
-        ====================================================== */
-
-        @keyframes fadeUp {
-
-            from {
-
-                opacity: 0;
-
-                transform:
-                    translateY(25px);
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform:
-                    translateY(0);
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-
-                transform:
-                    translateY(0);
-            }
-
-            50% {
-
-                transform:
-                    translateY(-25px);
-            }
-        }
-
-
-        /* =====================================================
-           TABLET
-        ====================================================== */
-
-        @media (max-width: 1100px) {
-
+        @media(max-width:1100px) {
             .nav-menu {
                 gap: 0;
             }
 
-            .nav-link {
-
-                padding:
-                    9px 7px;
-
+            .nav-menu a {
+                padding: 9px 7px;
                 font-size: 11px;
             }
 
-            .nav-link i {
-                display: none;
-            }
-
             .quick-grid {
-
-                grid-template-columns:
-                    repeat(3, 1fr);
+                grid-template-columns: repeat(3,1fr);
             }
 
             .service-grid {
-
-                grid-template-columns:
-                    repeat(3, 1fr);
-            }
-
-            .government-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .program-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
+                grid-template-columns: repeat(3,1fr);
             }
         }
 
-
-        /* =====================================================
-           MOBILE
-        ====================================================== */
-
-        @media (max-width: 850px) {
-
-            .topbar-inner {
+        @media(max-width:850px) {
+            .topbar-content {
                 justify-content: center;
+                text-align: center;
             }
 
-            .topbar-left {
+            .topbar-content span:last-child {
                 display: none;
-            }
-
-            .topbar-right {
-
-                width: 100%;
-
-                justify-content: center;
-            }
-
-            .nav-container {
-                min-height: 72px;
             }
 
             .nav-toggle {
-
-                display: flex;
+                display: block;
             }
 
             .nav-menu {
-
                 position: fixed;
-
                 top: 0;
-
-                right: 0;
-
-                width:
-                    min(340px, 87vw);
-
+                right: -100%;
+                width: min(320px,85%);
                 height: 100vh;
-
-                padding:
-                    100px 24px 30px;
-
+                padding: 90px 25px 30px;
                 background: var(--white);
-
-                display: flex;
-
                 flex-direction: column;
-
                 align-items: stretch;
-
-                gap: 7px;
-
-                box-shadow:
-                    -15px 0 50px
-                    rgba(0,0,0,.15);
-
-                transform:
-                    translateX(110%);
-
-                transition:
-                    transform .45s
-                    cubic-bezier(.77,0,.18,1);
-
-                z-index: 9998;
-
-                overflow-y: auto;
+                gap: 5px;
+                box-shadow: -10px 0 35px rgba(0,0,0,.12);
+                transition: .35s ease;
+                z-index: 1100;
             }
 
-            .nav-menu.active {
-
-                transform:
-                    translateX(0);
+            .nav-menu.open {
+                right: 0;
             }
 
-            .nav-link {
-
-                width: 100%;
-
-                padding:
-                    14px 16px;
-
-                border-radius: 13px;
-
-                font-size: 14px;
-
-                gap: 13px;
-
-                justify-content: flex-start;
-
-                transform:
-                    translateX(25px);
-
-                opacity: 0;
-
-                transition:
-                    transform .35s ease,
-                    opacity .35s ease,
-                    background .25s ease;
-            }
-
-            .nav-menu.active .nav-link {
-
-                transform:
-                    translateX(0);
-
-                opacity: 1;
-            }
-
-            .nav-link:nth-child(1) {
-                transition-delay: .04s;
-            }
-
-            .nav-link:nth-child(2) {
-                transition-delay: .07s;
-            }
-
-            .nav-link:nth-child(3) {
-                transition-delay: .10s;
-            }
-
-            .nav-link:nth-child(4) {
-                transition-delay: .13s;
-            }
-
-            .nav-link:nth-child(5) {
-                transition-delay: .16s;
-            }
-
-            .nav-link:nth-child(6) {
-                transition-delay: .19s;
-            }
-
-            .nav-link:nth-child(7) {
-                transition-delay: .22s;
-            }
-
-            .nav-link:nth-child(8) {
-                transition-delay: .25s;
-            }
-
-            .nav-link:nth-child(9) {
-                transition-delay: .28s;
-            }
-
-            .nav-link i {
-
-                display: flex;
-
-                width: 23px;
-
-                justify-content: center;
-
-                font-size: 15px;
-            }
-
-            .nav-link.active::after {
-                display: none;
+            .nav-menu a {
+                padding: 13px 15px;
+                font-size: 13px;
             }
 
             .nav-close {
-
-                display: flex;
-
-                align-items: center;
-
-                justify-content: center;
+                display: block;
+                position: absolute;
+                top: 22px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                border: 1px solid var(--border);
+                border-radius: 50%;
+                background: var(--white);
+                color: var(--text);
+                cursor: pointer;
             }
 
-            .nav-close:hover {
-
-                transform:
-                    rotate(90deg);
+            .nav-overlay.show {
+                display: block;
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,.45);
+                z-index: 1050;
             }
 
-            .hero {
-
-                min-height: 680px;
-            }
-
-            .hero h1 {
-
-                letter-spacing:
-                    -2px;
-            }
-
-            .hero p {
-
-                font-size: 14px;
-            }
-
-            .section {
-
-                padding:
-                    75px 0;
-            }
-
-            .stats-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .profile-grid {
-
+            .profile-grid,
+            .complaint-grid,
+            .contact-grid {
                 grid-template-columns: 1fr;
-
-                gap: 35px;
             }
 
             .profile-image img {
-
-                height: 330px;
+                height: 400px;
             }
 
-            .complaint-grid {
-
-                grid-template-columns: 1fr;
+            .government-grid {
+                grid-template-columns: repeat(2,1fr);
             }
 
+            .program-grid,
+            .news-grid,
             .gallery-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
+                grid-template-columns: repeat(2,1fr);
             }
 
-            .news-grid {
-
-                grid-template-columns: 1fr;
-            }
-
-            .location-grid {
-
-                grid-template-columns: 1fr;
+            .stats-grid {
+                grid-template-columns: repeat(2,1fr);
             }
 
             .footer-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
+                grid-template-columns: 1fr 1fr;
             }
         }
 
-
-        /* =====================================================
-           SMALL PHONE
-        ====================================================== */
-
-        @media (max-width: 520px) {
-
-            .logo-box {
-
-                width: 45px;
-
-                height: 45px;
+        @media(max-width:520px) {
+            section {
+                padding: 65px 0;
             }
 
-            .logo-text strong {
-
-                font-size: 14px;
+            .nav-container {
+                min-height: 68px;
             }
 
             .logo-text small {
-
                 display: none;
             }
 
             .hero {
+                min-height: 600px;
+            }
 
-                min-height: 650px;
+            .hero-content {
+                padding: 80px 0;
             }
 
             .hero h1 {
-
-                font-size: 43px;
+                font-size: 38px;
             }
 
-            .hero-buttons {
-
-                flex-direction: column;
+            .hero p {
+                font-size: 14px;
             }
 
-            .hero-buttons .btn {
-
-                width: 100%;
-            }
-
-            .quick-grid {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .stats-grid {
-
-                grid-template-columns:
-                    1fr 1fr;
-            }
-
-            .government-grid {
-
-                grid-template-columns: 1fr;
-            }
-
-            .program-grid {
-
-                grid-template-columns: 1fr;
-            }
-
-            .service-grid {
-
-                grid-template-columns:
-                    1fr 1fr;
-            }
-
+            .quick-grid,
+            .stats-grid,
+            .government-grid,
+            .program-grid,
+            .service-grid,
+            .news-grid,
             .gallery-grid {
-
                 grid-template-columns: 1fr;
-            }
-
-            .gallery-item {
-
-                height: 240px;
             }
 
             .form-grid {
-
                 grid-template-columns: 1fr;
             }
 
             .form-group.full {
-
                 grid-column: auto;
             }
 
-            .check-form {
-
+            .check-row {
                 flex-direction: column;
+            }
+
+            .profile-image img {
+                height: 330px;
+            }
+
+            .gallery-item {
+                height: 230px;
             }
 
             .footer-grid {
-
                 grid-template-columns: 1fr;
+                gap: 30px;
             }
 
             .footer-bottom {
-
                 flex-direction: column;
+                text-align: center;
             }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
+<!-- =========================
      TOPBAR
-====================================================== -->
+========================= -->
 
 <div class="topbar">
+    <div class="container topbar-content">
+        <span>
+            <i class="fa-solid fa-building-columns"></i>
+            Pemerintah Desa Semparuk
+        </span>
 
-    <div class="container topbar-inner">
+        <span>
+            Kecamatan Semparuk • Kabupaten Sambas
+        </span>
 
-        <div class="topbar-left">
-
-            <div class="topbar-item">
-
-                <i class="fa-solid fa-building-columns"></i>
-
-                Pemerintah Desa Semparuk
-
-            </div>
-
-        </div>
-
-
-        <div class="topbar-right">
-
-            <div class="topbar-item">
-
-                <i class="fa-solid fa-location-dot"></i>
-
-                Kecamatan Semparuk • Kabupaten Sambas
-
-            </div>
-
-
-            <div class="topbar-item">
-
-                <i class="fa-solid fa-phone"></i>
-
-                +62 000-0000-0000
-
-            </div>
-
-        </div>
-
+        <span>
+            <i class="fa-solid fa-phone"></i>
+            +62 000-0000-0000
+        </span>
     </div>
-
 </div>
 
-
-<!-- =====================================================
+<!-- =========================
      NAVBAR
-====================================================== -->
+========================= -->
 
 <header class="navbar" id="navbar">
+    <div class="container nav-container">
 
-    <div class="nav-container">
+        <a href="#beranda" class="nav-logo">
 
-
-        <!-- LOGO -->
-
-        <a href="#beranda"
-           class="nav-logo">
-
+            <!-- FOTO RESMI -->
             <div class="logo-box">
-                DS
+                <img src="profil-desa.jpg"
+                     alt="Profil Resmi Desa Semparuk">
             </div>
-
 
             <div class="logo-text">
-
-                <strong>
-                    DESA SEMPARUK
-                </strong>
-
-                <small>
-                    Pemerintah Desa Semparuk
-                </small>
-
+                <strong>DESA SEMPARUK</strong>
+                <small>Pemerintah Desa Semparuk</small>
             </div>
-
         </a>
 
+        <nav class="nav-menu" id="navMenu">
 
-        <!-- =================================================
-             9 MENU NAVBAR
-        ================================================== -->
-
-        <nav class="nav-menu"
-             id="navMenu">
-
-
-            <a href="#beranda"
-               class="nav-link active">
-
-                <i class="fa-solid fa-house"></i>
-
-                <span>
-                    Beranda
-                </span>
-
-            </a>
-
-
-            <a href="#profil"
-               class="nav-link">
-
-                <i class="fa-solid fa-landmark"></i>
-
-                <span>
-                    Profil
-                </span>
-
-            </a>
-
-
-            <a href="#pemerintahan"
-               class="nav-link">
-
-                <i class="fa-solid fa-users"></i>
-
-                <span>
-                    Pemerintahan
-                </span>
-
-            </a>
-
-
-            <a href="#program"
-               class="nav-link">
-
-                <i class="fa-solid fa-bullseye"></i>
-
-                <span>
-                    Program
-                </span>
-
-            </a>
-
-
-            <a href="#layanan"
-               class="nav-link">
-
-                <i class="fa-solid fa-hand-holding-heart"></i>
-
-                <span>
-                    Layanan
-                </span>
-
-            </a>
-
-
-            <a href="#galeri"
-               class="nav-link">
-
-                <i class="fa-solid fa-images"></i>
-
-                <span>
-                    Galeri
-                </span>
-
-            </a>
-
-
-            <a href="#berita"
-               class="nav-link">
-
-                <i class="fa-solid fa-newspaper"></i>
-
-                <span>
-                    Berita
-                </span>
-
-            </a>
-
-
-            <a href="#pengaduan"
-               class="nav-link">
-
-                <i class="fa-solid fa-comments"></i>
-
-                <span>
-                    Pengaduan
-                </span>
-
-            </a>
-
-
-            <a href="#kontak"
-               class="nav-link">
-
-                <i class="fa-solid fa-phone"></i>
-
-                <span>
-                    Kontak
-                </span>
-
-            </a>
-
-
-            <!-- CLOSE MOBILE -->
-
-            <button class="nav-close"
-                    id="navClose">
-
+            <button class="nav-close" id="navClose">
                 <i class="fa-solid fa-xmark"></i>
-
             </button>
+
+            <a href="#beranda">Beranda</a>
+            <a href="#profil">Profil</a>
+            <a href="#pemerintahan">Pemerintahan</a>
+            <a href="#program">Program</a>
+            <a href="#layanan">Layanan</a>
+            <a href="#galeri">Galeri</a>
+            <a href="#berita">Berita</a>
+            <a href="#pengaduan">Pengaduan</a>
+            <a href="#kontak">Kontak</a>
 
         </nav>
 
-
-        <!-- DARK MODE -->
-
-        <button class="dark-toggle"
-                id="darkToggle">
-
+        <button class="dark-toggle" id="darkToggle" aria-label="Mode gelap">
             <i class="fa-solid fa-moon"></i>
-
         </button>
 
-
-        <!-- HAMBURGER -->
-
-        <button class="nav-toggle"
-                id="navToggle">
-
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
             <span></span>
             <span></span>
             <span></span>
-
         </button>
 
     </div>
-
 </header>
 
+<div class="nav-overlay" id="navOverlay"></div>
 
-<div class="nav-overlay"
-     id="navOverlay"></div>
-
-
-<!-- =====================================================
+<!-- =========================
      HERO
-====================================================== -->
+========================= -->
 
-<section class="hero"
-         id="beranda">
-
-
-    <div class="hero-shape shape-one"></div>
-
-    <div class="hero-shape shape-two"></div>
-
-
+<section class="hero" id="beranda">
     <div class="container">
 
-        <div class="hero-content">
-
+        <div class="hero-content reveal">
 
             <div class="hero-badge">
-
                 <i class="fa-solid fa-circle-check"></i>
-
                 WEBSITE RESMI DESA
-
             </div>
 
-
             <h1>
-
                 SELAMAT DATANG DI
-
-                <span>
-                    DESA SEMPARUK
-                </span>
-
+                DESA SEMPARUK
             </h1>
 
-
             <p>
-
-                Portal Informasi dan Pelayanan Digital
-                Desa Semparuk, Kecamatan Semparuk,
-                Kabupaten Sambas, Kalimantan Barat.
-
+                Portal Informasi dan Pelayanan Digital Desa Semparuk,
+                Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat.
             </p>
-
 
             <div class="hero-buttons">
 
-
-                <a href="#profil"
-                   class="btn btn-primary">
-
+                <a href="#profil" class="btn btn-white">
+                    <i class="fa-solid fa-compass"></i>
                     Jelajahi Desa
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
                 </a>
 
-
-                <a href="#layanan"
-                   class="btn btn-outline">
-
+                <a href="#layanan" class="btn btn-primary">
+                    <i class="fa-solid fa-laptop"></i>
                     Layanan Desa
-
-                    <i class="fa-solid fa-grid-2"></i>
-
                 </a>
 
             </div>
-
         </div>
 
     </div>
-
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      QUICK ACCESS
-====================================================== -->
+========================= -->
 
-<section class="quick-section">
-
+<div class="quick-access">
     <div class="container">
 
         <div class="quick-grid">
 
-
-            <a href="#layanan"
-               class="quick-card">
-
+            <a href="#layanan" class="quick-card reveal">
                 <div class="quick-icon">
-
                     <i class="fa-solid fa-file-lines"></i>
-
                 </div>
-
-                <span>
-                    Administrasi Desa
-                </span>
-
+                <strong>Administrasi Desa</strong>
             </a>
 
-
-            <a href="#profil"
-               class="quick-card">
-
+            <a href="#profil" class="quick-card reveal">
                 <div class="quick-icon">
-
                     <i class="fa-solid fa-circle-info"></i>
-
                 </div>
-
-                <span>
-                    Informasi Desa
-                </span>
-
+                <strong>Informasi Desa</strong>
             </a>
 
-
-            <a href="#pengaduan"
-               class="quick-card">
-
+            <a href="#pengaduan" class="quick-card reveal">
                 <div class="quick-icon">
-
                     <i class="fa-solid fa-comments"></i>
-
                 </div>
-
-                <span>
-                    Pengaduan
-                </span>
-
+                <strong>Pengaduan</strong>
             </a>
 
-
-            <a href="#cek-pengaduan"
-               class="quick-card">
-
+            <a href="#cek-pengaduan" class="quick-card reveal">
                 <div class="quick-icon">
-
                     <i class="fa-solid fa-magnifying-glass"></i>
-
                 </div>
-
-                <span>
-                    Cek Pengaduan
-                </span>
-
+                <strong>Cek Pengaduan</strong>
             </a>
 
-
-            <a href="#berita"
-               class="quick-card">
-
+            <a href="#berita" class="quick-card reveal">
                 <div class="quick-icon">
-
                     <i class="fa-solid fa-newspaper"></i>
-
                 </div>
-
-                <span>
-                    Berita Desa
-                </span>
-
+                <strong>Berita Desa</strong>
             </a>
 
-
-            <a href="#kontak"
-               class="quick-card">
-
+            <a href="#kontak" class="quick-card reveal">
                 <div class="quick-icon">
-
                     <i class="fa-solid fa-phone"></i>
-
                 </div>
-
-                <span>
-                    Kontak Desa
-                </span>
-
+                <strong>Kontak Desa</strong>
             </a>
 
         </div>
-
     </div>
+</div>
 
-</section>
-
-
-<!-- =====================================================
-     STATISTICS
-====================================================== -->
+<!-- =========================
+     STATISTIK
+========================= -->
 
 <section class="stats">
-
     <div class="container">
+
+        <div class="section-heading reveal">
+            <div class="section-label">Data Desa</div>
+            <h2>Semparuk Dalam Angka</h2>
+            <p>
+                Informasi ringkas mengenai kondisi dan perkembangan Desa Semparuk.
+            </p>
+        </div>
 
         <div class="stats-grid">
 
-
             <div class="stat-card reveal">
-
-                <i class="fa-solid fa-users stat-icon"></i>
-
-                <div class="stat-number counter"
-                     data-target="30267">
-
-                    0
-
+                <div class="stat-icon">
+                    <i class="fa-solid fa-users"></i>
                 </div>
-
-                <div class="stat-label">
-                    Jiwa
-                </div>
-
+                <div class="stat-number counter" data-target="30267">0</div>
+                <div class="stat-label">Jiwa</div>
             </div>
 
-
             <div class="stat-card reveal">
-
-                <i class="fa-solid fa-house stat-icon"></i>
-
-                <div class="stat-number counter"
-                     data-target="9573">
-
-                    0
-
+                <div class="stat-icon">
+                    <i class="fa-solid fa-house"></i>
                 </div>
-
-                <div class="stat-label">
-                    Rumah Tangga
-                </div>
-
+                <div class="stat-number counter" data-target="9573">0</div>
+                <div class="stat-label">Rumah Tangga</div>
             </div>
 
-
             <div class="stat-card reveal">
-
-                <i class="fa-solid fa-map-location-dot stat-icon"></i>
-
-                <div class="stat-number counter"
-                     data-target="21">
-
-                    0
-
+                <div class="stat-icon">
+                    <i class="fa-solid fa-map-location-dot"></i>
                 </div>
-
-                <div class="stat-label">
-                    Dusun
-                </div>
-
+                <div class="stat-number counter" data-target="21">0</div>
+                <div class="stat-label">Dusun</div>
             </div>
 
-
             <div class="stat-card reveal">
-
-                <i class="fa-solid fa-star stat-icon"></i>
-
-                <div class="stat-number counter"
-                     data-target="9">
-
-                    0
-
+                <div class="stat-icon">
+                    <i class="fa-solid fa-seedling"></i>
                 </div>
-
-                <div class="stat-label">
-                    Program Unggulan
-                </div>
-
+                <div class="stat-number counter" data-target="9">0</div>
+                <div class="stat-label">Program Unggulan</div>
             </div>
 
         </div>
-
     </div>
-
 </section>
 
+<!-- =========================
+     PROFIL DESA
+========================= -->
 
-<!-- =====================================================
-     PROFIL
-====================================================== -->
-
-<section class="section"
-         id="profil">
-
+<section id="profil">
     <div class="container">
 
         <div class="profile-grid">
 
-
             <div class="profile-image reveal">
 
-                <img
-                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=85"
-                    alt="Desa Semparuk">
-
+                <!-- FOTO PROFIL RESMI -->
+                <img src="profil-desa.jpg"
+                     alt="Profil Resmi Desa Semparuk">
 
                 <div class="profile-badge">
-
                     <i class="fa-solid fa-location-dot"></i>
-
                     Semparuk, Sambas
-
                 </div>
 
             </div>
 
-
             <div class="profile-content reveal">
 
-
-                <span class="section-label">
-
-                    <i class="fa-solid fa-landmark"></i>
-
+                <div class="section-label">
                     Profil Desa
+                </div>
 
-                </span>
-
-
-                <h3>
+                <h2>
                     Mengenal Desa Semparuk
-                </h3>
-
-
-                <p>
-
-                    Desa Semparuk merupakan bagian dari
-                    Kecamatan Semparuk, Kabupaten Sambas,
-                    Kalimantan Barat.
-
-                </p>
-
+                </h2>
 
                 <p>
-
-                    Website ini menjadi media informasi,
-                    pelayanan, dan komunikasi digital antara
-                    pemerintah desa dengan masyarakat.
-
+                    Desa Semparuk merupakan bagian dari Kecamatan Semparuk,
+                    Kabupaten Sambas, Provinsi Kalimantan Barat.
                 </p>
 
+                <p>
+                    Website resmi ini menjadi media informasi dan pelayanan
+                    digital untuk membantu masyarakat memperoleh informasi
+                    mengenai pemerintahan, program, pelayanan, kegiatan,
+                    serta berbagai informasi desa.
+                </p>
 
                 <ul class="check-list">
 
-
                     <li>
-
                         <i class="fa-solid fa-circle-check"></i>
-
                         Informasi pemerintahan desa
-
                     </li>
 
-
                     <li>
-
                         <i class="fa-solid fa-circle-check"></i>
-
                         Pelayanan masyarakat secara digital
-
                     </li>
 
-
                     <li>
-
                         <i class="fa-solid fa-circle-check"></i>
-
                         Informasi program dan kegiatan desa
-
                     </li>
 
-
                     <li>
-
                         <i class="fa-solid fa-circle-check"></i>
-
                         Media komunikasi masyarakat
-
                     </li>
 
                 </ul>
 
-
-                <a href="#pemerintahan"
-                   class="btn btn-primary"
-                   style="margin-top:20px;">
-
-                    Selengkapnya
-
+                <a href="#pemerintahan" class="btn btn-primary">
+                    Lihat Pemerintahan
                     <i class="fa-solid fa-arrow-right"></i>
-
                 </a>
 
             </div>
 
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      PEMERINTAHAN
-====================================================== -->
+========================= -->
 
-<section class="section government"
-         id="pemerintahan">
-
+<section class="government" id="pemerintahan">
     <div class="container">
 
-
-        <div class="section-header reveal">
-
-            <span class="section-label">
-                Pemerintahan Desa
-            </span>
-
-            <h2 class="section-title">
-                Struktur Pemerintahan
-            </h2>
-
-            <p class="section-description">
-
-                Informasi unsur pemerintahan Desa Semparuk
-                dalam menjalankan pelayanan kepada masyarakat.
-
+        <div class="section-heading reveal">
+            <div class="section-label">Pemerintahan Desa</div>
+            <h2>Struktur Pemerintahan</h2>
+            <p>
+                Informasi mengenai unsur pemerintahan dan kelembagaan desa.
             </p>
-
         </div>
-
 
         <div class="government-grid">
 
-
-            <div class="official-card reveal">
-
-                <div class="official-icon">
-
+            <div class="government-card reveal">
+                <div class="government-icon">
                     <i class="fa-solid fa-user-tie"></i>
-
                 </div>
-
-                <h3>
-                    Kepala Desa
-                </h3>
-
+                <h3>Kepala Desa</h3>
                 <p>
-                    Pimpinan Pemerintah Desa
+                    Pimpinan Pemerintah Desa Semparuk.
                 </p>
-
             </div>
 
-
-            <div class="official-card reveal">
-
-                <div class="official-icon">
-
-                    <i class="fa-solid fa-user-group"></i>
-
+            <div class="government-card reveal">
+                <div class="government-icon">
+                    <i class="fa-solid fa-users-gear"></i>
                 </div>
-
-                <h3>
-                    Perangkat Desa
-                </h3>
-
+                <h3>Perangkat Desa</h3>
                 <p>
-                    Pelaksana Pemerintahan Desa
+                    Mendukung penyelenggaraan pemerintahan desa.
                 </p>
-
             </div>
 
-
-            <div class="official-card reveal">
-
-                <div class="official-icon">
-
-                    <i class="fa-solid fa-scale-balanced"></i>
-
+            <div class="government-card reveal">
+                <div class="government-icon">
+                    <i class="fa-solid fa-landmark"></i>
                 </div>
-
-                <h3>
-                    BPD
-                </h3>
-
+                <h3>BPD</h3>
                 <p>
-                    Badan Permusyawaratan Desa
+                    Lembaga perwakilan masyarakat desa.
                 </p>
-
             </div>
 
-
-            <div class="official-card reveal">
-
-                <div class="official-icon">
-
-                    <i class="fa-solid fa-map-pin"></i>
-
+            <div class="government-card reveal">
+                <div class="government-icon">
+                    <i class="fa-solid fa-map-location-dot"></i>
                 </div>
-
-                <h3>
-                    Kepala Dusun
-                </h3>
-
+                <h3>Kepala Dusun</h3>
                 <p>
-                    Pelayanan Wilayah Dusun
+                    Membantu pelayanan pemerintahan di wilayah dusun.
                 </p>
-
             </div>
 
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      PROGRAM
-====================================================== -->
+========================= -->
 
-<section class="section"
-         id="program">
-
+<section id="program">
     <div class="container">
 
-
-        <div class="section-header reveal">
-
-            <span class="section-label">
-                Program Desa
-            </span>
-
-            <h2 class="section-title">
-                Program Unggulan
-            </h2>
-
-            <p class="section-description">
-
-                Berbagai program yang mendukung pembangunan,
-                pemberdayaan dan kesejahteraan masyarakat.
-
+        <div class="section-heading reveal">
+            <div class="section-label">Program Desa</div>
+            <h2>Program Unggulan Desa</h2>
+            <p>
+                Program dan kegiatan yang mendukung pembangunan serta
+                pemberdayaan masyarakat desa.
             </p>
-
         </div>
-
 
         <div class="program-grid">
 
-
             <div class="program-card reveal">
-
-                <span class="program-number">
-                    01
-                </span>
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-graduation-cap"></i>
-
-                </div>
-
-                <h3>
-                    Peningkatan Pendidikan
-                </h3>
-
+                <div class="program-number">01</div>
+                <h3>Peningkatan Pendidikan</h3>
                 <p>
-
-                    Mendukung akses dan kualitas pendidikan
-                    bagi masyarakat desa.
-
+                    Mendukung peningkatan kualitas pendidikan masyarakat.
                 </p>
-
             </div>
 
-
             <div class="program-card reveal">
-
-                <span class="program-number">
-                    02
-                </span>
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-store"></i>
-
-                </div>
-
-                <h3>
-                    Pemberdayaan UMKM
-                </h3>
-
+                <div class="program-number">02</div>
+                <h3>Pemberdayaan UMKM</h3>
                 <p>
-
-                    Mendorong perkembangan usaha dan ekonomi
-                    masyarakat desa.
-
+                    Mendorong pertumbuhan usaha masyarakat desa.
                 </p>
-
             </div>
 
-
             <div class="program-card reveal">
-
-                <span class="program-number">
-                    03
-                </span>
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-road"></i>
-
-                </div>
-
-                <h3>
-                    Infrastruktur
-                </h3>
-
+                <div class="program-number">03</div>
+                <h3>Infrastruktur</h3>
                 <p>
-
-                    Mendukung pembangunan infrastruktur
-                    untuk kebutuhan masyarakat.
-
+                    Pengembangan dan pemeliharaan infrastruktur desa.
                 </p>
-
             </div>
 
-
             <div class="program-card reveal">
-
-                <span class="program-number">
-                    04
-                </span>
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-recycle"></i>
-
-                </div>
-
-                <h3>
-                    Lingkungan Bersih
-                </h3>
-
+                <div class="program-number">04</div>
+                <h3>Lingkungan Bersih</h3>
                 <p>
-
-                    Membangun lingkungan desa yang bersih,
-                    sehat dan nyaman.
-
+                    Meningkatkan kepedulian masyarakat terhadap lingkungan.
                 </p>
-
             </div>
 
-
             <div class="program-card reveal">
-
-                <span class="program-number">
-                    05
-                </span>
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-laptop"></i>
-
-                </div>
-
-                <h3>
-                    Pelayanan Digital
-                </h3>
-
+                <div class="program-number">05</div>
+                <h3>Pelayanan Digital</h3>
                 <p>
-
-                    Mengembangkan pelayanan masyarakat
-                    berbasis teknologi digital.
-
+                    Mengembangkan pelayanan publik berbasis teknologi.
                 </p>
-
             </div>
 
-
             <div class="program-card reveal">
-
-                <span class="program-number">
-                    06
-                </span>
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-person-running"></i>
-
-                </div>
-
-                <h3>
-                    Pemberdayaan Pemuda
-                </h3>
-
+                <div class="program-number">06</div>
+                <h3>Pemberdayaan Pemuda</h3>
                 <p>
-
-                    Mendorong kreativitas dan partisipasi
-                    pemuda dalam pembangunan desa.
-
+                    Mendorong peran pemuda dalam pembangunan desa.
                 </p>
-
             </div>
 
-
             <div class="program-card reveal">
-
-                <span class="program-number">
-                    07
-                </span>
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-chart-line"></i>
-
-                </div>
-
-                <h3>
-                    Pengembangan Ekonomi
-                </h3>
-
+                <div class="program-number">07</div>
+                <h3>Pengembangan Ekonomi</h3>
                 <p>
-
-                    Memperkuat potensi ekonomi masyarakat
-                    dan desa.
-
+                    Mendukung penguatan ekonomi dan potensi masyarakat.
                 </p>
-
             </div>
 
-
             <div class="program-card reveal">
-
-                <span class="program-number">
-                    08
-                </span>
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-handshake"></i>
-
-                </div>
-
-                <h3>
-                    Kegiatan Sosial
-                </h3>
-
+                <div class="program-number">08</div>
+                <h3>Kegiatan Sosial</h3>
                 <p>
-
-                    Mendukung kegiatan sosial dan kebersamaan
-                    masyarakat.
-
+                    Meningkatkan kepedulian dan kebersamaan masyarakat.
                 </p>
-
             </div>
 
-
             <div class="program-card reveal">
-
-                <span class="program-number">
-                    09
-                </span>
-
-                <div class="program-icon">
-
-                    <i class="fa-solid fa-tree"></i>
-
-                </div>
-
-                <h3>
-                    Desa Ramah Wisata
-                </h3>
-
+                <div class="program-number">09</div>
+                <h3>Desa Ramah Wisata</h3>
                 <p>
-
-                    Mengembangkan potensi budaya, alam dan
-                    wisata lokal.
-
+                    Mengembangkan potensi desa untuk kegiatan wisata.
                 </p>
-
             </div>
 
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      LAYANAN
-====================================================== -->
+========================= -->
 
-<section class="section services"
-         id="layanan">
-
+<section class="services" id="layanan">
     <div class="container">
 
-
-        <div class="section-header reveal">
-
-            <span class="section-label">
-                Pelayanan Digital
-            </span>
-
-            <h2 class="section-title">
-                Layanan Desa
-            </h2>
-
-            <p class="section-description">
-
-                Akses informasi dan layanan Desa Semparuk
-                dengan lebih mudah melalui portal digital.
-
+        <div class="section-heading reveal">
+            <div class="section-label">Layanan Digital</div>
+            <h2>Layanan Desa</h2>
+            <p>
+                Akses berbagai informasi dan pelayanan melalui portal Desa Semparuk.
             </p>
-
         </div>
-
 
         <div class="service-grid">
 
-
-            <a href="#pengaduan"
-               class="service-card reveal">
-
+            <a href="#pengaduan" class="service-card reveal">
                 <i class="fa-solid fa-file-lines"></i>
-
-                <h3>
-                    Administrasi Desa
-                </h3>
-
+                <h3>Administrasi Desa</h3>
                 <p>
-                    Informasi administrasi dan pelayanan desa.
+                    Informasi pelayanan administrasi.
                 </p>
-
             </a>
 
-
-            <a href="#profil"
-               class="service-card reveal">
-
+            <a href="#profil" class="service-card reveal">
                 <i class="fa-solid fa-circle-info"></i>
-
-                <h3>
-                    Informasi Desa
-                </h3>
-
+                <h3>Informasi Desa</h3>
                 <p>
-                    Informasi pemerintahan dan masyarakat.
+                    Informasi umum mengenai desa.
                 </p>
-
             </a>
 
-
-            <a href="#pengaduan"
-               class="service-card reveal">
-
+            <a href="#pengaduan" class="service-card reveal">
                 <i class="fa-solid fa-comments"></i>
-
-                <h3>
-                    Pengaduan Masyarakat
-                </h3>
-
+                <h3>Pengaduan Masyarakat</h3>
                 <p>
-                    Sampaikan laporan atau aspirasi masyarakat.
+                    Sampaikan aspirasi dan pengaduan.
                 </p>
-
             </a>
 
-
-            <a href="#cek-pengaduan"
-               class="service-card reveal">
-
+            <a href="#cek-pengaduan" class="service-card reveal">
                 <i class="fa-solid fa-magnifying-glass"></i>
-
-                <h3>
-                    Cek Pengaduan
-                </h3>
-
+                <h3>Cek Pengaduan</h3>
                 <p>
-                    Pantau perkembangan laporan Anda.
+                    Periksa status pengaduan.
                 </p>
-
             </a>
 
-
-            <a href="#berita"
-               class="service-card reveal">
-
+            <a href="#berita" class="service-card reveal">
                 <i class="fa-solid fa-newspaper"></i>
-
-                <h3>
-                    Berita Desa
-                </h3>
-
+                <h3>Berita Desa</h3>
                 <p>
-                    Berita dan kegiatan terbaru desa.
+                    Berita dan informasi terbaru.
                 </p>
-
             </a>
 
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      PENGADUAN
-====================================================== -->
+========================= -->
 
-<section class="section complaint"
-         id="pengaduan">
-
+<section id="pengaduan">
     <div class="container">
 
-
-        <div class="section-header reveal">
-
-            <span class="section-label">
-                Aspirasi Masyarakat
-            </span>
-
-            <h2 class="section-title">
-                Pengaduan Masyarakat
-            </h2>
-
-            <p class="section-description">
-
-                Sampaikan pengaduan, kritik, saran atau
-                aspirasi Anda kepada Pemerintah Desa.
-
+        <div class="section-heading reveal">
+            <div class="section-label">Pengaduan Masyarakat</div>
+            <h2>Sampaikan Pengaduan</h2>
+            <p>
+                Gunakan formulir berikut untuk menyampaikan aspirasi,
+                masukan, atau pengaduan.
             </p>
-
         </div>
-
 
         <div class="complaint-grid">
 
-
             <div class="complaint-info reveal">
 
-                <h3>
+                <h2>
                     Suara Masyarakat
-                </h3>
+                    Adalah Bagian Penting Desa
+                </h2>
 
                 <p>
-
-                    Setiap pengaduan yang disampaikan menjadi
-                    bagian dari komunikasi antara pemerintah
-                    desa dan masyarakat.
-
+                    Sampaikan informasi secara jelas agar dapat ditindaklanjuti
+                    dengan lebih mudah.
                 </p>
 
-
-                <ul>
+                <ul class="complaint-points">
 
                     <li>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Isi data dengan benar
-
+                        <i class="fa-solid fa-circle-check"></i>
+                        Identitas pengadu
                     </li>
 
-
                     <li>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Jelaskan laporan secara jelas
-
+                        <i class="fa-solid fa-circle-check"></i>
+                        Kategori pengaduan
                     </li>
 
-
                     <li>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Simpan token pengaduan
-
+                        <i class="fa-solid fa-circle-check"></i>
+                        Judul pengaduan
                     </li>
 
-
                     <li>
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Gunakan token untuk cek status
-
+                        <i class="fa-solid fa-circle-check"></i>
+                        Detail permasalahan
                     </li>
 
                 </ul>
 
             </div>
 
-
-            <div class="form-card reveal">
-
+            <div class="complaint-form reveal">
 
                 <form id="complaintForm">
 
-
                     <div class="form-grid">
 
-
                         <div class="form-group">
-
-                            <label class="form-label">
-                                Nama
-                            </label>
-
+                            <label>Nama Lengkap</label>
                             <input
                                 type="text"
                                 id="nama"
                                 class="form-control"
-                                placeholder="Nama lengkap"
+                                placeholder="Masukkan nama"
                                 required>
-
                         </div>
 
-
                         <div class="form-group">
-
-                            <label class="form-label">
-                                Email
-                            </label>
-
+                            <label>Email</label>
                             <input
                                 type="email"
                                 id="email"
                                 class="form-control"
-                                placeholder="email@example.com"
+                                placeholder="Masukkan email"
                                 required>
-
                         </div>
 
+                        <div class="form-group full">
+                            <label>Kategori</label>
 
-                        <div class="form-group">
-
-                            <label class="form-label">
-                                Kategori
-                            </label>
-
-                            <select
-                                id="kategori"
-                                class="form-control"
-                                required>
+                            <select id="kategori"
+                                    class="form-control"
+                                    required>
 
                                 <option value="">
                                     Pilih kategori
                                 </option>
 
-                                <option>
-                                    Infrastruktur
-                                </option>
-
-                                <option>
-                                    Pelayanan
-                                </option>
-
-                                <option>
-                                    Lingkungan
-                                </option>
-
-                                <option>
-                                    Sosial
-                                </option>
-
-                                <option>
-                                    Administrasi
-                                </option>
-
-                                <option>
-                                    Lainnya
-                                </option>
+                                <option>Administrasi</option>
+                                <option>Infrastruktur</option>
+                                <option>Pelayanan</option>
+                                <option>Lingkungan</option>
+                                <option>Sosial</option>
+                                <option>Lainnya</option>
 
                             </select>
-
                         </div>
 
-
-                        <div class="form-group">
-
-                            <label class="form-label">
-                                Judul Pengaduan
-                            </label>
+                        <div class="form-group full">
+                            <label>Judul Pengaduan</label>
 
                             <input
                                 type="text"
                                 id="judul"
                                 class="form-control"
-                                placeholder="Judul laporan"
+                                placeholder="Masukkan judul pengaduan"
                                 required>
-
                         </div>
 
-
                         <div class="form-group full">
-
-                            <label class="form-label">
-                                Isi Pengaduan
-                            </label>
+                            <label>Isi Pengaduan</label>
 
                             <textarea
                                 id="isi"
                                 class="form-control"
-                                placeholder="Tuliskan pengaduan atau aspirasi Anda..."
+                                placeholder="Tuliskan pengaduan secara lengkap..."
                                 required></textarea>
-
                         </div>
 
                     </div>
 
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary">
-
+                    <button type="submit" class="btn btn-primary">
                         <i class="fa-solid fa-paper-plane"></i>
-
                         Kirim Pengaduan
-
                     </button>
 
                 </form>
 
-
                 <!-- CEK PENGADUAN -->
+                <div class="check-section" id="cek-pengaduan">
 
-                <div class="check-box"
-                     id="cek-pengaduan">
-
-
-                    <h4>
-
-                        <i class="fa-solid fa-magnifying-glass"></i>
-
+                    <h3>
                         Cek Status Pengaduan
+                    </h3>
 
-                    </h4>
-
-
-                    <p
-                        style="
-                        font-size:12px;
-                        color:var(--muted);
-                        margin-top:5px;
-                        ">
-
-                        Masukkan token pengaduan
-                        yang Anda dapatkan.
-
-                    </p>
-
-
-                    <div class="check-form">
-
+                    <div class="check-row">
 
                         <input
                             type="text"
-                            id="tokenCheck"
+                            id="tokenInput"
                             class="form-control"
-                            placeholder="Contoh: DS-2026-AB1234">
-
+                            placeholder="Contoh: DS-2026-123456">
 
                         <button
                             class="btn btn-primary"
-                            id="checkToken">
-
-                            Cek Status
-
+                            id="checkTokenBtn">
+                            Cek
                         </button>
 
                     </div>
 
+                    <div id="checkResult"></div>
+
                 </div>
 
             </div>
 
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      GALERI
-====================================================== -->
+========================= -->
 
-<section class="section"
-         id="galeri">
+<section class="gallery" id="galeri">
 
     <div class="container">
 
-
-        <div class="section-header reveal">
-
-            <span class="section-label">
-                Dokumentasi
-            </span>
-
-            <h2 class="section-title">
-                Galeri Desa
-            </h2>
-
-            <p class="section-description">
-
-                Dokumentasi kegiatan dan potensi Desa Semparuk.
-
+        <div class="section-heading reveal">
+            <div class="section-label">Dokumentasi</div>
+            <h2>Galeri Desa</h2>
+            <p>
+                Dokumentasi kegiatan dan kehidupan masyarakat Desa Semparuk.
             </p>
-
         </div>
-
 
         <div class="filter-buttons">
 
-
-            <button
-                class="filter-btn active"
-                data-filter="all">
-
+            <button class="filter-btn active" data-filter="all">
                 Semua
-
             </button>
 
-
-            <button
-                class="filter-btn"
-                data-filter="kegiatan">
-
-                Kegiatan Desa
-
+            <button class="filter-btn" data-filter="kegiatan">
+                Kegiatan
             </button>
 
-
-            <button
-                class="filter-btn"
-                data-filter="masyarakat">
-
+            <button class="filter-btn" data-filter="masyarakat">
                 Masyarakat
-
             </button>
 
-
-            <button
-                class="filter-btn"
-                data-filter="lingkungan">
-
+            <button class="filter-btn" data-filter="lingkungan">
                 Lingkungan
-
             </button>
 
-
-            <button
-                class="filter-btn"
-                data-filter="wisata">
-
+            <button class="filter-btn" data-filter="wisata">
                 Wisata
-
             </button>
 
         </div>
-
 
         <div class="gallery-grid">
 
+            <div class="gallery-item"
+                 data-category="kegiatan"
+                 data-image="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1000&q=80">
 
-            <div
-                class="gallery-item reveal"
-                data-category="kegiatan">
+                <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1000&q=80"
+                     alt="Kegiatan Desa">
 
-                <img
-                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"
-                    alt="Kegiatan Desa">
-
-                <div class="gallery-overlay">
-
-                    <strong>
-                        Kegiatan Desa
-                    </strong>
-
+                <div class="gallery-caption">
+                    Kegiatan Desa
                 </div>
-
             </div>
 
+            <div class="gallery-item"
+                 data-category="masyarakat"
+                 data-image="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80">
 
-            <div
-                class="gallery-item reveal"
-                data-category="masyarakat">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80"
+                     alt="Masyarakat Desa">
 
-                <img
-                    src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=900&q=80"
-                    alt="Masyarakat">
-
-                <div class="gallery-overlay">
-
-                    <strong>
-                        Kebersamaan Masyarakat
-                    </strong>
-
+                <div class="gallery-caption">
+                    Kebersamaan Masyarakat
                 </div>
-
             </div>
 
+            <div class="gallery-item"
+                 data-category="lingkungan"
+                 data-image="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80">
 
-            <div
-                class="gallery-item reveal"
-                data-category="lingkungan">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80"
+                     alt="Lingkungan">
 
-                <img
-                    src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=900&q=80"
-                    alt="Lingkungan">
-
-                <div class="gallery-overlay">
-
-                    <strong>
-                        Lingkungan Desa
-                    </strong>
-
+                <div class="gallery-caption">
+                    Lingkungan Desa
                 </div>
-
             </div>
 
+            <div class="gallery-item"
+                 data-category="wisata"
+                 data-image="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80">
 
-            <div
-                class="gallery-item reveal"
-                data-category="wisata">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=80"
+                     alt="Wisata Desa">
 
-                <img
-                    src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80"
-                    alt="Wisata">
-
-                <div class="gallery-overlay">
-
-                    <strong>
-                        Potensi Wisata
-                    </strong>
-
+                <div class="gallery-caption">
+                    Potensi Wisata
                 </div>
-
             </div>
 
+            <div class="gallery-item"
+                 data-category="kegiatan"
+                 data-image="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=80">
 
-            <div
-                class="gallery-item reveal"
-                data-category="kegiatan">
+                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=80"
+                     alt="Rapat Kegiatan">
 
-                <img
-                    src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=900&q=80"
-                    alt="Kegiatan">
-
-                <div class="gallery-overlay">
-
-                    <strong>
-                        Pelayanan Masyarakat
-                    </strong>
-
+                <div class="gallery-caption">
+                    Kegiatan Bersama
                 </div>
-
             </div>
 
+            <div class="gallery-item"
+                 data-category="masyarakat"
+                 data-image="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1000&q=80">
 
-            <div
-                class="gallery-item reveal"
-                data-category="lingkungan">
+                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1000&q=80"
+                     alt="Masyarakat">
 
-                <img
-                    src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80"
-                    alt="Alam">
-
-                <div class="gallery-overlay">
-
-                    <strong>
-                        Keindahan Alam
-                    </strong>
-
+                <div class="gallery-caption">
+                    Masyarakat Desa
                 </div>
-
             </div>
 
         </div>
-
     </div>
-
 </section>
 
+<!-- =========================
+     LIGHTBOX
+========================= -->
 
-<!-- =====================================================
+<div class="lightbox" id="lightbox">
+
+    <button class="lightbox-close" id="lightboxClose">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <img id="lightboxImage" src="" alt="Preview">
+
+</div>
+
+<!-- =========================
      BERITA
-====================================================== -->
+========================= -->
 
-<section class="section news"
-         id="berita">
+<section id="berita">
 
     <div class="container">
 
-
-        <div class="section-header reveal">
-
-            <span class="section-label">
-                Informasi Terkini
-            </span>
-
-            <h2 class="section-title">
-                Berita Desa
-            </h2>
-
-            <p class="section-description">
-
-                Informasi kegiatan dan perkembangan
-                terbaru Desa Semparuk.
-
+        <div class="section-heading reveal">
+            <div class="section-label">Informasi Terkini</div>
+            <h2>Berita Desa</h2>
+            <p>
+                Informasi kegiatan dan perkembangan Desa Semparuk.
             </p>
-
         </div>
-
 
         <div class="news-grid">
 
-
             <article class="news-card reveal">
 
-
                 <div class="news-image">
-
                     <img
-                        src="https://images.unsplash.com/photo-1504159506876-f8338247a14a?auto=format&fit=crop&w=900&q=80"
-                        alt="Berita Desa">
-
+                        src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1000&q=80"
+                        alt="Kegiatan Desa">
                 </div>
-
 
                 <div class="news-content">
 
-
-                    <div class="news-meta">
-
-                        <span class="news-category">
-                            Pemerintahan
-                        </span>
-
-                        <span>
-                            18 Sep 2026
-                        </span>
-
+                    <div class="news-date">
+                        18 September 2026
                     </div>
 
-
                     <h3>
-
-                        Informasi dan Pelayanan
-                        Pemerintah Desa
-
+                        Kegiatan dan Pelayanan Desa Semparuk
                     </h3>
 
-
                     <p>
-
-                        Pemerintah Desa terus meningkatkan
-                        kualitas pelayanan kepada masyarakat.
-
+                        Informasi mengenai kegiatan pelayanan dan aktivitas
+                        pemerintahan desa.
                     </p>
 
-
-                    <a href="#"
-                       class="read-more">
-
+                    <a href="#" class="read-more">
                         Baca Selengkapnya
-
                         <i class="fa-solid fa-arrow-right"></i>
-
                     </a>
 
                 </div>
-
             </article>
 
-
             <article class="news-card reveal">
 
-
                 <div class="news-image">
-
                     <img
-                        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
-                        alt="UMKM">
-
+                        src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80"
+                        alt="Program Desa">
                 </div>
-
 
                 <div class="news-content">
 
-
-                    <div class="news-meta">
-
-                        <span class="news-category">
-                            UMKM
-                        </span>
-
-                        <span>
-                            15 Sep 2026
-                        </span>
-
+                    <div class="news-date">
+                        15 September 2026
                     </div>
 
-
                     <h3>
-
-                        Pemberdayaan UMKM
-                        Masyarakat Desa
-
+                        Program Pemberdayaan Masyarakat
                     </h3>
 
-
                     <p>
-
-                        Mendorong perkembangan usaha masyarakat
-                        dan ekonomi lokal.
-
+                        Informasi kegiatan pemberdayaan dan pengembangan
+                        potensi masyarakat desa.
                     </p>
 
-
-                    <a href="#"
-                       class="read-more">
-
+                    <a href="#" class="read-more">
                         Baca Selengkapnya
-
                         <i class="fa-solid fa-arrow-right"></i>
-
                     </a>
 
                 </div>
-
             </article>
 
-
             <article class="news-card reveal">
 
-
                 <div class="news-image">
-
                     <img
-                        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
-                        alt="Lingkungan">
-
+                        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=80"
+                        alt="Pemerintahan Desa">
                 </div>
-
 
                 <div class="news-content">
 
-
-                    <div class="news-meta">
-
-                        <span class="news-category">
-                            Lingkungan
-                        </span>
-
-                        <span>
-                            10 Sep 2026
-                        </span>
-
+                    <div class="news-date">
+                        10 September 2026
                     </div>
 
-
                     <h3>
-
-                        Gerakan Desa Peduli
-                        Lingkungan
-
+                        Penguatan Pelayanan Digital Desa
                     </h3>
 
-
                     <p>
-
-                        Membangun lingkungan yang bersih,
-                        sehat dan nyaman.
-
+                        Pengembangan media digital untuk mendukung informasi
+                        dan pelayanan masyarakat.
                     </p>
 
-
-                    <a href="#"
-                       class="read-more">
-
+                    <a href="#" class="read-more">
                         Baca Selengkapnya
-
                         <i class="fa-solid fa-arrow-right"></i>
-
                     </a>
 
                 </div>
-
             </article>
 
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      KONTAK
-====================================================== -->
+========================= -->
 
-<section class="section"
-         id="kontak">
+<section class="contact" id="kontak">
 
     <div class="container">
 
-
-        <div class="section-header reveal">
-
-            <span class="section-label">
-                Hubungi Kami
-            </span>
-
-            <h2 class="section-title">
-                Lokasi Desa Semparuk
-            </h2>
-
-            <p class="section-description">
-
-                Informasi alamat dan kontak Pemerintah
-                Desa Semparuk.
-
+        <div class="section-heading reveal">
+            <div class="section-label">Hubungi Kami</div>
+            <h2>Kontak Desa Semparuk</h2>
+            <p>
+                Informasi kontak dan lokasi Pemerintah Desa Semparuk.
             </p>
-
         </div>
 
+        <div class="contact-grid">
 
-        <div class="location-grid">
+            <div class="map-box reveal">
 
+                <div class="map-content">
 
-            <div class="map reveal">
-
-
-                <div class="map-inner">
-
-
-                    <i class="fa-solid fa-map-location-dot"></i>
-
+                    <i class="fa-solid fa-location-dot"></i>
 
                     <h3>
                         Desa Semparuk
                     </h3>
 
-
                     <p>
-
-                        Kecamatan Semparuk,
-                        Kabupaten Sambas
-
+                        Kabupaten Sambas, Kalimantan Barat
                     </p>
-
 
                     <a
                         href="https://www.google.com/maps/search/?api=1&query=Desa+Semparuk+Kabupaten+Sambas"
                         target="_blank"
-                        class="btn btn-primary"
-                        style="margin-top:18px;">
+                        class="btn btn-white">
 
+                        <i class="fa-solid fa-map-location-dot"></i>
                         Buka Google Maps
-
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
 
                     </a>
 
@@ -4692,107 +2374,100 @@
 
             </div>
 
+            <div class="contact-info">
 
-            <div class="location-card reveal">
+                <div class="contact-card reveal">
 
-
-                <h3>
-                    Kontak Desa
-                </h3>
-
-
-                <p>
-
-                    Silakan gunakan informasi berikut
-                    untuk menghubungi Pemerintah Desa Semparuk.
-
-                </p>
-
-
-                <ul class="contact-list">
-
-
-                    <li>
-
+                    <div class="contact-icon">
                         <i class="fa-solid fa-location-dot"></i>
+                    </div>
 
-                        <span>
+                    <div>
+                        <h4>Alamat</h4>
 
+                        <p>
                             Jalan Masjid Lorong Berdikari,
-                            RT.40/RW.7,
-                            Semparuk, Kabupaten Sambas,
+                            RT.40/RW.7, Semparuk,
+                            Kabupaten Sambas,
                             Kalimantan Barat 79457
+                        </p>
+                    </div>
 
-                        </span>
+                </div>
 
-                    </li>
+                <div class="contact-card reveal">
 
-
-                    <li>
-
+                    <div class="contact-icon">
                         <i class="fa-solid fa-phone"></i>
+                    </div>
 
-                        <span>
+                    <div>
+                        <h4>Telepon</h4>
+
+                        <p>
                             +62 000-0000-0000
-                        </span>
+                        </p>
+                    </div>
 
-                    </li>
+                </div>
 
+                <div class="contact-card reveal">
 
-                    <li>
-
+                    <div class="contact-icon">
                         <i class="fa-solid fa-envelope"></i>
+                    </div>
 
-                        <span>
+                    <div>
+                        <h4>Email</h4>
+
+                        <p>
                             desa.semparuk@email.com
-                        </span>
+                        </p>
+                    </div>
 
-                    </li>
+                </div>
 
+                <div class="contact-card reveal">
 
-                    <li>
-
+                    <div class="contact-icon">
                         <i class="fa-solid fa-clock"></i>
+                    </div>
 
-                        <span>
+                    <div>
+                        <h4>Jam Pelayanan</h4>
+
+                        <p>
                             Senin - Jumat
-                        </span>
+                        </p>
+                    </div>
 
-                    </li>
-
-                </ul>
+                </div>
 
             </div>
 
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      FOOTER
-====================================================== -->
+========================= -->
 
 <footer>
 
     <div class="container">
 
-
         <div class="footer-grid">
-
 
             <div class="footer-brand">
 
-
                 <div class="footer-logo">
 
-
+                    <!-- FOTO RESMI DI FOOTER -->
                     <div class="logo-box">
-                        DS
+                        <img src="profil-desa.jpg"
+                             alt="Profil Resmi Desa Semparuk">
                     </div>
-
 
                     <strong>
                         DESA SEMPARUK
@@ -4800,133 +2475,47 @@
 
                 </div>
 
-
                 <p>
-
                     Bersama Membangun Desa,
                     Menuju Desa Digital.
-
                 </p>
 
             </div>
 
-
             <div class="footer-column">
 
+                <h4>Navigasi</h4>
 
-                <h4>
-                    Navigasi
-                </h4>
-
-
-                <a href="#beranda">
-                    Beranda
-                </a>
-
-                <a href="#profil">
-                    Profil
-                </a>
-
-                <a href="#pemerintahan">
-                    Pemerintahan
-                </a>
-
-                <a href="#program">
-                    Program
-                </a>
-
-                <a href="#layanan">
-                    Layanan
-                </a>
-
-                <a href="#galeri">
-                    Galeri
-                </a>
-
-                <a href="#berita">
-                    Berita
-                </a>
-
-                <a href="#pengaduan">
-                    Pengaduan
-                </a>
-
-                <a href="#kontak">
-                    Kontak
-                </a>
+                <a href="#beranda">Beranda</a>
+                <a href="#profil">Profil</a>
+                <a href="#pemerintahan">Pemerintahan</a>
+                <a href="#program">Program</a>
+                <a href="#layanan">Layanan</a>
 
             </div>
 
-
             <div class="footer-column">
 
+                <h4>Informasi</h4>
 
-                <h4>
-                    Layanan
-                </h4>
-
-
-                <a href="#layanan">
-                    Administrasi Desa
-                </a>
-
-                <a href="#layanan">
-                    Informasi Desa
-                </a>
-
-                <a href="#pengaduan">
-                    Pengaduan
-                </a>
-
-                <a href="#cek-pengaduan">
-                    Cek Pengaduan
-                </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-
-                <h4>
-                    Informasi
-                </h4>
-
-
-                <a href="#galeri">
-                    Galeri
-                </a>
-
-                <a href="#berita">
-                    Berita
-                </a>
-
-                <a href="#kontak">
-                    Kontak
-                </a>
-
-                <a href="#kontak">
-                    Lokasi
-                </a>
+                <a href="#galeri">Galeri</a>
+                <a href="#berita">Berita</a>
+                <a href="#pengaduan">Pengaduan</a>
+                <a href="#kontak">Kontak</a>
 
             </div>
 
         </div>
 
-
         <div class="footer-bottom">
 
-
             <span>
-
                 © 2026 Pemerintah Desa Semparuk.
-                All Rights Reserved.
-
+                Semua Hak Dilindungi.
             </span>
 
-
             <span>
-                Portal Desa Digital
+                Portal Resmi Desa Semparuk
             </span>
 
         </div>
@@ -4935,950 +2524,525 @@
 
 </footer>
 
-
-<!-- =====================================================
-     LIGHTBOX
-====================================================== -->
-
-<div class="lightbox"
-     id="lightbox">
-
-
-    <button class="lightbox-close"
-            id="lightboxClose">
-
-        <i class="fa-solid fa-xmark"></i>
-
-    </button>
-
-
-    <img
-        id="lightboxImage"
-        src=""
-        alt="Galeri Desa">
-
-</div>
-
-
-<!-- =====================================================
+<!-- =========================
      TOAST
-====================================================== -->
+========================= -->
 
-<div class="toast"
-     id="toast">
+<div class="toast" id="toast"></div>
 
-
-    <i class="fa-solid fa-circle-check"></i>
-
-
-    <span id="toastText">
-        Berhasil
-    </span>
-
-</div>
-
-
-<!-- =====================================================
+<!-- =========================
      BACK TO TOP
-====================================================== -->
+========================= -->
 
-<button class="back-top"
-        id="backTop">
-
+<button id="backTop" aria-label="Kembali ke atas">
     <i class="fa-solid fa-arrow-up"></i>
-
 </button>
 
-
-<!-- =====================================================
+<!-- =========================
      JAVASCRIPT
-====================================================== -->
+========================= -->
 
 <script>
 
-
-    /* =====================================================
-       ELEMENT
-    ====================================================== */
-
-    const navbar =
-        document.getElementById("navbar");
-
-    const navMenu =
-        document.getElementById("navMenu");
-
-    const navToggle =
-        document.getElementById("navToggle");
-
-    const navClose =
-        document.getElementById("navClose");
-
-    const navOverlay =
-        document.getElementById("navOverlay");
-
-    const navLinks =
-        document.querySelectorAll(".nav-link");
-
-    const backTop =
-        document.getElementById("backTop");
-
-    const darkToggle =
-        document.getElementById("darkToggle");
-
-
-    /* =====================================================
+    /* =========================
        MOBILE MENU
-    ====================================================== */
+    ========================= */
+
+    const navToggle = document.getElementById("navToggle");
+    const navMenu = document.getElementById("navMenu");
+    const navClose = document.getElementById("navClose");
+    const navOverlay = document.getElementById("navOverlay");
 
     function openMenu() {
-
-        navMenu.classList.add("active");
-
-        navOverlay.classList.add("active");
-
-        document.body.classList.add("no-scroll");
+        navMenu.classList.add("open");
+        navOverlay.classList.add("show");
+        document.body.style.overflow = "hidden";
     }
-
 
     function closeMenu() {
-
-        navMenu.classList.remove("active");
-
-        navOverlay.classList.remove("active");
-
-        document.body.classList.remove("no-scroll");
+        navMenu.classList.remove("open");
+        navOverlay.classList.remove("show");
+        document.body.style.overflow = "";
     }
 
+    navToggle.addEventListener("click", openMenu);
+    navClose.addEventListener("click", closeMenu);
+    navOverlay.addEventListener("click", closeMenu);
 
-    navToggle.addEventListener(
-        "click",
-        openMenu
-    );
-
-
-    navClose.addEventListener(
-        "click",
-        closeMenu
-    );
+    document.querySelectorAll(".nav-menu a").forEach(link => {
+        link.addEventListener("click", closeMenu);
+    });
 
 
-    navOverlay.addEventListener(
-        "click",
-        closeMenu
-    );
+    /* =========================
+       NAVBAR SCROLL
+    ========================= */
 
+    const navbar = document.getElementById("navbar");
 
-    navLinks.forEach(link => {
+    window.addEventListener("scroll", () => {
 
-        link.addEventListener(
-            "click",
-            closeMenu
-        );
+        if (window.scrollY > 30) {
+            navbar.classList.add("scrolled");
+        } else {
+            navbar.classList.remove("scrolled");
+        }
 
     });
 
 
-    /* =====================================================
-       NAVBAR SCROLL
-    ====================================================== */
+    /* =========================
+       ACTIVE NAVIGATION
+    ========================= */
 
-    window.addEventListener(
-        "scroll",
-        () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-menu a");
 
+    window.addEventListener("scroll", () => {
 
-            if (window.scrollY > 30) {
+        let current = "";
 
-                navbar.classList.add(
-                    "scrolled"
-                );
+        sections.forEach(section => {
 
-            } else {
+            const top = section.offsetTop - 130;
 
-                navbar.classList.remove(
-                    "scrolled"
-                );
-
+            if (window.scrollY >= top) {
+                current = section.getAttribute("id");
             }
 
+        });
 
-            if (window.scrollY > 500) {
+        navLinks.forEach(link => {
 
-                backTop.classList.add(
-                    "show"
-                );
+            link.classList.remove("active");
 
-            } else {
-
-                backTop.classList.remove(
-                    "show"
-                );
-
+            if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("active");
             }
 
-        }
-    );
+        });
+
+    });
 
 
-    /* =====================================================
+    /* =========================
        BACK TO TOP
-    ====================================================== */
+    ========================= */
 
-    backTop.addEventListener(
-        "click",
-        () => {
+    const backTop = document.getElementById("backTop");
 
-            window.scrollTo({
+    window.addEventListener("scroll", () => {
 
-                top: 0,
+        if (window.scrollY > 500) {
+            backTop.classList.add("show");
+        } else {
+            backTop.classList.remove("show");
+        }
 
-                behavior: "smooth"
+    });
+
+    backTop.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+
+    /* =========================
+       REVEAL ANIMATION
+    ========================= */
+
+    const revealObserver = new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    revealObserver.unobserve(entry.target);
+                }
 
             });
 
+        },
+        {
+            threshold: .12
         }
     );
 
-
-    /* =====================================================
-       ACTIVE NAV
-    ====================================================== */
-
-    const sections =
-        document.querySelectorAll(
-            "section[id]"
-        );
+    document.querySelectorAll(".reveal").forEach(element => {
+        revealObserver.observe(element);
+    });
 
 
-    window.addEventListener(
-        "scroll",
-        () => {
-
-
-            let current = "";
-
-
-            sections.forEach(
-                section => {
-
-
-                    const top =
-                        section.offsetTop - 150;
-
-
-                    const height =
-                        section.offsetHeight;
-
-
-                    if (
-                        window.scrollY >= top &&
-                        window.scrollY < top + height
-                    ) {
-
-                        current =
-                            section.getAttribute(
-                                "id"
-                            );
-
-                    }
-
-                }
-            );
-
-
-            navLinks.forEach(
-                link => {
-
-
-                    link.classList.remove(
-                        "active"
-                    );
-
-
-                    if (
-                        link.getAttribute("href")
-                        === "#" + current
-                    ) {
-
-                        link.classList.add(
-                            "active"
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-    /* =====================================================
+    /* =========================
        COUNTER
-    ====================================================== */
+    ========================= */
 
-    const counters =
-        document.querySelectorAll(
-            ".counter"
-        );
+    const counterObserver = new IntersectionObserver(
+        entries => {
 
+            entries.forEach(entry => {
 
-    const counterObserver =
-        new IntersectionObserver(
-            entries => {
+                if (!entry.isIntersecting) return;
 
+                const counter = entry.target;
+                const target = Number(counter.dataset.target);
 
-                entries.forEach(
-                    entry => {
+                let current = 0;
+                const duration = 1500;
+                const step = Math.max(1, Math.ceil(target / (duration / 16)));
 
+                const update = () => {
 
-                        if (
-                            entry.isIntersecting
-                            &&
-                            !entry.target
-                            .classList
-                            .contains("counted")
-                        ) {
+                    current += step;
 
-
-                            const counter =
-                                entry.target;
-
-
-                            const target =
-                                Number(
-                                    counter.dataset.target
-                                );
-
-
-                            let current = 0;
-
-
-                            const increment =
-                                target / 100;
-
-
-                            const update =
-                                () => {
-
-
-                                    current +=
-                                        increment;
-
-
-                                    if (
-                                        current < target
-                                    ) {
-
-
-                                        counter.textContent =
-                                            Math.floor(
-                                                current
-                                            )
-                                            .toLocaleString(
-                                                "id-ID"
-                                            );
-
-
-                                        requestAnimationFrame(
-                                            update
-                                        );
-
-
-                                    } else {
-
-
-                                        counter.textContent =
-                                            target
-                                            .toLocaleString(
-                                                "id-ID"
-                                            );
-
-                                    }
-
-                                };
-
-
-                            update();
-
-
-                            counter.classList.add(
-                                "counted"
-                            );
-
-                        }
-
+                    if (current >= target) {
+                        counter.textContent = target.toLocaleString("id-ID");
+                    } else {
+                        counter.textContent = current.toLocaleString("id-ID");
+                        requestAnimationFrame(update);
                     }
-                );
 
-            },
-            {
-                threshold: .5
-            }
-        );
+                };
 
+                update();
 
-    counters.forEach(
-        counter =>
-        counterObserver.observe(counter)
+                counterObserver.unobserve(counter);
+
+            });
+
+        },
+        {
+            threshold: .5
+        }
     );
 
-
-    /* =====================================================
-       SCROLL REVEAL
-    ====================================================== */
-
-    const revealElements =
-        document.querySelectorAll(
-            ".reveal"
-        );
+    document.querySelectorAll(".counter").forEach(counter => {
+        counterObserver.observe(counter);
+    });
 
 
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
-
-
-                entries.forEach(
-                    entry => {
-
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-
-                            entry.target.classList.add(
-                                "show"
-                            );
-
-
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-                        }
-
-                    }
-                );
-
-            },
-            {
-                threshold: .12
-            }
-        );
-
-
-    revealElements.forEach(
-        element =>
-        revealObserver.observe(element)
-    );
-
-
-    /* =====================================================
+    /* =========================
        TOAST
-    ====================================================== */
+    ========================= */
 
-    const toast =
-        document.getElementById(
-            "toast"
-        );
-
-
-    const toastText =
-        document.getElementById(
-            "toastText"
-        );
-
+    const toast = document.getElementById("toast");
 
     function showToast(message) {
 
-        toastText.textContent =
-            message;
+        toast.textContent = message;
+        toast.classList.add("show");
 
-
-        toast.classList.add(
-            "show"
-        );
-
-
-        setTimeout(
-            () => {
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
-            4000
-        );
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 3500);
 
     }
 
 
-    /* =====================================================
+    /* =========================
        PENGADUAN
-    ====================================================== */
+    ========================= */
 
     const complaintForm =
-        document.getElementById(
-            "complaintForm"
+        document.getElementById("complaintForm");
+
+    complaintForm.addEventListener("submit", function(e) {
+
+        e.preventDefault();
+
+        const nama =
+            document.getElementById("nama").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const kategori =
+            document.getElementById("kategori").value;
+
+        const judul =
+            document.getElementById("judul").value.trim();
+
+        const isi =
+            document.getElementById("isi").value.trim();
+
+        const randomNumber =
+            Math.floor(100000 + Math.random() * 900000);
+
+        const token =
+            "DS-2026-" + randomNumber;
+
+        const complaint = {
+            token: token,
+            nama: nama,
+            email: email,
+            kategori: kategori,
+            judul: judul,
+            isi: isi,
+            status: "Menunggu",
+            tanggal: new Date().toLocaleDateString("id-ID")
+        };
+
+        localStorage.setItem(
+            "pengaduan_" + token,
+            JSON.stringify(complaint)
         );
 
+        showToast(
+            "Pengaduan berhasil dikirim. Token: " + token
+        );
 
-    complaintForm.addEventListener(
-        "submit",
-        function(event) {
+        alert(
+            "Pengaduan berhasil dikirim!\n\n" +
+            "Token Pengaduan Anda:\n" +
+            token +
+            "\n\nSimpan token tersebut untuk mengecek status pengaduan."
+        );
 
+        complaintForm.reset();
 
-            event.preventDefault();
-
-
-            const nama =
-                document.getElementById(
-                    "nama"
-                ).value;
-
-
-            const email =
-                document.getElementById(
-                    "email"
-                ).value;
+    });
 
 
-            const kategori =
-                document.getElementById(
-                    "kategori"
-                ).value;
-
-
-            const judul =
-                document.getElementById(
-                    "judul"
-                ).value;
-
-
-            const isi =
-                document.getElementById(
-                    "isi"
-                ).value;
-
-
-            const token =
-
-                "DS-2026-" +
-
-                Math.random()
-                .toString(36)
-                .substring(2, 8)
-                .toUpperCase();
-
-
-            const data = {
-
-                token: token,
-
-                nama: nama,
-
-                email: email,
-
-                kategori: kategori,
-
-                judul: judul,
-
-                isi: isi,
-
-                status: "Menunggu",
-
-                tanggal:
-                    new Date()
-                    .toLocaleString(
-                        "id-ID"
-                    )
-
-            };
-
-
-            localStorage.setItem(
-
-                "pengaduan_" +
-                token,
-
-                JSON.stringify(data)
-
-            );
-
-
-            showToast(
-                "Pengaduan berhasil dikirim."
-            );
-
-
-            setTimeout(
-                () => {
-
-
-                    alert(
-
-                        "Pengaduan berhasil dibuat!\n\n" +
-
-                        "TOKEN PENGADUAN:\n" +
-
-                        token +
-
-                        "\n\nSimpan token ini untuk mengecek status pengaduan."
-
-                    );
-
-                },
-                300
-            );
-
-
-            complaintForm.reset();
-
-        }
-    );
-
-
-    /* =====================================================
+    /* =========================
        CEK TOKEN
-    ====================================================== */
+    ========================= */
 
-    document
-        .getElementById("checkToken")
-        .addEventListener(
-            "click",
-            () => {
+    const checkTokenBtn =
+        document.getElementById("checkTokenBtn");
+
+    checkTokenBtn.addEventListener("click", function() {
+
+        const token =
+            document.getElementById("tokenInput")
+            .value
+            .trim()
+            .toUpperCase();
+
+        const result =
+            document.getElementById("checkResult");
+
+        if (!token) {
+
+            result.innerHTML = `
+                <div class="result-box">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    Silakan masukkan token pengaduan.
+                </div>
+            `;
+
+            return;
+        }
+
+        const saved =
+            localStorage.getItem("pengaduan_" + token);
+
+        if (!saved) {
+
+            result.innerHTML = `
+                <div class="result-box">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                    Token pengaduan tidak ditemukan.
+                </div>
+            `;
+
+            return;
+        }
+
+        const complaint = JSON.parse(saved);
+
+        result.innerHTML = `
+            <div class="result-box">
+
+                <strong>
+                    Status Pengaduan
+                </strong>
+
+                <br><br>
+
+                <b>Token:</b>
+                ${complaint.token}
+
+                <br>
+
+                <b>Nama:</b>
+                ${complaint.nama}
+
+                <br>
+
+                <b>Kategori:</b>
+                ${complaint.kategori}
+
+                <br>
+
+                <b>Judul:</b>
+                ${complaint.judul}
+
+                <br>
+
+                <b>Tanggal:</b>
+                ${complaint.tanggal}
+
+                <br>
+
+                <b>Status:</b>
+                ${complaint.status}
+
+            </div>
+        `;
+
+    });
 
 
-                const token =
-
-                    document
-                    .getElementById(
-                        "tokenCheck"
-                    )
-                    .value
-                    .trim()
-                    .toUpperCase();
-
-
-                if (!token) {
-
-
-                    showToast(
-                        "Silakan masukkan token pengaduan."
-                    );
-
-
-                    return;
-                }
-
-
-                const saved =
-
-                    localStorage.getItem(
-                        "pengaduan_" +
-                        token
-                    );
-
-
-                if (!saved) {
-
-
-                    showToast(
-                        "Token pengaduan tidak ditemukan."
-                    );
-
-
-                    return;
-                }
-
-
-                const data =
-                    JSON.parse(saved);
-
-
-                alert(
-
-                    "STATUS PENGADUAN\n\n" +
-
-                    "Token: " +
-                    data.token +
-
-                    "\nKategori: " +
-                    data.kategori +
-
-                    "\nJudul: " +
-                    data.judul +
-
-                    "\nStatus: " +
-                    data.status +
-
-                    "\nTanggal: " +
-                    data.tanggal
-
-                );
-
-            }
-        );
-
-
-    /* =====================================================
+    /* =========================
        GALLERY FILTER
-    ====================================================== */
+    ========================= */
 
     const filterButtons =
-        document.querySelectorAll(
-            ".filter-btn"
-        );
-
+        document.querySelectorAll(".filter-btn");
 
     const galleryItems =
-        document.querySelectorAll(
-            ".gallery-item"
-        );
+        document.querySelectorAll(".gallery-item");
 
+    filterButtons.forEach(button => {
 
-    filterButtons.forEach(
-        button => {
+        button.addEventListener("click", () => {
 
+            filterButtons.forEach(btn => {
+                btn.classList.remove("active");
+            });
 
-            button.addEventListener(
-                "click",
-                () => {
+            button.classList.add("active");
 
+            const filter =
+                button.dataset.filter;
 
-                    filterButtons.forEach(
-                        btn =>
-                        btn.classList.remove(
-                            "active"
-                        )
-                    );
+            galleryItems.forEach(item => {
 
-
-                    button.classList.add(
-                        "active"
-                    );
-
-
-                    const filter =
-                        button.dataset.filter;
-
-
-                    galleryItems.forEach(
-                        item => {
-
-
-                            if (
-                                filter === "all" ||
-                                item.dataset.category
-                                === filter
-                            ) {
-
-                                item.style.display =
-                                    "block";
-
-                            } else {
-
-                                item.style.display =
-                                    "none";
-
-                            }
-
-                        }
-                    );
-
+                if (
+                    filter === "all" ||
+                    item.dataset.category === filter
+                ) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
                 }
-            );
 
-        }
-    );
+            });
+
+        });
+
+    });
 
 
-    /* =====================================================
+    /* =========================
        LIGHTBOX
-    ====================================================== */
+    ========================= */
 
     const lightbox =
-        document.getElementById(
-            "lightbox"
-        );
-
+        document.getElementById("lightbox");
 
     const lightboxImage =
-        document.getElementById(
-            "lightboxImage"
-        );
-
+        document.getElementById("lightboxImage");
 
     const lightboxClose =
-        document.getElementById(
-            "lightboxClose"
-        );
+        document.getElementById("lightboxClose");
 
+    galleryItems.forEach(item => {
 
-    galleryItems.forEach(
-        item => {
+        item.addEventListener("click", () => {
 
+            const image =
+                item.dataset.image;
 
-            item.addEventListener(
-                "click",
-                () => {
+            lightboxImage.src = image;
 
+            lightbox.classList.add("show");
 
-                    const image =
-                        item.querySelector(
-                            "img"
-                        );
+            document.body.style.overflow = "hidden";
 
+        });
 
-                    lightboxImage.src =
-                        image.src;
-
-
-                    lightbox.classList.add(
-                        "active"
-                    );
-
-
-                    document.body.classList.add(
-                        "no-scroll"
-                    );
-
-                }
-            );
-
-        }
-    );
-
+    });
 
     function closeLightbox() {
 
-        lightbox.classList.remove(
-            "active"
-        );
+        lightbox.classList.remove("show");
 
+        document.body.style.overflow = "";
 
-        document.body.classList.remove(
-            "no-scroll"
-        );
     }
-
 
     lightboxClose.addEventListener(
         "click",
         closeLightbox
     );
 
+    lightbox.addEventListener("click", e => {
 
-    lightbox.addEventListener(
-        "click",
-        event => {
-
-
-            if (
-                event.target === lightbox
-            ) {
-
-                closeLightbox();
-
-            }
-
+        if (e.target === lightbox) {
+            closeLightbox();
         }
-    );
+
+    });
 
 
-    /* =====================================================
+    /* =========================
        DARK MODE
-    ====================================================== */
+    ========================= */
+
+    const darkToggle =
+        document.getElementById("darkToggle");
 
     const savedTheme =
-        localStorage.getItem(
-            "desa-theme"
-        );
-
+        localStorage.getItem("desa-theme");
 
     if (savedTheme === "dark") {
 
-        document.body.classList.add(
-            "dark"
-        );
-
+        document.body.classList.add("dark");
 
         darkToggle.innerHTML =
             '<i class="fa-solid fa-sun"></i>';
 
     }
 
+    darkToggle.addEventListener("click", () => {
 
-    darkToggle.addEventListener(
-        "click",
-        () => {
+        document.body.classList.toggle("dark");
 
+        const isDark =
+            document.body.classList.contains("dark");
 
-            document.body.classList.toggle(
-                "dark"
-            );
+        localStorage.setItem(
+            "desa-theme",
+            isDark ? "dark" : "light"
+        );
 
+        darkToggle.innerHTML = isDark
+            ? '<i class="fa-solid fa-sun"></i>'
+            : '<i class="fa-solid fa-moon"></i>';
 
-            if (
-                document.body.classList.contains(
-                    "dark"
-                )
-            ) {
-
-
-                localStorage.setItem(
-                    "desa-theme",
-                    "dark"
-                );
+    });
 
 
-                darkToggle.innerHTML =
-                    '<i class="fa-solid fa-sun"></i>';
+    /* =========================
+       ESCAPE KEY
+    ========================= */
 
-            } else {
+    document.addEventListener("keydown", e => {
 
+        if (e.key === "Escape") {
 
-                localStorage.setItem(
-                    "desa-theme",
-                    "light"
-                );
-
-
-                darkToggle.innerHTML =
-                    '<i class="fa-solid fa-moon"></i>';
-
-            }
+            closeMenu();
+            closeLightbox();
 
         }
-    );
 
-
-    /* =====================================================
-       ESC KEY
-    ====================================================== */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-
-            if (event.key === "Escape") {
-
-                closeMenu();
-
-                closeLightbox();
-
-            }
-
-        }
-    );
+    });
 
 </script>
 
-
 </body>
-
-</html>
+</html> 
