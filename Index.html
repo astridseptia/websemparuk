@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desa Semparuk — Portal Resmi Pemerintah Desa</title>
+<meta name="description" content="Portal Informasi dan Pelayanan Digital Desa Semparuk, Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* ============================================================
+   0. TOKENS
+   ============================================================ */
+:root{
+  --navy: #0A2540;
+  --navy-deep: #061829;
+  --blue: #1768AC;
+  --cyan: #2FB6C9;
+  --mint: #3FD8A3;
+  --mint-soft: #CFF6E6;
+  --paper: #F6FAF9;
+  --ink: #0A2540;
+  --ink-soft: #4C6178;
+  --line: rgba(10,37,64,.10);
+  --card-bg: #FFFFFF;
+  --shadow: 0 20px 50px -20px rgba(10,37,64,.25);
+  --shadow-soft: 0 10px 30px -14px rgba(10,37,64,.18);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --ff-display: 'Poppins', sans-serif;
+  --ff-body: 'Inter', sans-serif;
+  --nav-h: 96px;
+}
+:root[data-theme="dark"]{
+  --navy: #E8F1F6;
+  --navy-deep: #F2FAF7;
+  --blue: #6DB6E8;
+  --cyan: #4FD3E6;
+  --mint: #57E8B4;
+  --mint-soft: rgba(63,216,163,.14);
+  --paper: #061829;
+  --ink: #EAF3F7;
+  --ink-soft: #9FB6C6;
+  --line: rgba(232,241,246,.12);
+  --card-bg: #0B2036;
+  --shadow: 0 20px 50px -18px rgba(0,0,0,.6);
+  --shadow-soft: 0 10px 30px -14px rgba(0,0,0,.5);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--ff-body);
+  background:var(--paper);
+  color:var(--ink);
+  overflow-x:hidden;
+  transition:background .4s ease,color .4s ease;
+}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+.container{width:min(1180px,92%);margin-inline:auto;}
+h1,h2,h3,h4,h5{font-family:var(--ff-display);color:var(--navy);line-height:1.15;}
+::selection{background:var(--mint);color:var(--navy-deep);}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px;}
+
+/* ============================================================
+   1. LOADER
+   ============================================================ */
+.page-loader{
+  position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(160deg,var(--navy-deep),var(--navy));
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .6s ease, visibility .6s ease;
+}
+.page-loader.done{opacity:0;visibility:hidden;}
+.loader-mark{
+  width:74px;height:74px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-display);font-weight:700;font-size:1.3rem;color:#fff;
+  background:linear-gradient(135deg,var(--blue),var(--mint));
+  animation:pulseLoader 1.1s ease-in-out infinite;
+}
+@keyframes pulseLoader{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+
+/* ============================================================
+   2. TOP BAR
+   ============================================================ */
+.topbar{
+  background:var(--navy-deep);color:#cfe3ee;font-size:.78rem;
+}
+:root[data-theme="dark"] .topbar{background:#020c16;color:#8fb0c4;}
+.topbar .container{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:8px 0;flex-wrap:wrap;gap:6px;
+}
+.topbar-left{font-weight:600;letter-spacing:.03em;}
+.topbar-left span{display:block;font-weight:400;opacity:.7;font-size:.72rem;letter-spacing:0;}
+.topbar-right{display:flex;gap:18px;flex-wrap:wrap;}
+.topbar-right span{display:inline-flex;align-items:center;gap:6px;opacity:.85;}
+
+/* ============================================================
+   3. NAVBAR
+   ============================================================ */
+.navbar{
+  position:sticky;top:0;z-index:500;
+  background:rgba(246,250,249,.72);
+  backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
+  border-bottom:1px solid var(--line);
+  transition:background .4s ease, box-shadow .3s ease;
+}
+:root[data-theme="dark"] .navbar{background:rgba(6,24,41,.72);}
+.navbar.scrolled{box-shadow:0 10px 30px -18px rgba(10,37,64,.35);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-mark{
+  width:46px;height:46px;border-radius:14px;
+  background:linear-gradient(135deg,var(--blue),var(--mint));
+  color:#fff;font-family:var(--ff-display);font-weight:700;
+  display:flex;align-items:center;justify-content:center;font-size:1.05rem;
+  box-shadow:var(--shadow-soft);
+}
+.brand-text .name{font-family:var(--ff-display);font-weight:700;font-size:1rem;letter-spacing:.02em;color:var(--navy);}
+.brand-text .tag{font-size:.72rem;color:var(--ink-soft);}
+.nav-menu{display:flex;align-items:center;gap:30px;}
+.nav-link{
+  position:relative;font-weight:500;font-size:.92rem;color:var(--ink-soft);
+  padding:6px 0;transition:color .25s ease;
+}
+.nav-link::after{
+  content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;
+  background:linear-gradient(90deg,var(--blue),var(--mint));
+  transition:width .3s ease;
+}
+.nav-link:hover, .nav-link.active{color:var(--navy);}
+.nav-link:hover::after,.nav-link.active::after{width:100%;}
+.nav-actions{display:flex;align-items:center;gap:14px;}
+.theme-toggle{
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
+  background:var(--card-bg);color:var(--ink);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:transform .3s ease, background .3s ease;
+}
+.theme-toggle:hover{transform:rotate(20deg);}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:12px 24px;border-radius:999px;font-weight:600;font-size:.92rem;
+  border:1px solid transparent;cursor:pointer;transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  white-space:nowrap;
+}
+.btn:active{transform:scale(.97);}
+.btn-primary{
+  background:linear-gradient(120deg,var(--blue),var(--cyan) 60%,var(--mint));
+  color:#fff;box-shadow:0 14px 30px -12px rgba(23,104,172,.55);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(23,104,172,.6);}
+.btn-outline{
+  border-color:rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.08);
+  backdrop-filter:blur(6px);
+}
+.btn-outline:hover{background:rgba(255,255,255,.18);}
+.btn-ghost{
+  border-color:var(--line);color:var(--navy);background:var(--card-bg);
+}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;width:26px;}
+.hamburger span{height:2px;background:var(--navy);border-radius:2px;transition:all .3s ease;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-overlay{
+  position:fixed;inset:0;background:rgba(6,24,41,.5);backdrop-filter:blur(2px);
+  z-index:499;opacity:0;visibility:hidden;transition:opacity .3s ease, visibility .3s ease;
+}
+.nav-overlay.show{opacity:1;visibility:visible;}
+
+/* Layanan Desa quick panel */
+.service-panel{
+  position:fixed;top:0;right:0;height:100vh;width:min(360px,88vw);
+  background:var(--card-bg);z-index:800;box-shadow:-20px 0 60px -20px rgba(0,0,0,.35);
+  transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);
+  padding:34px 28px;overflow-y:auto;
+}
+.service-panel.open{transform:translateX(0);}
+.service-panel-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;}
+.service-panel-head h3{font-size:1.2rem;}
+.service-panel-head p{color:var(--ink-soft);font-size:.85rem;margin-top:4px;}
+.service-panel-close{
+  width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:transparent;
+  color:var(--ink);cursor:pointer;flex-shrink:0;
+}
+.service-panel-list a{
+  display:flex;align-items:center;gap:14px;padding:14px 12px;border-radius:14px;
+  transition:background .25s ease; margin-bottom:6px;
+}
+.service-panel-list a:hover{background:var(--mint-soft);}
+.service-panel-list .ic{
+  width:42px;height:42px;border-radius:12px;background:var(--mint-soft);color:var(--blue);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.service-panel-list strong{display:block;font-size:.92rem;color:var(--navy);}
+.service-panel-list span{font-size:.78rem;color:var(--ink-soft);}
+
+/* ============================================================
+   4. HERO
+   ============================================================ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  overflow:hidden;color:#fff;
+  background:
+    linear-gradient(180deg, rgba(6,24,41,.55), rgba(6,24,41,.85)),
+    linear-gradient(120deg, rgba(23,104,172,.55), rgba(63,216,163,.35)),
+    url('https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+}
+.hero-bg-move{
+  position:absolute;inset:-5%;
+  background:inherit;background-size:cover;background-position:center;
+  animation:heroDrift 22s ease-in-out infinite alternate;
+  z-index:0;
+}
+@keyframes heroDrift{from{transform:scale(1.05) translate(0,0);}to{transform:scale(1.12) translate(-1.5%,-1.5%);}}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;pointer-events:none;}
+.hero-orb.o1{width:340px;height:340px;background:var(--mint);top:8%;right:8%;animation:floaty 9s ease-in-out infinite;}
+.hero-orb.o2{width:260px;height:260px;background:var(--cyan);bottom:6%;left:4%;animation:floaty 11s ease-in-out infinite reverse;}
+@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-26px);}}
+.hero-content{position:relative;z-index:2;padding-top:calc(var(--nav-h) + 20px);}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;padding:9px 18px;border-radius:999px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+  backdrop-filter:blur(8px);font-size:.82rem;font-weight:500;margin-bottom:26px;
+}
+.hero h1{
+  font-size:clamp(2.4rem,5.4vw,4.1rem);font-weight:700;max-width:16ch;
+  letter-spacing:-.01em;
+}
+.hero h1 .reveal-word{display:inline-block;opacity:0;transform:translateY(24px);animation:wordUp .7s ease forwards;}
+@keyframes wordUp{to{opacity:1;transform:translateY(0);}}
+.hero .lead{
+  margin-top:22px;font-size:1.1rem;line-height:1.7;max-width:46ch;color:rgba(255,255,255,.86);
+}
+.hero-actions{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap;}
+.hero-meta{
+  margin-top:64px;display:flex;gap:34px;flex-wrap:wrap;
+  padding-top:26px;border-top:1px solid rgba(255,255,255,.22);
+}
+.hero-meta div{font-size:.82rem;color:rgba(255,255,255,.7);}
+.hero-meta strong{display:block;font-family:var(--ff-display);font-size:1rem;color:#fff;font-weight:600;}
+.hero-scroll{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;
+  color:rgba(255,255,255,.7);font-size:.75rem;display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.hero-scroll .line{width:1px;height:34px;background:linear-gradient(180deg,rgba(255,255,255,.8),transparent);animation:scrollLine 1.8s ease-in-out infinite;}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+/* ============================================================
+   5. SECTION HEAD / GENERIC
+   ============================================================ */
+section{padding:110px 0;}
+.section-head{max-width:640px;margin-bottom:56px;}
+.section-head.center{margin-inline:auto;text-align:center;}
+.section-kicker{
+  color:var(--blue);font-weight:600;font-size:.85rem;margin-bottom:12px;display:block;
+}
+.section-head h2{font-size:clamp(1.7rem,3vw,2.5rem);}
+.section-head p{color:var(--ink-soft);margin-top:14px;font-size:1.02rem;line-height:1.65;}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ============================================================
+   6. QUICK ACCESS + STATISTIK
+   ============================================================ */
+.quick-access{margin-top:-56px;position:relative;z-index:5;}
+.quick-card{
+  background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:30px 34px;border:1px solid var(--line);
+}
+.quick-card h3{font-size:1.05rem;margin-bottom:18px;}
+.quick-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+.quick-item{
+  display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;
+  padding:16px 8px;border-radius:14px;transition:background .25s ease, transform .25s ease;
+}
+.quick-item:hover{background:var(--mint-soft);transform:translateY(-4px);}
+.quick-item .ic{
+  width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--blue),var(--mint));color:#fff;font-size:1.05rem;
+}
+.quick-item span{font-size:.78rem;font-weight:500;color:var(--ink-soft);}
+
+.stats{background:transparent;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.stat-card{
+  background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px 26px;text-align:left;box-shadow:var(--shadow-soft);
+  transition:transform .3s ease;
+}
+.stat-card:hover{transform:translateY(-6px);}
+.stat-card .ic{
+  width:50px;height:50px;border-radius:14px;background:var(--mint-soft);color:var(--blue);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:18px;
+}
+.stat-num{font-family:var(--ff-display);font-size:2.2rem;font-weight:700;color:var(--navy);}
+.stat-label{color:var(--ink-soft);font-size:.9rem;margin-top:4px;}
+
+/* ============================================================
+   7. PROFIL / TENTANG DESA
+   ============================================================ */
+.profile-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;}
+.profile-grid img{border-radius:var(--radius);box-shadow:var(--shadow);aspect-ratio:4/5;object-fit:cover;}
+.profile-points{margin:24px 0 30px;display:flex;flex-direction:column;gap:12px;}
+.profile-points li{display:flex;align-items:flex-start;gap:12px;color:var(--ink-soft);font-size:.96rem;}
+.profile-points i{
+  width:24px;height:24px;border-radius:50%;background:var(--mint-soft);color:var(--blue);
+  display:flex;align-items:center;justify-content:center;font-size:.68rem;margin-top:2px;flex-shrink:0;
+}
+.profile-text p{color:var(--ink-soft);line-height:1.75;margin-top:16px;}
+
+/* ============================================================
+   8. PEMERINTAHAN
+   ============================================================ */
+.gov-structure{background:linear-gradient(180deg,transparent, var(--mint-soft) 50%, transparent);}
+.gov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+.gov-card{
+  background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 22px;text-align:center;box-shadow:var(--shadow-soft);transition:transform .3s ease;
+}
+.gov-card:hover{transform:translateY(-6px);}
+.gov-photo{
+  width:64px;height:64px;border-radius:50%;margin:0 auto 16px;
+  background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+}
+.gov-card h4{font-size:1rem;}
+.gov-card span{font-size:.82rem;color:var(--ink-soft);}
+
+/* ============================================================
+   9. PROGRAM UNGGULAN
+   ============================================================ */
+.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.program-card{
+  background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 26px;box-shadow:var(--shadow-soft);
+  transition:transform .35s ease, box-shadow .35s ease, border-color .3s ease;
+  position:relative;overflow:hidden;
+}
+.program-card::before{
+  content:"";position:absolute;inset:0;opacity:0;
+  background:linear-gradient(135deg,rgba(23,104,172,.08),rgba(63,216,163,.14));
+  transition:opacity .35s ease;
+}
+.program-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:transparent;}
+.program-card:hover::before{opacity:1;}
+.program-card .ic{
+  width:52px;height:52px;border-radius:15px;background:var(--mint-soft);color:var(--blue);
+  display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:20px;position:relative;z-index:1;
+}
+.program-card h4{font-size:1.08rem;margin-bottom:10px;position:relative;z-index:1;}
+.program-card p{color:var(--ink-soft);font-size:.9rem;line-height:1.6;position:relative;z-index:1;}
+
+/* ============================================================
+   10. LAYANAN DIGITAL
+   ============================================================ */
+.services{background:var(--navy-deep);color:#fff;position:relative;overflow:hidden;}
+.services::before{
+  content:"";position:absolute;top:-140px;right:-100px;width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(63,216,163,.25),transparent 70%);
+}
+.services .section-head h2{color:#fff;}
+.services .section-head p{color:rgba(255,255,255,.65);}
+.services .section-kicker{color:var(--mint);}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1;}
+.service-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--radius);padding:28px 24px;backdrop-filter:blur(10px);
+  transition:transform .3s ease, background .3s ease;
+}
+.service-card:hover{transform:translateY(-6px);background:rgba(255,255,255,.1);}
+.service-card .ic{
+  width:48px;height:48px;border-radius:14px;
+  background:linear-gradient(135deg,var(--cyan),var(--mint));color:var(--navy-deep);
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:18px;
+}
+.service-card h4{color:#fff;font-size:1rem;margin-bottom:8px;}
+.service-card p{color:rgba(255,255,255,.62);font-size:.87rem;line-height:1.55;}
+
+/* ============================================================
+   11. PENGADUAN
+   ============================================================ */
+.complaint-wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:26px;align-items:flex-start;}
+.form-card, .check-card{
+  background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px;box-shadow:var(--shadow-soft);
+  position:relative;
+}
+.form-card{background:linear-gradient(165deg, var(--card-bg), var(--mint-soft) 180%);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.form-group{margin-bottom:18px;}
+.form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:8px;color:var(--navy);}
+.form-group input, .form-group select, .form-group textarea{
+  width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--line);
+  background:var(--paper);color:var(--ink);font-family:var(--ff-body);font-size:.92rem;
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus{
+  outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(23,104,172,.12);
+}
+.form-group .err{display:none;color:#e0574c;font-size:.78rem;margin-top:6px;}
+.form-group.invalid input, .form-group.invalid select, .form-group.invalid textarea{border-color:#e0574c;}
+.form-group.invalid .err{display:block;}
+.token-box{
+  margin-top:22px;padding:20px;border-radius:14px;background:var(--navy-deep);color:#fff;
+  text-align:center;display:none;
+}
+.token-box.show{display:block;animation:tokenPop .4s ease;}
+@keyframes tokenPop{from{opacity:0;transform:scale(.9);}to{opacity:1;transform:scale(1);}}
+.token-box .val{font-family:var(--ff-display);font-size:1.4rem;font-weight:700;letter-spacing:.05em;color:var(--mint);}
+.token-box p{font-size:.8rem;color:rgba(255,255,255,.65);margin-top:6px;}
+
+.check-card h3{font-size:1.15rem;margin-bottom:8px;}
+.check-card .hint{color:var(--ink-soft);font-size:.86rem;margin-bottom:20px;}
+.status-result{margin-top:20px;padding:18px;border-radius:14px;background:var(--paper);border:1px dashed var(--line);display:none;}
+.status-result.show{display:block;}
+.status-badge{
+  display:inline-flex;padding:6px 16px;border-radius:999px;font-size:.8rem;font-weight:600;
+}
+.status-badge.menunggu{background:#FEF3D9;color:#9A6B00;}
+.status-badge.diproses{background:#DCEBFF;color:#1768AC;}
+.status-badge.selesai{background:var(--mint-soft);color:#1B8B62;}
+.status-badge.tidak{background:#FBE0DE;color:#B23A2F;}
+.status-detail{margin-top:12px;font-size:.85rem;color:var(--ink-soft);line-height:1.6;}
+
+/* ============================================================
+   12. GALERI
+   ============================================================ */
+.gallery-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;}
+.gfilter{
+  padding:9px 20px;border-radius:999px;border:1px solid var(--line);background:var(--card-bg);
+  color:var(--ink-soft);font-size:.85rem;font-weight:500;cursor:pointer;transition:all .25s ease;
+}
+.gfilter:hover{border-color:var(--blue);color:var(--blue);}
+.gfilter.active{background:linear-gradient(120deg,var(--blue),var(--mint));color:#fff;border-color:transparent;}
+.gallery-grid{
+  columns:3 220px;column-gap:18px;
+}
+.gallery-item{
+  break-inside:avoid;margin-bottom:18px;border-radius:16px;overflow:hidden;position:relative;cursor:pointer;
+  box-shadow:var(--shadow-soft);
+}
+.gallery-item img{width:100%;transition:transform .5s ease;}
+.gallery-item:hover img{transform:scale(1.07);}
+.gallery-item .cap{
+  position:absolute;inset:auto 0 0 0;padding:16px 14px;color:#fff;
+  background:linear-gradient(0deg,rgba(6,24,41,.85),transparent);
+  opacity:0;transition:opacity .3s ease;font-size:.85rem;font-weight:500;
+}
+.gallery-item:hover .cap{opacity:1;}
+.gallery-item.hidden{display:none;}
+
+.lightbox{
+  position:fixed;inset:0;background:rgba(6,24,41,.92);z-index:1000;
+  display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;
+  transition:opacity .3s ease, visibility .3s ease;padding:40px;
+}
+.lightbox.open{opacity:1;visibility:visible;}
+.lightbox img{max-width:min(900px,90vw);max-height:82vh;border-radius:14px;transform:scale(.92);transition:transform .35s ease;}
+.lightbox.open img{transform:scale(1);}
+.lightbox-close{
+  position:absolute;top:26px;right:34px;width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,.12);color:#fff;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;border:1px solid rgba(255,255,255,.25);
+}
+
+/* ============================================================
+   13. POTENSI DESA
+   ============================================================ */
+.potensi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.potensi-card{
+  background:var(--card-bg);border:1px solid var(--line);border-radius:16px;padding:26px 20px;
+  text-align:center;transition:transform .3s ease, box-shadow .3s ease;
+}
+.potensi-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-soft);}
+.potensi-card .ic{
+  width:50px;height:50px;border-radius:50%;margin:0 auto 14px;
+  background:linear-gradient(135deg,var(--cyan),var(--mint));color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;
+}
+.potensi-card h4{font-size:.96rem;}
+
+/* ============================================================
+   14. BERITA
+   ============================================================ */
+.news-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;}
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.news-card{
+  background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-soft);transition:transform .3s ease, box-shadow .3s ease;
+}
+.news-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+.news-card .thumb{height:170px;overflow:hidden;position:relative;}
+.news-card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.news-card:hover .thumb img{transform:scale(1.08);}
+.news-cat{
+  position:absolute;top:14px;left:14px;background:rgba(6,24,41,.75);color:#fff;
+  padding:5px 13px;border-radius:999px;font-size:.72rem;font-weight:600;
+}
+.news-body{padding:22px;}
+.news-date{font-size:.78rem;color:var(--ink-soft);margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.news-body h4{font-size:1.02rem;margin-bottom:10px;line-height:1.4;}
+.news-body p{font-size:.87rem;color:var(--ink-soft);line-height:1.6;margin-bottom:16px;}
+.news-more{font-size:.86rem;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:6px;transition:gap .25s ease;}
+.news-more:hover{gap:10px;}
+.news-card.hidden{display:none;}
+
+/* ============================================================
+   15. LOKASI
+   ============================================================ */
+.location-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;align-items:stretch;}
+.loc-card{
+  background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px;box-shadow:var(--shadow-soft);
+}
+.loc-row{display:flex;gap:14px;margin-top:18px;color:var(--ink-soft);font-size:.92rem;line-height:1.55;}
+.loc-row i{color:var(--blue);margin-top:3px;flex-shrink:0;}
+.map-frame{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-soft);min-height:320px;}
+.map-frame iframe{width:100%;height:100%;min-height:320px;border:0;}
+
+/* ============================================================
+   16. KONTAK
+   ============================================================ */
+.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.contact-card{
+  background:var(--card-bg);border:1px solid var(--line);border-radius:16px;padding:28px 22px;
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.contact-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-soft);}
+.contact-card .ic{
+  width:44px;height:44px;border-radius:12px;background:var(--mint-soft);color:var(--blue);
+  display:flex;align-items:center;justify-content:center;font-size:1.05rem;margin-bottom:14px;
+}
+.contact-card h4{font-size:.95rem;margin-bottom:6px;}
+.contact-card span{font-size:.85rem;color:var(--ink-soft);}
+
+/* ============================================================
+   17. FOOTER
+   ============================================================ */
+footer{background:var(--navy-deep);color:rgba(255,255,255,.75);padding-top:76px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.1);}
+.footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.footer-brand .name{font-family:var(--ff-display);font-weight:700;color:#fff;}
+footer .tagline{font-size:.88rem;color:rgba(255,255,255,.55);max-width:30ch;line-height:1.6;}
+footer h5{color:#fff;font-size:.92rem;margin-bottom:18px;font-family:var(--ff-display);}
+footer ul li{margin-bottom:12px;}
+footer ul a{font-size:.87rem;color:rgba(255,255,255,.6);transition:color .25s ease;}
+footer ul a:hover{color:var(--mint);}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;padding:26px 0;
+  font-size:.82rem;color:rgba(255,255,255,.5);flex-wrap:wrap;gap:12px;
+}
+.footer-social{display:flex;gap:12px;}
+.footer-social a{
+  width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;transition:background .25s ease;
+}
+.footer-social a:hover{background:var(--mint);color:var(--navy-deep);}
+
+/* ============================================================
+   18. FLOATING UI: back-to-top, toast
+   ============================================================ */
+.back-to-top{
+  position:fixed;bottom:28px;right:28px;width:50px;height:50px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--mint));color:#fff;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:1.05rem;z-index:400;
+  box-shadow:var(--shadow-soft);opacity:0;visibility:hidden;transform:translateY(14px);
+  transition:opacity .3s ease, visibility .3s ease, transform .3s ease;
+}
+.back-to-top.show{opacity:1;visibility:visible;transform:translateY(0);}
+
+.toast{
+  position:fixed;bottom:28px;left:28px;max-width:340px;background:var(--card-bg);
+  border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;gap:14px;
+  box-shadow:var(--shadow);z-index:600;transform:translateY(140%);transition:transform .4s cubic-bezier(.4,0,.2,1);
+}
+.toast.show{transform:translateY(0);}
+.toast i{color:var(--mint);font-size:1.3rem;margin-top:2px;}
+.toast h5{font-size:.92rem;margin-bottom:4px;}
+.toast p{font-size:.82rem;color:var(--ink-soft);}
+
+/* ============================================================
+   19. RESPONSIVE
+   ============================================================ */
+@media (max-width:1080px){
+  .quick-grid{grid-template-columns:repeat(3,1fr);}
+  .stats-grid, .gov-grid, .contact-grid, .potensi-grid{grid-template-columns:repeat(2,1fr);}
+  .program-grid, .service-grid, .news-grid{grid-template-columns:repeat(2,1fr);}
+  .profile-grid, .complaint-wrap, .location-wrap{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .gallery-grid{columns:2 220px;}
+}
+@media (max-width:820px){
+  .topbar{display:none;}
+  .nav-menu{
+    position:fixed;top:0;right:-100%;height:100vh;width:min(320px,84vw);
+    background:var(--card-bg);flex-direction:column;align-items:flex-start;
+    padding:110px 34px 34px;gap:8px;transition:right .4s cubic-bezier(.4,0,.2,1);
+    box-shadow:-16px 0 50px -20px rgba(0,0,0,.3);
+  }
+  .nav-menu.open{right:0;}
+  .nav-menu .nav-link{width:100%;padding:12px 0;font-size:1rem;}
+  .hamburger{display:flex;}
+  .nav-actions .btn-ghost{display:none;}
+}
+@media (max-width:680px){
+  section{padding:76px 0;}
+  .stats-grid, .gov-grid, .contact-grid, .potensi-grid, .program-grid, .service-grid, .news-grid{grid-template-columns:1fr;}
+  .quick-grid{grid-template-columns:repeat(2,1fr);}
+  .form-row{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .gallery-grid{columns:1 100%;}
+  .hero-meta{gap:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div class="page-loader" id="pageLoader"><div class="loader-mark">DS</div></div>
+
+<!-- ============ 1. TOP GOVERNMENT BAR ============ -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">PEMERINTAH DESA SEMPARUK<span>Kecamatan Semparuk • Kabupaten Sambas • Kalimantan Barat</span></div>
+    <div class="topbar-right">
+      <span><i class="fa-solid fa-location-dot"></i> Semparuk, Sambas</span>
+      <span><i class="fa-solid fa-envelope"></i> pemdes.semparuk@sambas.go.id</span>
+      <span><i class="fa-solid fa-phone"></i> (0562) 000-000</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 2. NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner container">
+    <div class="brand">
+      <div class="brand-mark">DS</div>
+      <div class="brand-text">
+        <div class="name">DESA SEMPARUK</div>
+        <div class="tag">Pemerintah Desa Semparuk</div>
+      </div>
+    </div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+      <li><a href="#profil" class="nav-link">Profil</a></li>
+      <li><a href="#program" class="nav-link">Program</a></li>
+      <li><a href="#galeri" class="nav-link">Galeri</a></li>
+      <li><a href="#berita" class="nav-link">Berita</a></li>
+      <li><a href="#pengaduan" class="nav-link">Pengaduan</a></li>
+      <li><a href="#kontak" class="nav-link">Kontak</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" title="Ganti mode gelap/terang"><i class="fa-solid fa-moon"></i></button>
+      <button class="btn btn-ghost" id="openServicePanel">Layanan Desa</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- LAYANAN DESA QUICK PANEL -->
+<div class="service-panel" id="servicePanel">
+  <div class="service-panel-head">
+    <div>
+      <h3>Layanan Desa</h3>
+      <p>Akses cepat ke layanan digital Desa Semparuk.</p>
+    </div>
+    <button class="service-panel-close" id="closeServicePanel"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="service-panel-list">
+    <a href="#layanan" data-close-panel><div class="ic"><i class="fa-solid fa-file-signature"></i></div><div><strong>Surat Keterangan</strong><span>Ajukan surat resmi desa</span></div></a>
+    <a href="#layanan" data-close-panel><div class="ic"><i class="fa-solid fa-folder-open"></i></div><div><strong>Administrasi Desa</strong><span>Pengurusan data & dokumen</span></div></a>
+    <a href="#profil" data-close-panel><div class="ic"><i class="fa-solid fa-circle-info"></i></div><div><strong>Informasi Desa</strong><span>Profil & data resmi</span></div></a>
+    <a href="#pengaduan" data-close-panel><div class="ic"><i class="fa-solid fa-comment-dots"></i></div><div><strong>Pengaduan Masyarakat</strong><span>Sampaikan aspirasi Anda</span></div></a>
+    <a href="#cek-pengaduan" data-close-panel><div class="ic"><i class="fa-solid fa-magnifying-glass"></i></div><div><strong>Cek Pengaduan</strong><span>Pantau status laporan</span></div></a>
+    <a href="#kontak" data-close-panel><div class="ic"><i class="fa-solid fa-address-book"></i></div><div><strong>Kontak Pemerintah Desa</strong><span>Hubungi kantor desa</span></div></a>
+  </div>
+</div>
+
+<!-- ============ 3. HERO ============ -->
+<header class="hero" id="beranda">
+  <div class="hero-bg-move"></div>
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+  <div class="container hero-content">
+    <div class="hero-eyebrow reveal in"><i class="fa-solid fa-shield-halved"></i> Website Resmi Pemerintah Desa</div>
+    <h1><span class="reveal-word" style="animation-delay:.05s">Selamat</span> <span class="reveal-word" style="animation-delay:.15s">Datang</span> <span class="reveal-word" style="animation-delay:.25s">di</span> <span class="reveal-word" style="animation-delay:.35s">Desa</span> <span class="reveal-word" style="animation-delay:.45s">Semparuk</span></h1>
+    <p class="lead reveal in" style="animation-delay:.5s">Website resmi Desa Semparuk, Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat — ruang informasi dan pelayanan digital untuk warga.</p>
+    <div class="hero-actions reveal in" style="animation-delay:.6s">
+      <a href="#profil" class="btn btn-primary"><i class="fa-solid fa-compass"></i> Jelajahi Desa</a>
+      <a href="#layanan-dashboard" class="btn btn-outline"><i class="fa-solid fa-file-lines"></i> Layanan Desa</a>
+    </div>
+    <div class="hero-meta reveal in" style="animation-delay:.7s">
+      <div><strong>Desa Semparuk</strong>Nama Desa</div>
+      <div><strong>Kabupaten Sambas</strong>Wilayah Administratif</div>
+      <div><strong>Kalimantan Barat</strong>Provinsi</div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Gulir</span><div class="line"></div></div>
+</header>
+
+<!-- ============ 4. QUICK ACCESS ============ -->
+<div class="quick-access container">
+  <div class="quick-card reveal">
+    <h3>Layanan Digital Desa</h3>
+    <div class="quick-grid">
+      <a href="#layanan-dashboard" class="quick-item"><div class="ic"><i class="fa-solid fa-file-signature"></i></div><span>Administrasi Desa</span></a>
+      <a href="#profil" class="quick-item"><div class="ic"><i class="fa-solid fa-circle-info"></i></div><span>Informasi Desa</span></a>
+      <a href="#pengaduan" class="quick-item"><div class="ic"><i class="fa-solid fa-comment-dots"></i></div><span>Pengaduan</span></a>
+      <a href="#cek-pengaduan" class="quick-item"><div class="ic"><i class="fa-solid fa-magnifying-glass"></i></div><span>Cek Pengaduan</span></a>
+      <a href="#berita" class="quick-item"><div class="ic"><i class="fa-solid fa-newspaper"></i></div><span>Berita Desa</span></a>
+      <a href="#kontak" class="quick-item"><div class="ic"><i class="fa-solid fa-address-book"></i></div><span>Kontak Desa</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 5. STATISTIK DESA ============ -->
+<section class="stats" id="statistik">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="section-kicker">Data Desa</span>
+      <h2>Desa Semparuk Dalam Angka</h2>
+      <p>Gambaran umum kependudukan dan wilayah administratif Desa Semparuk.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card reveal"><div class="ic"><i class="fa-solid fa-users"></i></div><div class="stat-num" data-count="30267">0</div><div class="stat-label">Jiwa</div></div>
+      <div class="stat-card reveal"><div class="ic"><i class="fa-solid fa-house"></i></div><div class="stat-num" data-count="9573">0</div><div class="stat-label">Rumah Tangga</div></div>
+      <div class="stat-card reveal"><div class="ic"><i class="fa-solid fa-map-location-dot"></i></div><div class="stat-num" data-count="21">0</div><div class="stat-label">Dusun</div></div>
+      <div class="stat-card reveal"><div class="ic"><i class="fa-solid fa-star"></i></div><div class="stat-num" data-count="9">0</div><div class="stat-label">Program Unggulan</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. TENTANG / PROFIL DESA ============ -->
+<section id="profil">
+  <div class="container">
+    <div class="profile-grid">
+      <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=900&auto=format&fit=crop" alt="Pemandangan Desa Semparuk" class="reveal">
+      <div class="profile-text reveal">
+        <span class="section-kicker">Tentang Desa</span>
+        <h2>Kenali Desa Semparuk</h2>
+        <p>Desa Semparuk merupakan bagian dari Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat. Website ini menjadi media informasi, pelayanan, dan komunikasi digital antara pemerintah desa dengan masyarakat.</p>
+        <ul class="profile-points">
+          <li><i class="fa-solid fa-check"></i> Transparansi data kependudukan dan pembangunan desa</li>
+          <li><i class="fa-solid fa-check"></i> Layanan administrasi yang dapat diakses kapan saja</li>
+          <li><i class="fa-solid fa-check"></i> Kanal pengaduan masyarakat yang terpantau</li>
+        </ul>
+        <a href="#pemerintahan" class="btn btn-primary">Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. PEMERINTAHAN DESA ============ -->
+<section class="gov-structure" id="pemerintahan">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="section-kicker">Struktur Organisasi</span>
+      <h2>Pemerintahan Desa</h2>
+      <p>Perangkat dan lembaga yang menjalankan roda pemerintahan Desa Semparuk.</p>
+    </div>
+    <div class="gov-grid">
+      <div class="gov-card reveal"><div class="gov-photo"><i class="fa-solid fa-user-tie"></i></div><h4>Kepala Desa</h4><span>Pimpinan pemerintahan desa</span></div>
+      <div class="gov-card reveal"><div class="gov-photo"><i class="fa-solid fa-people-group"></i></div><h4>Perangkat Desa</h4><span>Sekretaris & kepala urusan</span></div>
+      <div class="gov-card reveal"><div class="gov-photo"><i class="fa-solid fa-landmark"></i></div><h4>BPD</h4><span>Badan Permusyawaratan Desa</span></div>
+      <div class="gov-card reveal"><div class="gov-photo"><i class="fa-solid fa-user-shield"></i></div><h4>Kepala Dusun</h4><span>Koordinator wilayah dusun</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. PROGRAM UNGGULAN ============ -->
+<section id="program">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-kicker">Prioritas Pembangunan</span>
+      <h2>Program Unggulan Desa</h2>
+      <p>Sembilan program prioritas yang menjadi fokus pembangunan Desa Semparuk.</p>
+    </div>
+    <div class="program-grid" id="programGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 9. LAYANAN DIGITAL DESA ============ -->
+<section class="services" id="layanan-dashboard">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-kicker">Dashboard Layanan</span>
+      <h2>Layanan Desa dalam Genggaman</h2>
+      <p>Akses layanan administrasi dan informasi desa kapan pun Anda butuhkan.</p>
+    </div>
+    <div class="service-grid" id="layanan">
+      <div class="service-card reveal"><div class="ic"><i class="fa-solid fa-file-signature"></i></div><h4>Surat Keterangan</h4><p>Ajukan permohonan surat keterangan resmi desa secara daring.</p></div>
+      <div class="service-card reveal"><div class="ic"><i class="fa-solid fa-folder-open"></i></div><h4>Administrasi Desa</h4><p>Pengurusan data kependudukan dan dokumen administrasi warga.</p></div>
+      <div class="service-card reveal"><div class="ic"><i class="fa-solid fa-circle-info"></i></div><h4>Informasi Desa</h4><p>Informasi resmi mengenai profil, program, dan kegiatan desa.</p></div>
+      <div class="service-card reveal"><div class="ic"><i class="fa-solid fa-comment-dots"></i></div><h4>Pengaduan Masyarakat</h4><p>Sampaikan aspirasi dan pengaduan langsung kepada pemerintah desa.</p></div>
+      <div class="service-card reveal"><div class="ic"><i class="fa-solid fa-magnifying-glass"></i></div><h4>Cek Pengaduan</h4><p>Pantau perkembangan status pengaduan menggunakan token Anda.</p></div>
+      <div class="service-card reveal"><div class="ic"><i class="fa-solid fa-address-book"></i></div><h4>Kontak Pemerintah Desa</h4><p>Hubungi kantor desa melalui telepon, email, atau media sosial.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. PENGADUAN & CEK PENGADUAN ============ -->
+<section id="pengaduan">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-kicker">Suara Warga</span>
+      <h2>Pengaduan Desa</h2>
+      <p>Sampaikan aspirasi, keluhan, dan laporan Anda kepada Pemerintah Desa Semparuk.</p>
+    </div>
+    <div class="complaint-wrap">
+      <form class="form-card reveal" id="complaintForm" novalidate>
+        <div class="form-row">
+          <div class="form-group" id="grpName">
+            <label for="cName">Nama</label>
+            <input type="text" id="cName" placeholder="Nama lengkap">
+            <div class="err">Nama wajib diisi.</div>
+          </div>
+          <div class="form-group" id="grpEmail">
+            <label for="cEmail">Email</label>
+            <input type="email" id="cEmail" placeholder="nama@email.com">
+            <div class="err">Masukkan email yang valid.</div>
+          </div>
+        </div>
+        <div class="form-group" id="grpCategory">
+          <label for="cCategory">Kategori Pengaduan</label>
+          <select id="cCategory">
+            <option value="">Pilih kategori</option>
+            <option>Infrastruktur</option>
+            <option>Pelayanan</option>
+            <option>Lingkungan</option>
+            <option>Sosial</option>
+            <option>Administrasi</option>
+            <option>Lainnya</option>
+          </select>
+          <div class="err">Pilih kategori pengaduan.</div>
+        </div>
+        <div class="form-group" id="grpTitle">
+          <label for="cTitle">Judul Aduan</label>
+          <input type="text" id="cTitle" placeholder="Ringkasan singkat pengaduan">
+          <div class="err">Judul aduan wajib diisi.</div>
+        </div>
+        <div class="form-group" id="grpBody">
+          <label for="cBody">Isi Aduan</label>
+          <textarea id="cBody" rows="4" placeholder="Jelaskan pengaduan Anda secara detail"></textarea>
+          <div class="err">Isi aduan wajib diisi.</div>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Kirim Pengaduan</button>
+
+        <div class="token-box" id="tokenBox">
+          <div class="val" id="tokenValue">DS-000000</div>
+          <p>Catat token pengaduan Anda untuk memantau status laporan.</p>
+        </div>
+      </form>
+
+      <div class="check-card reveal" id="cek-pengaduan">
+        <h3>Cek Status Pengaduan</h3>
+        <p class="hint">Masukkan token pengaduan untuk melihat status laporan Anda.</p>
+        <div class="form-group">
+          <label for="checkToken">Masukkan Token Pengaduan</label>
+          <input type="text" id="checkToken" placeholder="Contoh: DS-482913">
+        </div>
+        <button class="btn btn-ghost" id="checkBtn" style="width:100%;justify-content:center;"><i class="fa-solid fa-magnifying-glass"></i> Cek Status</button>
+
+        <div class="status-result" id="statusResult">
+          <span class="status-badge" id="statusBadge">Menunggu</span>
+          <div class="status-detail" id="statusDetail"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. GALERI DESA ============ -->
+<section id="galeri">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-kicker">Dokumentasi</span>
+      <h2>Galeri Desa Semparuk</h2>
+      <p>Dokumentasi kegiatan dan potret kehidupan warga desa.</p>
+    </div>
+    <div class="gallery-filters reveal" id="galleryFilters">
+      <button class="gfilter active" data-cat="all">Semua</button>
+      <button class="gfilter" data-cat="Kegiatan Desa">Kegiatan Desa</button>
+      <button class="gfilter" data-cat="Infrastruktur">Infrastruktur</button>
+      <button class="gfilter" data-cat="Masyarakat">Masyarakat</button>
+      <button class="gfilter" data-cat="Lingkungan">Lingkungan</button>
+      <button class="gfilter" data-cat="Budaya">Budaya</button>
+      <button class="gfilter" data-cat="Wisata">Wisata</button>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 12. POTENSI DESA ============ -->
+<section id="potensi" style="background:var(--mint-soft);">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="section-kicker">Kekuatan Lokal</span>
+      <h2>Potensi Desa Semparuk</h2>
+      <p>Sektor-sektor unggulan yang menjadi kekuatan pembangunan desa.</p>
+    </div>
+    <div class="potensi-grid" id="potensiGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 13. BERITA DESA ============ -->
+<section id="berita">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-kicker">Kabar Desa</span>
+      <h2>Berita & Informasi Desa</h2>
+      <p>Kabar terbaru seputar kegiatan dan program Desa Semparuk.</p>
+    </div>
+    <div class="news-filters reveal" id="newsFilters">
+      <button class="gfilter active" data-ncat="all">Semua</button>
+      <button class="gfilter" data-ncat="Pemerintahan">Pemerintahan</button>
+      <button class="gfilter" data-ncat="Pembangunan">Pembangunan</button>
+      <button class="gfilter" data-ncat="Sosial">Sosial</button>
+      <button class="gfilter" data-ncat="Ekonomi">Ekonomi</button>
+    </div>
+    <div class="news-grid" id="newsGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 14. LOKASI DESA ============ -->
+<section id="lokasi">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-kicker">Kantor Desa</span>
+      <h2>Lokasi Desa Semparuk</h2>
+      <p>Temukan kantor Pemerintah Desa Semparuk.</p>
+    </div>
+    <div class="location-wrap">
+      <div class="loc-card reveal">
+        <h3>Alamat Kantor Desa</h3>
+        <div class="loc-row"><i class="fa-solid fa-location-dot"></i><span>Jalan Masjid Lorong Berdikari, RT.40/RW.7, Kabupaten Sambas, Semparuk, Kalimantan Barat, 79457.</span></div>
+        <div class="loc-row"><i class="fa-solid fa-clock"></i><span>Senin – Jumat, 08.00 – 15.00 WIB</span></div>
+        <div class="loc-row"><i class="fa-solid fa-phone"></i><span>(0562) 000-000</span></div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Semparuk+Sambas+Kalimantan+Barat" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:20px;">Buka di Google Maps <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+      <div class="map-frame reveal">
+        <iframe src="https://www.google.com/maps?q=Semparuk,Sambas,Kalimantan%20Barat&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi Desa Semparuk"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 15. KONTAK ============ -->
+<section id="kontak">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="section-kicker">Hubungi Kami</span>
+      <h2>Hubungi Desa Semparuk</h2>
+      <p>Kami siap membantu Anda melalui berbagai kanal berikut.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card reveal"><div class="ic"><i class="fa-solid fa-location-dot"></i></div><h4>Alamat</h4><span>Jl. Masjid Lorong Berdikari, Semparuk, Sambas</span></div>
+      <div class="contact-card reveal"><div class="ic"><i class="fa-solid fa-envelope"></i></div><h4>Email</h4><span>pemdes.semparuk@sambas.go.id</span></div>
+      <div class="contact-card reveal"><div class="ic"><i class="fa-solid fa-phone"></i></div><h4>Telepon</h4><span>(0562) 000-000</span></div>
+      <div class="contact-card reveal"><div class="ic"><i class="fa-solid fa-share-nodes"></i></div><h4>Media Sosial</h4><span>@desasemparuk</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 16. FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <div class="brand-mark">DS</div>
+          <div class="name">DESA SEMPARUK</div>
+        </div>
+        <p class="tagline">Bersama Membangun Desa, Menuju Desa Digital.</p>
+      </div>
+      <div>
+        <h5>Navigasi</h5>
+        <ul>
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#profil">Profil</a></li>
+          <li><a href="#program">Program</a></li>
+          <li><a href="#galeri">Galeri</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Layanan</h5>
+        <ul>
+          <li><a href="#layanan-dashboard">Layanan Desa</a></li>
+          <li><a href="#pengaduan">Pengaduan</a></li>
+          <li><a href="#cek-pengaduan">Cek Pengaduan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Informasi</h5>
+        <ul>
+          <li><a href="#berita">Berita</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+          <li><a href="#lokasi">Lokasi</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <span>© 2026 Desa Semparuk. All Rights Reserved.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook Desa Semparuk"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram Desa Semparuk"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube Desa Semparuk"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Kembali ke atas"><i class="fa-solid fa-arrow-up"></i></button>
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><div class="msg"><h5 id="toastTitle">Berhasil</h5><p id="toastMsg">Aksi berhasil dilakukan.</p></div></div>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightboxClose"><i class="fa-solid fa-xmark"></i></div>
+  <img src="" alt="" id="lightboxImg">
+</div>
+
+<script>
+/* ============================================================
+   DATA
+   ============================================================ */
+const PROGRAM_DATA = [
+  {icon:'fa-graduation-cap', title:'Peningkatan Pendidikan', desc:'Mendukung akses dan kualitas pendidikan bagi anak-anak dan pemuda desa.'},
+  {icon:'fa-shop', title:'Pemberdayaan UMKM', desc:'Pendampingan dan permodalan bagi pelaku usaha mikro, kecil, dan menengah.'},
+  {icon:'fa-road', title:'Infrastruktur', desc:'Pembangunan dan perbaikan jalan, jembatan, serta fasilitas umum desa.'},
+  {icon:'fa-leaf', title:'Lingkungan Bersih', desc:'Program pengelolaan sampah dan penghijauan untuk lingkungan yang sehat.'},
+  {icon:'fa-laptop', title:'Pelayanan Digital', desc:'Digitalisasi layanan administrasi agar warga terlayani lebih cepat.'},
+  {icon:'fa-people-arrows', title:'Pemberdayaan Pemuda', desc:'Ruang aktualisasi dan pelatihan keterampilan bagi generasi muda desa.'},
+  {icon:'fa-chart-line', title:'Pengembangan Ekonomi', desc:'Penguatan sektor ekonomi lokal melalui BUMDes dan koperasi desa.'},
+  {icon:'fa-hands-holding-child', title:'Kegiatan Sosial', desc:'Program bantuan dan gotong royong untuk warga yang membutuhkan.'},
+  {icon:'fa-umbrella-beach', title:'Desa Ramah Wisata', desc:'Pengembangan potensi wisata lokal sebagai sumber pendapatan desa.'},
+];
+
+const POTENSI_DATA = [
+  {icon:'fa-book-open', title:'Pendidikan'},
+  {icon:'fa-shop', title:'UMKM'},
+  {icon:'fa-wheat-awn', title:'Pertanian'},
+  {icon:'fa-sack-dollar', title:'Ekonomi Masyarakat'},
+  {icon:'fa-seedling', title:'Lingkungan'},
+  {icon:'fa-mountain-sun', title:'Wisata'},
+  {icon:'fa-users', title:'Pemuda & Komunitas'},
+];
+
+const GALLERY_DATA = [
+  {cat:'Kegiatan Desa', img:'https://images.unsplash.com/photo-1547483238-2cbf881a559f?q=80&w=700&auto=format&fit=crop', cap:'Musyawarah warga desa'},
+  {cat:'Infrastruktur', img:'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=700&auto=format&fit=crop', cap:'Perbaikan jalan desa'},
+  {cat:'Masyarakat', img:'https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=700&auto=format&fit=crop', cap:'Kegiatan warga'},
+  {cat:'Lingkungan', img:'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=700&auto=format&fit=crop', cap:'Area hijau desa'},
+  {cat:'Budaya', img:'https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=700&auto=format&fit=crop', cap:'Tradisi lokal'},
+  {cat:'Wisata', img:'https://images.unsplash.com/photo-1500534623283-312aade485b7?q=80&w=700&auto=format&fit=crop', cap:'Panorama desa'},
+  {cat:'Kegiatan Desa', img:'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=700&auto=format&fit=crop', cap:'Gotong royong warga'},
+  {cat:'Infrastruktur', img:'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=700&auto=format&fit=crop', cap:'Fasilitas umum'},
+  {cat:'Masyarakat', img:'https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=700&auto=format&fit=crop', cap:'Aktivitas sosial'},
+];
+
+const NEWS_DATA = [
+  {cat:'Pemerintahan', date:'12 September 2026', img:'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=700&auto=format&fit=crop', title:'Musyawarah Desa Bahas Rencana Anggaran 2027', excerpt:'Pemerintah desa bersama BPD dan tokoh masyarakat merumuskan prioritas pembangunan tahun depan.'},
+  {cat:'Pembangunan', date:'5 September 2026', img:'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=700&auto=format&fit=crop', title:'Perbaikan Jalan Dusun Tahap Dua Dimulai', excerpt:'Proyek perbaikan jalan penghubung antar dusun mulai dikerjakan untuk memperlancar akses warga.'},
+  {cat:'Sosial', date:'28 Agustus 2026', img:'https://images.unsplash.com/photo-1509099836639-18ba1795216d?q=80&w=700&auto=format&fit=crop', title:'Posyandu Desa Gelar Pemeriksaan Kesehatan Gratis', excerpt:'Kegiatan rutin posyandu menyasar balita dan lansia di seluruh dusun Desa Semparuk.'},
+  {cat:'Ekonomi', date:'20 Agustus 2026', img:'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=700&auto=format&fit=crop', title:'Pelatihan UMKM Tingkatkan Kapasitas Pelaku Usaha', excerpt:'Puluhan pelaku UMKM mengikuti pelatihan pemasaran digital yang diadakan pemerintah desa.'},
+  {cat:'Pemerintahan', date:'10 Agustus 2026', img:'https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=700&auto=format&fit=crop', title:'Sosialisasi Layanan Digital Desa kepada Warga', excerpt:'Warga diperkenalkan cara menggunakan layanan pengaduan dan administrasi daring desa.'},
+  {cat:'Pembangunan', date:'2 Agustus 2026', img:'https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=700&auto=format&fit=crop', title:'Program Penghijauan Libatkan Pemuda Desa', excerpt:'Ratusan bibit pohon ditanam di area publik sebagai bagian dari program lingkungan bersih.'},
+];
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+window.addEventListener('load', () => {
+  const loader = document.getElementById('pageLoader');
+  setTimeout(() => loader.classList.add('done'), 350);
+});
+
+/* ============================================================
+   THEME TOGGLE (dark / light)
+   ============================================================ */
+const themeToggle = document.getElementById('themeToggle');
+const rootEl = document.documentElement;
+function applyTheme(t){
+  rootEl.setAttribute('data-theme', t);
+  themeToggle.innerHTML = t === 'dark' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+  try{ localStorage.setItem('ds-theme', t); }catch(e){}
+}
+let savedTheme = 'light';
+try{ savedTheme = localStorage.getItem('ds-theme') || 'light'; }catch(e){}
+applyTheme(savedTheme);
+themeToggle.addEventListener('click', () => {
+  applyTheme(rootEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+/* ============================================================
+   NAVBAR: scroll shadow + sticky + active link
+   ============================================================ */
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('section[id], header[id]');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 12);
+  document.getElementById('backToTop').classList.toggle('show', window.scrollY > 480);
+
+  let current = '';
+  sections.forEach(sec => {
+    const top = sec.offsetTop - 140;
+    if (window.scrollY >= top) current = sec.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
+}, {passive:true});
+
+/* ============================================================
+   MOBILE MENU
+   ============================================================ */
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+const navOverlay = document.getElementById('navOverlay');
+function closeMobileMenu(){
+  hamburger.classList.remove('open');
+  navMenu.classList.remove('open');
+  navOverlay.classList.remove('show');
+}
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  navMenu.classList.toggle('open');
+  navOverlay.classList.toggle('show');
+});
+navOverlay.addEventListener('click', closeMobileMenu);
+navLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+
+/* ============================================================
+   LAYANAN DESA PANEL
+   ============================================================ */
+const servicePanel = document.getElementById('servicePanel');
+document.getElementById('openServicePanel').addEventListener('click', () => {
+  servicePanel.classList.add('open');
+  navOverlay.classList.add('show');
+});
+function closeServicePanel(){
+  servicePanel.classList.remove('open');
+  navOverlay.classList.remove('show');
+}
+document.getElementById('closeServicePanel').addEventListener('click', closeServicePanel);
+navOverlay.addEventListener('click', closeServicePanel);
+servicePanel.querySelectorAll('[data-close-panel]').forEach(a => a.addEventListener('click', closeServicePanel));
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting){
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:.15});
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ============================================================
+   COUNTER ANIMATION
+   ============================================================ */
+function animateCounter(el){
+  const target = +el.dataset.count;
+  const duration = 1400;
+  const start = performance.now();
+  function tick(now){
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target).toLocaleString('id-ID');
+    if (progress < 1) requestAnimationFrame(tick);
+    else el.textContent = target.toLocaleString('id-ID');
+  }
+  requestAnimationFrame(tick);
+}
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting){
+      animateCounter(entry.target);
+      statObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:.4});
+document.querySelectorAll('.stat-num').forEach(el => statObserver.observe(el));
+
+/* ============================================================
+   RENDER: PROGRAM, POTENSI, GALERI, BERITA
+   ============================================================ */
+function renderPrograms(){
+  const grid = document.getElementById('programGrid');
+  grid.innerHTML = PROGRAM_DATA.map(p => `
+    <div class="program-card reveal">
+      <div class="ic"><i class="fa-solid ${p.icon}"></i></div>
+      <h4>${p.title}</h4>
+      <p>${p.desc}</p>
+    </div>`).join('');
+  grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+function renderPotensi(){
+  const grid = document.getElementById('potensiGrid');
+  grid.innerHTML = POTENSI_DATA.map(p => `
+    <div class="potensi-card reveal">
+      <div class="ic"><i class="fa-solid ${p.icon}"></i></div>
+      <h4>${p.title}</h4>
+    </div>`).join('');
+  grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+function renderGallery(filter='all'){
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = GALLERY_DATA
+    .filter(g => filter === 'all' || g.cat === filter)
+    .map((g,i) => `
+      <div class="gallery-item reveal" data-full="${g.img.replace('w=700','w=1400')}">
+        <img src="${g.img}" alt="${g.cap}" loading="lazy">
+        <div class="cap">${g.cap}</div>
+      </div>`).join('');
+  grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  bindGalleryLightbox();
+}
+
+function renderNews(filter='all'){
+  const grid = document.getElementById('newsGrid');
+  grid.innerHTML = NEWS_DATA
+    .filter(n => filter === 'all' || n.cat === filter)
+    .map(n => `
+      <article class="news-card reveal">
+        <div class="thumb"><span class="news-cat">${n.cat}</span><img src="${n.img}" alt="${n.title}" loading="lazy"></div>
+        <div class="news-body">
+          <div class="news-date"><i class="fa-regular fa-calendar"></i> ${n.date}</div>
+          <h4>${n.title}</h4>
+          <p>${n.excerpt}</p>
+          <a href="#" class="news-more" onclick="return false;">Baca Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>`).join('');
+  grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+renderPrograms();
+renderPotensi();
+renderGallery();
+renderNews();
+
+/* Gallery filters */
+document.getElementById('galleryFilters').addEventListener('click', (e) => {
+  const btn = e.target.closest('.gfilter');
+  if (!btn) return;
+  document.querySelectorAll('#galleryFilters .gfilter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGallery(btn.dataset.cat);
+});
+
+/* News filters */
+document.getElementById('newsFilters').addEventListener('click', (e) => {
+  const btn = e.target.closest('.gfilter');
+  if (!btn) return;
+  document.querySelectorAll('#newsFilters .gfilter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderNews(btn.dataset.ncat);
+});
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+function bindGalleryLightbox(){
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      lightboxImg.src = item.dataset.full;
+      lightboxImg.alt = item.querySelector('img').alt;
+      lightbox.classList.add('open');
+    });
+  });
+}
+document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+const toast = document.getElementById('toast');
+function showToast(title, msg){
+  document.getElementById('toastTitle').textContent = title;
+  document.getElementById('toastMsg').textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => toast.classList.remove('show'), 3600);
+}
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+/* ============================================================
+   PENGADUAN: validasi form, token, localStorage
+   ============================================================ */
+const complaintForm = document.getElementById('complaintForm');
+const STORE_KEY = 'ds-pengaduan';
+
+function loadComplaints(){
+  try{ return JSON.parse(localStorage.getItem(STORE_KEY)) || []; }catch(e){ return []; }
+}
+function saveComplaints(list){
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(list)); }catch(e){}
+}
+function generateToken(){
+  const num = Math.floor(100000 + Math.random() * 900000);
+  return 'DS-' + num;
+}
+
+function validateField(inputEl, groupId, condition){
+  const group = document.getElementById(groupId);
+  const ok = condition;
+  group.classList.toggle('invalid', !ok);
+  return ok;
+}
+
+complaintForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('cName').value.trim();
+  const email = document.getElementById('cEmail').value.trim();
+  const category = document.getElementById('cCategory').value;
+  const title = document.getElementById('cTitle').value.trim();
+  const body = document.getElementById('cBody').value.trim();
+
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const validName = validateField(null, 'grpName', name.length > 0);
+  const validEmail = validateField(null, 'grpEmail', emailOk);
+  const validCategory = validateField(null, 'grpCategory', category !== '');
+  const validTitle = validateField(null, 'grpTitle', title.length > 0);
+  const validBody = validateField(null, 'grpBody', body.length > 0);
+
+  if (!(validName && validEmail && validCategory && validTitle && validBody)){
+    document.querySelector('.form-group.invalid')?.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  const token = generateToken();
+  const list = loadComplaints();
+  list.push({
+    token, name, email, category, title, body,
+    status:'Menunggu',
+    date: new Date().toISOString()
+  });
+  saveComplaints(list);
+
+  document.getElementById('tokenValue').textContent = token;
+  document.getElementById('tokenBox').classList.add('show');
+  showToast('Pengaduan Terkirim', 'Simpan token ' + token + ' untuk memantau status laporan Anda.');
+  complaintForm.reset();
+  document.querySelectorAll('#complaintForm .form-group').forEach(g => g.classList.remove('invalid'));
+});
+
+/* ============================================================
+   CEK PENGADUAN
+   ============================================================ */
+const statusMap = {
+  'Menunggu': {cls:'menunggu', text:'Pengaduan Anda telah diterima dan menunggu untuk ditinjau oleh petugas desa.'},
+  'Diproses': {cls:'diproses', text:'Pengaduan Anda sedang ditindaklanjuti oleh perangkat desa terkait.'},
+  'Selesai': {cls:'selesai', text:'Pengaduan Anda telah selesai ditangani. Terima kasih atas laporannya.'}
+};
+
+document.getElementById('checkBtn').addEventListener('click', () => {
+  const tokenInput = document.getElementById('checkToken').value.trim().toUpperCase();
+  const resultBox = document.getElementById('statusResult');
+  const badge = document.getElementById('statusBadge');
+  const detail = document.getElementById('statusDetail');
+
+  if (!tokenInput){
+    resultBox.classList.add('show');
+    badge.className = 'status-badge tidak';
+    badge.textContent = 'Token Kosong';
+    detail.textContent = 'Silakan masukkan token pengaduan terlebih dahulu.';
+    return;
+  }
+
+  const list = loadComplaints();
+  const found = list.find(c => c.token.toUpperCase() === tokenInput);
+
+  resultBox.classList.add('show');
+  if (!found){
+    badge.className = 'status-badge tidak';
+    badge.textContent = 'Tidak Ditemukan';
+    detail.textContent = 'Token pengaduan tidak ditemukan. Periksa kembali token yang Anda masukkan.';
+    return;
+  }
+
+  const info = statusMap[found.status] || statusMap['Menunggu'];
+  badge.className = 'status-badge ' + info.cls;
+  badge.textContent = found.status;
+  detail.textContent = `"${found.title}" — ${info.text}`;
+});
+
+document.getElementById('checkToken').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') document.getElementById('checkBtn').click();
+});
+</script>
+</body>
+</html>
